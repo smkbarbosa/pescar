@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/smkbarbosa/pescar.svg?branch=master)](https://travis-ci.org/smkbarbosa/pescar)
+
 # PESCAR
 
 É o acrônimo para Programa de Estudo Socioeconômico-cultural, um projeto desenvolvido
