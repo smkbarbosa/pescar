@@ -1,6 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import render
+from sare.questionarios.forms import QuestionarioForm
 
 
 def questionario(request):
-    return render(request, 'questionarios/form_socioeconomico.html')
+    context = {'form': QuestionarioForm() }
+    return render(request, 'questionarios/form_socioeconomico.html', context)

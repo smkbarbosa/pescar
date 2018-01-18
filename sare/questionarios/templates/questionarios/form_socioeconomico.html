@@ -1,7 +1,1754 @@
-<head>
+<!-- <head>
     <style type="text/css">
         html, body, div, iframe {margin:0; padding:0; height:100%}
         iframe {display:block; width:100%; border:none}
     </style>
 </head>
 <iframe id="iframe1" src="https://docs.google.com/forms/d/e/1FAIpQLSdJAPTETjUBzfmaYbzMOxJsCJ9K4OEcEAvvpL7m_Cggfj1W3g/viewform?embedded=true" width="" height="" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+ -->
+
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdJAPTETjUBzfmaYbzMOxJsCJ9K4OEcEAvvpL7m_Cggfj1W3g/formResponse"
+      target="_self"
+      id="bootstrapForm"
+      method="POST">
+    {% csrf_token %}
+    <fieldset>
+        <h2>Formulário Sócioeconômico-cultural<br><small>Prezado estudante, este formulário tem por objetivo testar uma nova ferramenta para a assistência estudantil que em breve será implantada no  Ifto. Desse modo, solicitamos o preenchimento de todas as perguntas a fim de que possamos  simular o mapa de vulnerabilidades que irá direcionar as ações dos profissionais que realizam o processo de seleção do recurso do Pnaes (Programa Nacional de Assistência Estudantil) e as intervenções dos profissionais ligados a assistência estudantil aos estudantes matriculados nas diferentes modalidades dos cursos ofertados pelo Ifto.
+</small></h2>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "2127651938" -->
+    <fieldset>
+        <legend for="2127651938">Dados Pessoais</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "2026753368" -->
+    <fieldset>
+        <legend for="{{ form.nome.id_for_label }}">{{ form.nome.label }}</legend>
+        <div class="form-group">
+            {{ form.nome.errors }}
+            {{ form.nome }}
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "560243854" -->
+    <fieldset>
+        <legend for="{{ form.cpf.id_for_label }}">{{ form.cpf.label }}</legend>
+        <div class="form-group">
+            {{ form.cpf.errors }}
+            {{ form.cpf }}
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "1244479770" -->
+    <fieldset>
+        <legend for="{{ form.sexo.id_for_label }}">{{ form.sexo.label }}</legend>
+        <div class="form-group">
+            <div class="radio">
+                {{ form.sexo.errors }}
+                {{ form.sexo }}
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "1666577622" -->
+    <fieldset>
+        <legend for="1666577622">Área: Economia</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "146449658" -->
+    <fieldset>
+        <legend for="{{ form.dependentes_RBD.id_for_label }}">{{ form.dependentes_RBD.label }}	</legend>
+        <div class="form-group">
+            <p class="help-block">Incluindo você, quantas pessoas moram em sua casa?	</p>
+            {{ form.dependentes_RBD.errors }}
+            {{ form.dependentes_RBD }}
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "1172502526" -->
+    <fieldset>
+        <legend for="{{ form.origem_renda.id_for_label }}">{{ form.origem_renda.label }}</legend>
+        <div class="form-group">
+            <p class="help-block">Dessas pessoas, quantas possuem renda (seja por trabalho formal,informal, aposentadoria,etc.)?	</p>
+            {{ form.origem_renda.errors }}
+            {{ form.origem_renda }}
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "396672653" -->
+    <fieldset>
+        <legend for="{{ form.renda_bruta_domiciliar.id_for_label }}">{{ form.renda_bruta_domiciliar.label }}	</legend>
+        <div class="form-group">
+            <p class="help-block">Qual é o valor Renda Bruta Domiciliar (considere a renda total dos membros do domicilio sem os descontos)?	</p>
+            {{ form.renda_bruta_domiciliar.errors }}
+            {{ form.renda_bruta_domiciliar }}
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "332272899" -->
+    <fieldset>
+        <legend for="332272899">Dependentes da Renda Bruta Domiciliar</legend>
+        <div class="form-group">
+            <p class="help-block">Quantas pessoas dependem da renda bruta domiciliar? 	</p>
+            <input id="1163683719" type="text" name="entry.1163683719" class="form-control" required>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "639749165" -->
+    <fieldset>
+        <legend for="639749165">Responsável pela manutenção do domicílio	</legend>
+        <div class="form-group">
+            <p class="help-block">Quem é o principal responsável pela manutenção do domicílio? Qual é o vinculo de parentesco?	</p>
+            <input id="1773061631" type="text" name="entry.1773061631" class="form-control" required>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "689427536" -->
+    <fieldset>
+        <legend for="689427536">Área: Finanças</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "title" id: "1119117258" -->
+    <fieldset>
+        <legend for="1119117258">Renda Per Capita Domiciliar</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "1411295753" -->
+    <fieldset>
+        <legend for="1411295753">Renda per capita domiciliar</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.689741495" value="1.405,51 (a partir)" required>
+                    1.405,51 (a partir)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.689741495" value="937,01 a 1405,50" required>
+                    937,01 a 1405,50
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.689741495" value="468,50 a 937,00" required>
+                    468,50 a 937,00
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.689741495" value="234,25 até 468,49" required>
+                    234,25 até 468,49
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.689741495" value="de 0 até 234, 24" required>
+                    de 0 até 234, 24
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "title" id: "362496415" -->
+    <fieldset>
+        <legend for="362496415">Dependência Financeira</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "1458085573" -->
+    <fieldset>
+        <legend for="1458085573">Qual é a sua relação financeira?</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2078828482" value="É independente financeiramente" required>
+                    É independente financeiramente
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2078828482" value="É independente financeiramente e responsável por parte das despesas domésticas" required>
+                    É independente financeiramente e responsável por parte das despesas domésticas
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2078828482" value="É independente totalmente e responsável por todas as despesas domésticas" required>
+                    É independente totalmente e responsável por todas as despesas domésticas
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2078828482" value="Dependente inteiramente da renda dos pais ou companheiro(s)" required>
+                    Dependente inteiramente da renda dos pais ou companheiro(s)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2078828482" value="Dependente inteiramente da renda de outros parentes" required>
+                    Dependente inteiramente da renda de outros parentes
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "title" id: "1329057929" -->
+    <fieldset>
+        <legend for="1329057929">Despesas e Gastos</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "checkboxes" id: "1972590190" -->
+    <fieldset>
+        <legend for="1972590190">Saúde</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1284503183" value="Tratamento de saúde a partir de R$ 234,24" >
+                    Tratamento de saúde a partir de R$ 234,24
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1284503183" value="Medicamentos a partir de R$ 200,00" >
+                    Medicamentos a partir de R$ 200,00
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1284503183" value="Cuidador de idoso/criança/PNE" >
+                    Cuidador de idoso/criança/PNE
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1284503183" value="Plano de Saúde" >
+                    Plano de Saúde
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "checkboxes" id: "1277784153" -->
+    <fieldset>
+        <legend for="1277784153">Transporte</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1267179349" value="Transporte para acessar o Campus" >
+                    Transporte para acessar o Campus
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "checkboxes" id: "1813560314" -->
+    <fieldset>
+        <legend for="1813560314">Moradia</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.704170088" value="Aluguel/Financiamento" >
+                    Aluguel/Financiamento
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "checkboxes" id: "757377950" -->
+    <fieldset>
+        <legend for="757377950">Educação</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.597673802" value="Educação superior" >
+                    Educação superior
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.597673802" value="Ensino Básico (Médio e Fundamental)" >
+                    Ensino Básico (Médio e Fundamental)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.597673802" value="Curso preparatório (cursinhos..etc.)" >
+                    Curso preparatório (cursinhos..etc.)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.597673802" value="Curso de Capacitação" >
+                    Curso de Capacitação
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.597673802" value="Material Didático" >
+                    Material Didático
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "checkboxes" id: "1410587304" -->
+    <fieldset>
+        <legend for="1410587304">Bens</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.704798478" value="Financiamento de carro até R$ 800,00" >
+                    Financiamento de carro até R$ 800,00
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.704798478" value="Financiamento de moto) até R$ 300,00" >
+                    Financiamento de moto) até R$ 300,00
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.704798478" value="Terreno/Lote até R$600,00" >
+                    Terreno/Lote até R$600,00
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "checkboxes" id: "1379442497" -->
+    <fieldset>
+        <legend for="1379442497">Domésticas</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.619392612" value="Energia até 200,00" >
+                    Energia até 200,00
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.619392612" value="Água até 150,00" >
+                    Água até 150,00
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.619392612" value="Alimentação até 650,00" >
+                    Alimentação até 650,00
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "176463609" -->
+    <fieldset>
+        <legend for="176463609">Área: Social</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "title" id: "423765069" -->
+    <fieldset>
+        <legend for="423765069">Forma de acesso ao Campus</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "1325433350" -->
+    <fieldset>
+        <legend for="1325433350">Informe a sua condição de trabalho ou do principal responsável pela manutenção da casa</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.653246008" value="servidor público" required>
+                    servidor público
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.653246008" value="trabalhador  empregado (clt)" required>
+                    trabalhador  empregado (clt)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.653246008" value="trabalhador contribuinte" required>
+                    trabalhador contribuinte
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.653246008" value="trabalhador informal s/contrib" required>
+                    trabalhador informal s/contrib
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.653246008" value="desempregado" required>
+                    desempregado
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "199475030" -->
+    <fieldset>
+        <legend for="199475030">Meio de acesso ao Campus</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.354137503" value="Próprio - carro" required>
+                    Próprio - carro
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.354137503" value="Próprio - moto" required>
+                    Próprio - moto
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.354137503" value="Coletivo público - paga passagem" required>
+                    Coletivo público - paga passagem
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.354137503" value="Coletivo público - não paga passagem" required>
+                    Coletivo público - não paga passagem
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.354137503" value="Alternativo (van, etc.)" required>
+                    Alternativo (van, etc.)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.354137503" value="Carona - sem contribuição" required>
+                    Carona - sem contribuição
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.354137503" value="Carona - com contribuição" required>
+                    Carona - com contribuição
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.354137503" value="Vai a pé" required>
+                    Vai a pé
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.354137503" value="Vai de bicicleta" required>
+                    Vai de bicicleta
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "title" id: "2066830284" -->
+    <fieldset>
+        <legend for="2066830284">Condições do imóvel/Moradia</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "722455264" -->
+    <fieldset>
+        <legend for="722455264">Condição da moradia</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Própria da família(quitada)" required>
+                    Própria da família(quitada)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Própria da família(financiada)" required>
+                    Própria da família(financiada)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Própria da família, adquirida por meio de projeto social de habitação com pagamento de parcelas" required>
+                    Própria da família, adquirida por meio de projeto social de habitação com pagamento de parcelas
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Própria da família, adquirida por meio de projeto social de habitação quitada." required>
+                    Própria da família, adquirida por meio de projeto social de habitação quitada.
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Cedida (gratuita)" required>
+                    Cedida (gratuita)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Alugada" required>
+                    Alugada
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Com terceiros (com contribuição)" required>
+                    Com terceiros (com contribuição)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Com terceiros (sem contribuição)" required>
+                    Com terceiros (sem contribuição)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Ocupação" required>
+                    Ocupação
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1263769821" value="Herança" required>
+                    Herança
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "1122808072" -->
+    <fieldset>
+        <legend for="1122808072">Local de moradia</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1779457187" value="Zona rural (indígena, quilombolo, assentamento)" required>
+                    Zona rural (indígena, quilombolo, assentamento)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1779457187" value="Zona rural (fazenda, chácara, sitio)" required>
+                    Zona rural (fazenda, chácara, sitio)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1779457187" value="Zona urbana" required>
+                    Zona urbana
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1779457187" value="Área de risco (inundação, deslizamento, ocupação, mineradoras, etc.)" required>
+                    Área de risco (inundação, deslizamento, ocupação, mineradoras, etc.)
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "483563429" -->
+    <fieldset>
+        <legend for="483563429">Incluindo você, quantas pessoas moram na sua casa</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1330333711" value="de uma a duas pessoas" required>
+                    de uma a duas pessoas
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1330333711" value="De três a cinco pessoas" required>
+                    De três a cinco pessoas
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1330333711" value="De seis a oito pessoas" required>
+                    De seis a oito pessoas
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1330333711" value="Acima de nove pessoas" required>
+                    Acima de nove pessoas
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "1002853834" -->
+    <fieldset>
+        <legend for="1002853834">Incluindo banheiros, quantos cômodos tem a sua casa (quarto, sala, cozinha, banheiro, área, garagem, sacada, despensa)</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1821539721" value="De um a dois cômodos" >
+                    De um a dois cômodos
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1821539721" value="De três a cinco cômodos" >
+                    De três a cinco cômodos
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1821539721" value="De seis a oito cômodos" >
+                    De seis a oito cômodos
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1821539721" value="Acima de nove cômodos" >
+                    Acima de nove cômodos
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "title" id: "708625174" -->
+    <fieldset>
+        <legend for="708625174">Distância da residência do Campus</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "2039228830" -->
+    <fieldset>
+        <legend for="2039228830">Quantos kilômetros tem entre a sua casa e o Câmpus</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1513490692" value="5 km (até)" >
+                    5 km (até)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1513490692" value="6 a 10 km" >
+                    6 a 10 km
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1513490692" value="11 a 25 km" >
+                    11 a 25 km
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1513490692" value="26 km (acima de)" >
+                    26 km (acima de)
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "title" id: "2123557725" -->
+    <fieldset>
+        <legend for="2123557725">Instituição de ensino anterior</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "1438363565" -->
+    <fieldset>
+        <legend for="1438363565">Estudou anteriormente em instituição:</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2091231362" value="Pública" required>
+                    Pública
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2091231362" value="Particular" required>
+                    Particular
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2091231362" value="Bolsa parcial (vulnerabilidade)" required>
+                    Bolsa parcial (vulnerabilidade)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2091231362" value="Bolsa parcial (mérito)" required>
+                    Bolsa parcial (mérito)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2091231362" value="Bolsa total (vulnerabilidade)" required>
+                    Bolsa total (vulnerabilidade)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.2091231362" value="Bolsa total (mérito)" required>
+                    Bolsa total (mérito)
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "title" id: "1088415526" -->
+    <fieldset>
+        <legend for="1088415526">Saúde Física</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "grid" id: "307143326" -->
+    <fieldset>
+        <legend for="307143326">Saúde</legend>
+        <div class="form-group">
+            <div>
+                <span>Faz uso, abuso de bebida alcoolica e/ou drogas?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.641139123" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.641139123" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.641139123" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.641139123" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Possui doença grave: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1520107463" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1520107463" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1520107463" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1520107463" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Possui doença crônica?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1065882124" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1065882124" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1065882124" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1065882124" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Faz uso de medicamento diário, de impacto na renda familiar: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.156475830" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.156475830" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.156475830" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.156475830" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "grid" id: "1814637486" -->
+    <fieldset>
+        <legend for="1814637486">Necessidades Específicas</legend>
+        <div class="form-group">
+            <div>
+                <span>Tem deficiência parcial de visão/audição?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.201815791" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.201815791" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.201815791" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.201815791" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Possui deficiência física?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1328720167" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1328720167" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1328720167" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1328720167" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Tem deficiência total  de visão/audição?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.727546169" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.727546169" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.727546169" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.727546169" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Tem deficiência mental leve?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1760128911" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1760128911" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1760128911" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1760128911" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Tem deficiência mental grave?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1396973545" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1396973545" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1396973545" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1396973545" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "title" id: "924880380" -->
+    <fieldset>
+        <legend for="924880380">Saúde Psíquica</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "grid" id: "1060121022" -->
+    <fieldset>
+        <legend for="1060121022">Psicológicas</legend>
+        <div class="form-group">
+            <div>
+                <span>Sente dificuldade em se concentrar?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.848026225" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.848026225" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.848026225" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.848026225" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Vivencia algum problema/conflito familiar: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1713463604" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1713463604" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1713463604" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1713463604" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Sofre de depressão?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.753156964" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.753156964" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.753156964" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.753156964" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "1181247269" -->
+    <fieldset>
+        <legend for="1181247269">Área: Cultura</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "866511513" -->
+    <fieldset>
+        <legend for="866511513">Você se considera?</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.763491477" value="Branca" required>
+                    Branca
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.763491477" value="Amarela" required>
+                    Amarela
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.763491477" value="Parda" required>
+                    Parda
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.763491477" value="Estrangeiro" required>
+                    Estrangeiro
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.763491477" value="Preta" required>
+                    Preta
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.763491477" value="Afro descendente Quilombola" required>
+                    Afro descendente Quilombola
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.763491477" value="Indígena" required>
+                    Indígena
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.763491477" value="Estrangeiro refugiado" required>
+                    Estrangeiro refugiado
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "grid" id: "1119670831" -->
+    <fieldset>
+        <legend for="1119670831">Você sofreu ou sofre algum tipo de violência? </legend>
+        <div class="form-group">
+            <div>
+                <span>Verbal (xingamentos, desacatos, etc.): </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1598337704" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1598337704" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1598337704" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1598337704" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Violência urbana (assalto, transito, etc): </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.111609309" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.111609309" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.111609309" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.111609309" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Patrimonial/financeira: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1371188344" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1371188344" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1371188344" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1371188344" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Cyberbulling (por meio de redes sociais): </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1633603693" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1633603693" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1633603693" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1633603693" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Religiosa: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1425359072" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1425359072" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1425359072" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1425359072" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Assédio moral: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1241005977" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1241005977" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1241005977" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1241005977" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Negligência/abandono familiar: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1737163866" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1737163866" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1737163866" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1737163866" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Abuso por parte de familiares ou pessoas conhecidas: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.2143244565" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.2143244565" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.2143244565" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.2143244565" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Atentado ao pudor: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1766701050" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1766701050" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1766701050" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1766701050" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Tráfico de seres humanos: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.106922706" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.106922706" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.106922706" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.106922706" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Psicológica/moral: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.447170269" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.447170269" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.447170269" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.447170269" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Física: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.2128365379" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.2128365379" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.2128365379" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.2128365379" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Sexual: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1944821315" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1944821315" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1944821315" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1944821315" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "grid" id: "1865384624" -->
+    <fieldset>
+        <legend for="1865384624">Você sofreu ou sofre algum tipo de preconceito? </legend>
+        <div class="form-group">
+            <div>
+                <span>Cultural: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1122583358" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1122583358" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1122583358" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1122583358" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Estético: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1298990591" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1298990591" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1298990591" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1298990591" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Econômico: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1805347236" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1805347236" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1805347236" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1805347236" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Religioso: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.499572746" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.499572746" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.499572746" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.499572746" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Mental: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1571851971" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1571851971" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1571851971" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1571851971" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Racial: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.917155258" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.917155258" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.917155258" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.917155258" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Gênero: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.67087086" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.67087086" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.67087086" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.67087086" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+            <div>
+                <span>Orientação sexual: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1734690210" value="Você" required>
+                    Você
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1734690210" value="Família" required>
+                    Família
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1734690210" value="Ambos" required>
+                    Ambos
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1734690210" value="Não se aplica" required>
+                    Não se aplica
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "748314904" -->
+    <fieldset>
+        <legend for="748314904">Área: Ambiental</legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "checkboxes" id: "1741129389" -->
+    <fieldset>
+        <legend for="1741129389">Quais são os serviços indisponíveis em seu bairro?</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1123427894" value="Ônibus coletivo" >
+                    Ônibus coletivo
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1123427894" value="ônibus escolar" >
+                    ônibus escolar
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1123427894" value="Táxi" >
+                    Táxi
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1123427894" value="Moto táxi" >
+                    Moto táxi
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1123427894" value="Transporte escolar público" >
+                    Transporte escolar público
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1123427894" value="Transporte escolar pago" >
+                    Transporte escolar pago
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "1597595411" -->
+    <fieldset>
+        <legend for="1597595411">A forma de descarte do lixo de sua casa é:</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.835685869" value="Serviço público de limpeza" >
+                    Serviço público de limpeza
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.835685869" value="Jogado em terreno baldio ou em via pública" >
+                    Jogado em terreno baldio ou em via pública
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.835685869" value="Enterrado" >
+                    Enterrado
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.835685869" value="Queimado" >
+                    Queimado
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "804167852" -->
+    <fieldset>
+        <legend for="804167852">Como você e/ou a sua família se sente em relação a segurança do seu bairro?</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1617966795" value="Não oferece risco de segurança aos seus moradores" >
+                    Não oferece risco de segurança aos seus moradores
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1617966795" value="É considerado perigoso e os moradores sofrem  com a criminalidade" >
+                    É considerado perigoso e os moradores sofrem  com a criminalidade
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1617966795" value="Os moradores se sentem seguros (há policiamento nas ruas)" >
+                    Os moradores se sentem seguros (há policiamento nas ruas)
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1617966795" value="Frequentemente os moradores sofrem  algum tipo de violência no bairro ou nos arredores" >
+                    Frequentemente os moradores sofrem  algum tipo de violência no bairro ou nos arredores
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1617966795" value="Não há registro de violência sofrida pelo moradores do bairro" >
+                    Não há registro de violência sofrida pelo moradores do bairro
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "checkboxes" id: "705933493" -->
+    <fieldset>
+        <legend for="705933493">Qual(is) o maior(es) problemas do seu bairro?</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Abastecimento de água" >
+                    Abastecimento de água
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Alagamentos" >
+                    Alagamentos
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Pavimentação (asfalto nas ruas)" >
+                    Pavimentação (asfalto nas ruas)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Energia e iluminação pública" >
+                    Energia e iluminação pública
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Ruas esburacadas (erosão)" >
+                    Ruas esburacadas (erosão)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Saneamento básico (esgoto)" >
+                    Saneamento básico (esgoto)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Serviços de segurança" >
+                    Serviços de segurança
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Acessibilidade" >
+                    Acessibilidade
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Áreas de recreaçao e lazer" >
+                    Áreas de recreaçao e lazer
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Limpeza e coleta de lixo" >
+                    Limpeza e coleta de lixo
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Serviços de saúde" >
+                    Serviços de saúde
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1880223511" value="Transporte público" >
+                    Transporte público
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "1167854962" -->
+    <fieldset>
+        <legend for="1167854962">Bairro</legend>
+        <div class="form-group">
+            <input id="621519565" type="text" name="entry.621519565" class="form-control" >
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "422778065" -->
+    <fieldset>
+        <legend for="422778065">Cidade</legend>
+        <div class="form-group">
+            <input id="1431255545" type="text" name="entry.1431255545" class="form-control" >
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "296887588" -->
+    <fieldset>
+        <legend for="296887588"></legend>
+        <div class="form-group">
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "paragraph" id: "885604795" -->
+    <fieldset>
+        <legend for="885604795">Fale mais sobre você e a sua família. </legend>
+        <div class="form-group">
+            <textarea id="1608731101" name="entry.1608731101" class="form-control" ></textarea>
+        </div>
+    </fieldset>
+
+    <input type="hidden" name="fvv" value="1">
+    <input type="hidden" name="fbzx" value="5348448863777500501">
+    <!--
+        CAVEAT: In multipages (multisection) forms, *pageHistory* field tells to google what sections we've currently completed.
+        This usually starts as "0" for the first page, then "0,1" in the second page... up to "0,1,2..N" in n-th page.
+        Keep this in mind if you plan to change this code to recreate any sort of multipage-feature in your exported form.
+        We're setting this to the total number of pages in this form because we're sending all fields from all the section together.
+    -->
+    <input type="hidden" name="pageHistory" value="0,1,2,3,4,5,6,7">
+
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
