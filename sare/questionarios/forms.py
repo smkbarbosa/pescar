@@ -62,3 +62,44 @@ class QuestionarioForm(forms.Form):
     despesas_domesticas_eletrica = forms.CharField(label='Energia (até R$ 200,00/mês)')
     despesas_domesticas_agua = forms.CharField(label='Água (até R$ 150,00/mês')
     despesas_domesticas_alimentacao = forms.CharField(label='Alimentação (até R$ 650,00/mês')
+
+    # Dimensao Social
+    CONDICAO_RESPONSAVEL_CASA_CHOICES = [
+        (1, 'Servidor Público'),
+        (2, 'Trabalhador contribuinte'),
+        (3, 'Trabalhador empregado (CLT)'),
+        (4, 'Trabalhador informal (s/ contrib)'),
+        (5, 'Desempregado')
+    ]
+    condicao_responsavel_casa = forms.ChoiceField(choices=CONDICAO_RESPONSAVEL_CASA_CHOICES, widget=forms.RadioSelect,
+                                                  label='Informe a sua condição de trabalho ou do principal '
+                                                        'responsável pela manutenção da casa')
+
+    MEIO_ACESSO_CAMPUS_CHOICES = [
+        (1, 'Próprio (carro)'),
+        (2, 'Próprio (moto)'),
+        (3, 'Carona (sem contribuição)'),
+        (4, 'Coletivo público (não paga passagem)'),
+        (5, 'Vai a pé'),
+        (6, 'Vai de bicicleta'),
+        (7, 'Carona (com contribuição)'),
+        (8, 'Coletivo público (paga passagem)'),
+        (9, 'Alternativo (van, etc)')
+    ]
+    meio_acesso_campus = forms.ChoiceField(choices=MEIO_ACESSO_CAMPUS_CHOICES, widget=forms.RadioSelect,
+                                           label='Meio de acesso ao Campus')
+
+    CONDICAO_MORADIA_CHOICES = [
+        (1, 'Herança'),
+        (2, 'Própria da família (quitada)'),
+        (3, 'Própria da família (adquirida por meio de projeto social de habitação, com pagamento de parcelas)'),
+        (4, 'Própria da família (financiada)'),
+        (5, 'Cedida (gratuita)'),
+        (6, 'Própria da família (adquirida por meio de projeto social de habitação, quitada)'),
+        (7, 'Alugada'),
+        (8, 'Com terceiros (sem contribuição)'),
+        (9, 'Com terceiros (com contribuição)'),
+        (10, 'Ocupação')
+    ]
+    condicao_moradia = forms.ChoiceField(CONDICAO_MORADIA_CHOICES, widget=forms.RadioSelect,
+                                         label='Condição da Moradia')

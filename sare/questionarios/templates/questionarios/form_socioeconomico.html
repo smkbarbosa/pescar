@@ -344,100 +344,29 @@
 
     <!-- Field type: "choices" id: "1325433350" -->
     <fieldset>
-        <legend for="1325433350">Informe a sua condição de trabalho ou do principal responsável pela manutenção da casa</legend>
+        <legend for="{{ form.condicao_responsavel_casa.id_for_label }}">{{ form.condicao_responsavel_casa.label }}</legend>
         <div class="form-group">
             <div class="radio">
                 <label>
-                    <input type="radio" name="entry.653246008" value="servidor público" required>
-                    servidor público
+                    {{ form.condicao_responsavel_casa }}
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.653246008" value="trabalhador  empregado (clt)" required>
-                    trabalhador  empregado (clt)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.653246008" value="trabalhador contribuinte" required>
-                    trabalhador contribuinte
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.653246008" value="trabalhador informal s/contrib" required>
-                    trabalhador informal s/contrib
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.653246008" value="desempregado" required>
-                    desempregado
-                </label>
-            </div>
+
         </div>
     </fieldset>
 
 
     <!-- Field type: "choices" id: "199475030" -->
     <fieldset>
-        <legend for="199475030">Meio de acesso ao Campus</legend>
+        <legend for="{{ form.meio_acesso_campus.id_for_label }}">{{ form.meio_acesso_campus.label }}</legend>
         <div class="form-group">
             <div class="radio">
                 <label>
-                    <input type="radio" name="entry.354137503" value="Próprio - carro" required>
-                    Próprio - carro
+                    {{ form.meio_acesso_campus.errors }}
+                    {{ form.meio_acesso_campus }}
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.354137503" value="Próprio - moto" required>
-                    Próprio - moto
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.354137503" value="Coletivo público - paga passagem" required>
-                    Coletivo público - paga passagem
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.354137503" value="Coletivo público - não paga passagem" required>
-                    Coletivo público - não paga passagem
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.354137503" value="Alternativo (van, etc.)" required>
-                    Alternativo (van, etc.)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.354137503" value="Carona - sem contribuição" required>
-                    Carona - sem contribuição
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.354137503" value="Carona - com contribuição" required>
-                    Carona - com contribuição
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.354137503" value="Vai a pé" required>
-                    Vai a pé
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.354137503" value="Vai de bicicleta" required>
-                    Vai de bicicleta
-                </label>
-            </div>
+
         </div>
     </fieldset>
 
@@ -452,68 +381,15 @@
 
     <!-- Field type: "choices" id: "722455264" -->
     <fieldset>
-        <legend for="722455264">Condição da moradia</legend>
+        <legend for="{{ form.condicao_moradia.id_for_label }}">{{ form.condicao_moradia.label }}</legend>
         <div class="form-group">
             <div class="radio">
                 <label>
-                    <input type="radio" name="entry.1263769821" value="Própria da família(quitada)" required>
-                    Própria da família(quitada)
+                    {{ form.condicao_moradia.errors }}
+                    {{ form.condicao_moradia }}
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1263769821" value="Própria da família(financiada)" required>
-                    Própria da família(financiada)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1263769821" value="Própria da família, adquirida por meio de projeto social de habitação com pagamento de parcelas" required>
-                    Própria da família, adquirida por meio de projeto social de habitação com pagamento de parcelas
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1263769821" value="Própria da família, adquirida por meio de projeto social de habitação quitada." required>
-                    Própria da família, adquirida por meio de projeto social de habitação quitada.
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1263769821" value="Cedida (gratuita)" required>
-                    Cedida (gratuita)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1263769821" value="Alugada" required>
-                    Alugada
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1263769821" value="Com terceiros (com contribuição)" required>
-                    Com terceiros (com contribuição)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1263769821" value="Com terceiros (sem contribuição)" required>
-                    Com terceiros (sem contribuição)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1263769821" value="Ocupação" required>
-                    Ocupação
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1263769821" value="Herança" required>
-                    Herança
-                </label>
-            </div>
+
         </div>
     </fieldset>
 

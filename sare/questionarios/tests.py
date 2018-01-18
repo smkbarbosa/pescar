@@ -20,9 +20,9 @@ class QuestionarioTest(TestCase):
         self.assertContains(self.resp, '<fieldset', 53 )
         self.assertContains(self.resp, '<legend', 52)
         self.assertContains(self.resp, '<p', 6)
-        self.assertContains(self.resp, '<div', 186)
+        self.assertContains(self.resp, '<div', 165)
         self.assertContains(self.resp, '<input', 256)
-        self.assertContains(self.resp, '<label', 244)
+        self.assertContains(self.resp, '<label', 247)
         self.assertContains(self.resp, 'type="text"', 26)
         self.assertContains(self.resp, 'type="checkbox"', 18)
         self.assertContains(self.resp, 'type="radio"', 207)
@@ -37,7 +37,7 @@ class QuestionarioTest(TestCase):
         form = self.resp.context['form']
         self.assertIsInstance(form, QuestionarioForm)
 
-    def test_form_has_fields_economica(self):
+    def test_form_has_fields(self):
         """Form deve conter campos --- dimensão economica """
         form = self.resp.context['form']
         self.assertSequenceEqual(['nome', 'cpf', 'sexo', 'dependentes_RBD', 'origem_renda', 'renda_bruta_domiciliar',
@@ -47,5 +47,7 @@ class QuestionarioTest(TestCase):
                                   'despesas_educacao_superior', 'despesas_educacao_basico', 'despesas_educacao_cursinho',
                                   'despesas_educacao_capacitacao', 'despesas_educacao_material', 'despesas_bens_fcarro',
                                   'despesas_bens_fmoto', 'despesas_bens_terreno', 'despesas_domesticas_eletrica',
-                                  'despesas_domesticas_agua', 'despesas_domesticas_alimentacao'], list(form.fields))
+                                  'despesas_domesticas_agua', 'despesas_domesticas_alimentacao',
+                                  'condicao_responsavel_casa', 'meio_acesso_campus', 'condicao_moradia'
+                                  ], list(form.fields))
 
