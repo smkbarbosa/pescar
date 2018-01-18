@@ -17,14 +17,14 @@ class QuestionarioTest(TestCase):
     def test_html(self):
         """Html deve conter input tags"""
         self.assertContains(self.resp, '<form')
-        self.assertContains(self.resp, '<fieldset', 54 )
-        self.assertContains(self.resp, '<legend', 53)
-        self.assertContains(self.resp, '<p', 5)
-        self.assertContains(self.resp, '<div', 195)
+        self.assertContains(self.resp, '<fieldset', 53 )
+        self.assertContains(self.resp, '<legend', 52)
+        self.assertContains(self.resp, '<p', 6)
+        self.assertContains(self.resp, '<div', 186)
         self.assertContains(self.resp, '<input', 256)
-        self.assertContains(self.resp, '<label', 242)
-        self.assertContains(self.resp, 'type="text"', 9)
-        self.assertContains(self.resp, 'type="checkbox"', 35)
+        self.assertContains(self.resp, '<label', 244)
+        self.assertContains(self.resp, 'type="text"', 26)
+        self.assertContains(self.resp, 'type="checkbox"', 18)
         self.assertContains(self.resp, 'type="radio"', 207)
         self.assertContains(self.resp, 'type="submit"')
 
@@ -37,7 +37,15 @@ class QuestionarioTest(TestCase):
         form = self.resp.context['form']
         self.assertIsInstance(form, QuestionarioForm)
 
-    def test_form_has_fields(self):
-        """Form deve conter campos """
+    def test_form_has_fields_economica(self):
+        """Form deve conter campos --- dimensão economica """
         form = self.resp.context['form']
-        self.assertSequenceEqual(['nome', 'cpf', 'sexo','dependentes_RBD', 'origem_renda', 'renda_bruta_domiciliar'  ], list(form.fields))
+        self.assertSequenceEqual(['nome', 'cpf', 'sexo', 'dependentes_RBD', 'origem_renda', 'renda_bruta_domiciliar',
+                                  'responsavel_domicilio', 'renda_per_capita', 'relacao_financeira',
+                                  'despesas_saude_tratamento', 'despesas_saude_medicamento', 'despesas_saude_cuidador',
+                                  'despesas_saude_plano', 'despesas_transporte', 'despesas_moradia',
+                                  'despesas_educacao_superior', 'despesas_educacao_basico', 'despesas_educacao_cursinho',
+                                  'despesas_educacao_capacitacao', 'despesas_educacao_material', 'despesas_bens_fcarro',
+                                  'despesas_bens_fmoto', 'despesas_bens_terreno', 'despesas_domesticas_eletrica',
+                                  'despesas_domesticas_agua', 'despesas_domesticas_alimentacao'], list(form.fields))
+

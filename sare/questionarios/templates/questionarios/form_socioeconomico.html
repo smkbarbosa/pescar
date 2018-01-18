@@ -99,7 +99,7 @@
     </fieldset>
 
 
-    <!-- Field type: "short" id: "332272899" -->
+    <!-- Field type: "short" id: "332272899"
     <fieldset>
         <legend for="332272899">Dependentes da Renda Bruta Domiciliar</legend>
         <div class="form-group">
@@ -107,14 +107,15 @@
             <input id="1163683719" type="text" name="entry.1163683719" class="form-control" required>
         </div>
     </fieldset>
-
+-->
 
     <!-- Field type: "short" id: "639749165" -->
     <fieldset>
-        <legend for="639749165">Responsável pela manutenção do domicílio	</legend>
+        <legend for="{{ form.responsavel_domicilio.id_for_label }}">{{ form.responsavel_domicilio.label }}</legend>
         <div class="form-group">
             <p class="help-block">Quem é o principal responsável pela manutenção do domicílio? Qual é o vinculo de parentesco?	</p>
-            <input id="1773061631" type="text" name="entry.1773061631" class="form-control" required>
+            {{ form.responsavel_domicilio.errors }}
+            {{ form.responsavel_domicilio }}
         </div>
     </fieldset>
 
@@ -127,48 +128,17 @@
     </fieldset>
 
 
-    <!-- Field type: "title" id: "1119117258" -->
+     <!-- Field type: "choices" id: "1411295753" -->
     <fieldset>
-        <legend for="1119117258">Renda Per Capita Domiciliar</legend>
-        <div class="form-group">
-        </div>
-    </fieldset>
-
-
-    <!-- Field type: "choices" id: "1411295753" -->
-    <fieldset>
-        <legend for="1411295753">Renda per capita domiciliar</legend>
+        <legend for="{{ form.renda_per_capita.id_for_label }}">{{ form.renda_per_capita.label }}</legend>
         <div class="form-group">
             <div class="radio">
                 <label>
-                    <input type="radio" name="entry.689741495" value="1.405,51 (a partir)" required>
-                    1.405,51 (a partir)
+                    {{ form.renda_per_capita.errors }}
+                    {{ form.renda_per_capita }}
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.689741495" value="937,01 a 1405,50" required>
-                    937,01 a 1405,50
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.689741495" value="468,50 a 937,00" required>
-                    468,50 a 937,00
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.689741495" value="234,25 até 468,49" required>
-                    234,25 até 468,49
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.689741495" value="de 0 até 234, 24" required>
-                    de 0 até 234, 24
-                </label>
-            </div>
+
         </div>
     </fieldset>
 
@@ -183,38 +153,15 @@
 
     <!-- Field type: "choices" id: "1458085573" -->
     <fieldset>
-        <legend for="1458085573">Qual é a sua relação financeira?</legend>
+        <legend for="{{ form.relacao_financeira.id_for_label }}">{{ form.relacao_financeira.label }}</legend>
         <div class="form-group">
             <div class="radio">
                 <label>
-                    <input type="radio" name="entry.2078828482" value="É independente financeiramente" required>
-                    É independente financeiramente
+                    {{ form.relacao_financeira.errors }}
+                    {{ form.relacao_financeira }}
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2078828482" value="É independente financeiramente e responsável por parte das despesas domésticas" required>
-                    É independente financeiramente e responsável por parte das despesas domésticas
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2078828482" value="É independente totalmente e responsável por todas as despesas domésticas" required>
-                    É independente totalmente e responsável por todas as despesas domésticas
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2078828482" value="Dependente inteiramente da renda dos pais ou companheiro(s)" required>
-                    Dependente inteiramente da renda dos pais ou companheiro(s)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2078828482" value="Dependente inteiramente da renda de outros parentes" required>
-                    Dependente inteiramente da renda de outros parentes
-                </label>
-            </div>
+
         </div>
     </fieldset>
 
@@ -223,6 +170,7 @@
     <fieldset>
         <legend for="1329057929">Despesas e Gastos</legend>
         <div class="form-group">
+            <p class="help-block">Informe os valores referentes às depesas e gastos à seguir</p>
         </div>
     </fieldset>
 
@@ -231,28 +179,28 @@
     <fieldset>
         <legend for="1972590190">Saúde</legend>
         <div class="form-group">
-            <div class="checkbox">
+            <div>
                 <label>
-                    <input type="checkbox" name="entry.1284503183" value="Tratamento de saúde a partir de R$ 234,24" >
-                    Tratamento de saúde a partir de R$ 234,24
+                    {{ form.despesas_saude_tratamento.label }}
+                    {{ form.despesas_saude_tratamento }}
                 </label>
             </div>
-            <div class="checkbox">
+            <div >
                 <label>
-                    <input type="checkbox" name="entry.1284503183" value="Medicamentos a partir de R$ 200,00" >
-                    Medicamentos a partir de R$ 200,00
+                    {{ form.despesas_saude_medicamento.label }}
+                    {{ form.despesas_saude_medicamento }}
                 </label>
             </div>
-            <div class="checkbox">
+            <div>
                 <label>
-                    <input type="checkbox" name="entry.1284503183" value="Cuidador de idoso/criança/PNE" >
-                    Cuidador de idoso/criança/PNE
+                    {{ form.despesas_saude_cuidador.label }}
+                    {{ form.despesas_saude_cuidador }}
                 </label>
             </div>
-            <div class="checkbox">
+            <div>
                 <label>
-                    <input type="checkbox" name="entry.1284503183" value="Plano de Saúde" >
-                    Plano de Saúde
+                    {{ form.despesas_saude_plano.label }}
+                    {{ form.despesas_saude_plano }}
                 </label>
             </div>
         </div>
@@ -261,12 +209,13 @@
 
     <!-- Field type: "checkboxes" id: "1277784153" -->
     <fieldset>
-        <legend for="1277784153">Transporte</legend>
+        <legend for="transporte">Tranporte</legend>
         <div class="form-group">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.1267179349" value="Transporte para acessar o Campus" >
-                    Transporte para acessar o Campus
+                    {{ form.despesas_transporte.errors}}
+                    {{ form.despesas_transporte.label }}
+                    {{ form.despesas_transporte }}
                 </label>
             </div>
         </div>
@@ -279,8 +228,8 @@
         <div class="form-group">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.704170088" value="Aluguel/Financiamento" >
-                    Aluguel/Financiamento
+                    {{ form.despesas_moradia.label }}
+                    {{ form.despesas_moradia }}
                 </label>
             </div>
         </div>
@@ -293,32 +242,32 @@
         <div class="form-group">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.597673802" value="Educação superior" >
-                    Educação superior
+                    {{ form.despesas_educacao_superior.label }}
+                    {{ form.despesas_educacao_superior }}
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.597673802" value="Ensino Básico (Médio e Fundamental)" >
-                    Ensino Básico (Médio e Fundamental)
+                    {{ form.despesas_educacao_basico.label }}
+                    {{ form.despesas_educacao_basico }}
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.597673802" value="Curso preparatório (cursinhos..etc.)" >
-                    Curso preparatório (cursinhos..etc.)
+                    {{ form.despesas_educacao_cursinho.label }}
+                    {{ form.despesas_educacao_cursinho }}
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.597673802" value="Curso de Capacitação" >
-                    Curso de Capacitação
+                    {{ form.despesas_educacao_capacitacao.label }}
+                    {{ form.despesas_educacao_capacitacao }}
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.597673802" value="Material Didático" >
-                    Material Didático
+                    {{ form.despesas_educacao_material.label }}
+                    {{ form.despesas_educacao_material }}
                 </label>
             </div>
         </div>
@@ -331,20 +280,20 @@
         <div class="form-group">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.704798478" value="Financiamento de carro até R$ 800,00" >
-                    Financiamento de carro até R$ 800,00
+                    {{ form.despesas_bens_fcarro.label }}
+                    {{ form.despesas_bens_fcarro }}
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.704798478" value="Financiamento de moto) até R$ 300,00" >
-                    Financiamento de moto) até R$ 300,00
+                    {{ form.despesas_bens_fmoto.label }}
+                    {{ form.despesas_bens_fmoto }}
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.704798478" value="Terreno/Lote até R$600,00" >
-                    Terreno/Lote até R$600,00
+                    {{ form.despesas_bens_terreno.label }}
+                    {{ form.despesas_bens_terreno }}
                 </label>
             </div>
         </div>
@@ -357,20 +306,20 @@
         <div class="form-group">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.619392612" value="Energia até 200,00" >
-                    Energia até 200,00
+                    {{ form.despesas_domesticas_eletrica.label }}
+                    {{ form.despesas_domesticas_eletrica }}
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.619392612" value="Água até 150,00" >
-                    Água até 150,00
+                    {{ form.despesas_domesticas_agua.label }}
+                    {{ form.despesas_domesticas_agua }}
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="entry.619392612" value="Alimentação até 650,00" >
-                    Alimentação até 650,00
+                    {{ form.despesas_domesticas_alimentacao.label }}
+                    {{ form.despesas_domesticas_alimentacao }}
                 </label>
             </div>
         </div>
