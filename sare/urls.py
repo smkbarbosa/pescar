@@ -17,8 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from sare.core.views import home
+from sare.questionarios.views import questionario
 
 urlpatterns = [
     url(r'^$', home, name='home'),
+    url(r'^questionario/$', questionario),
     url(r'^admin/', admin.site.urls),
 ]
