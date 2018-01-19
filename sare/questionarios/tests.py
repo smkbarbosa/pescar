@@ -19,9 +19,9 @@ class QuestionarioTest(TestCase):
         self.assertContains(self.resp, '<form')
         self.assertContains(self.resp, '<fieldset', 53 )
         self.assertContains(self.resp, '<legend', 52)
-        self.assertContains(self.resp, '<p', 6)
-        self.assertContains(self.resp, '<div', 105)
-        self.assertContains(self.resp, '<input', 240)
+        self.assertContains(self.resp, '<p', 7)
+        self.assertContains(self.resp, '<div', 90)
+        self.assertContains(self.resp, '<input', 239)
         self.assertContains(self.resp, '<label', 209)
         self.assertContains(self.resp, 'type="text"', 26)
         self.assertContains(self.resp, 'type="checkbox"', 18)
@@ -59,6 +59,7 @@ class QuestionarioTest(TestCase):
                                   'violencia_psicologica_moral', 'violencia_fisica','violencia_sexual','preconceito_cultural',
                                   'preconceito_estetico', 'preconceito_economico','preconceito_religioso', 'preconceito_mental',
                                   'preconceito_racial','preconceito_genero', 'preconceito_orientacao_sexual','servicos_indisponiveis_bairro',
-                                  'forma_descarte_lixo'
+                                  'forma_descarte_lixo', 'percepcao_seguranca_bairro', 'problemas_bairro',
+                                  'bairro', 'cidade', 'fale_mais_familia'
                                   ], list(form.fields))
 

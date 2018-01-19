@@ -350,3 +350,38 @@ class QuestionarioForm(forms.Form):
 
     forma_descarte_lixo = forms.ChoiceField(choices=DESCARTE_LIXO_CHOICE, widget=forms.RadioSelect,
                                             label='A forma de descarte do lixo de sua casa é')
+
+    PERCEPCAO_CHOICES = [
+        (1, 'Não oferece risco de segurança aos seus moradores'),
+        (4, 'É considerado perigoso e os moradores sofrem  com a criminalidade'),
+        (2, 'Os moradores se sentem seguros (há policiamento nas ruas)'),
+        (5, 'Frequentemente os moradores sofrem  algum tipo de violência no bairro ou nos arredores'),
+        (3, 'Não há registro de violência sofrida pelo moradores do bairro')
+    ]
+
+    percepcao_seguranca_bairro = forms.ChoiceField(choices=PERCEPCAO_CHOICES, widget=forms.RadioSelect,
+                                                   label='Como você e/ou a sua família se sente em relação a segurança'
+                                                         ' do seu bairro?')
+
+    PROBLEMAS_BAIRRO_CHOICES=[
+        (1, 'Abastecimento de água'),
+        (1, 'Alagamentos'),
+        (1,'Pavimentação (asfalto nas ruas)'),
+        (1,'Energia e iluminação pública'),
+        (1,'Ruas esburacadas (erosão)'),
+        (1,'Saneamento básico (esgoto)'),
+        (1,'Serviços de segurança'),
+        (1,'Acessibilidade '),
+        (1,'Áreas de recreaçao e lazer'),
+        (1,'Limpeza e coleta de lixo'),
+        (1,'Serviços de saúde'),
+        (1,'Transporte público'),
+    ]
+
+    problemas_bairro = forms.ChoiceField(choices=PROBLEMAS_BAIRRO_CHOICES, widget=forms.CheckboxSelectMultiple,
+                                         label='Qual(is) o maior(es) problemas do seu bairro?')
+
+    bairro = forms.CharField(label='Bairro')
+    cidade = forms.CharField(label='Cidade')
+    fale_mais_familia = forms.CharField(widget=forms.Textarea,
+                                        label='Fale mais sobre você e a sua família.')

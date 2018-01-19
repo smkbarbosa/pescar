@@ -7,7 +7,7 @@
 <iframe id="iframe1" src="https://docs.google.com/forms/d/e/1FAIpQLSdJAPTETjUBzfmaYbzMOxJsCJ9K4OEcEAvvpL7m_Cggfj1W3g/viewform?embedded=true" width="" height="" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
  -->
 
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSdJAPTETjUBzfmaYbzMOxJsCJ9K4OEcEAvvpL7m_Cggfj1W3g/formResponse"
+<form action="."
       target="_self"
       id="bootstrapForm"
       method="POST">
@@ -692,37 +692,10 @@
 
     <!-- Field type: "choices" id: "804167852" -->
     <fieldset>
-        <legend for="804167852">Como você e/ou a sua família se sente em relação a segurança do seu bairro?</legend>
+        <legend for="{{ form.percepcao_seguranca_bairro.id_for_label }}">{{ form.percepcao_seguranca_bairro.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1617966795" value="Não oferece risco de segurança aos seus moradores" >
-                    Não oferece risco de segurança aos seus moradores
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1617966795" value="É considerado perigoso e os moradores sofrem  com a criminalidade" >
-                    É considerado perigoso e os moradores sofrem  com a criminalidade
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1617966795" value="Os moradores se sentem seguros (há policiamento nas ruas)" >
-                    Os moradores se sentem seguros (há policiamento nas ruas)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1617966795" value="Frequentemente os moradores sofrem  algum tipo de violência no bairro ou nos arredores" >
-                    Frequentemente os moradores sofrem  algum tipo de violência no bairro ou nos arredores
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1617966795" value="Não há registro de violência sofrida pelo moradores do bairro" >
-                    Não há registro de violência sofrida pelo moradores do bairro
-                </label>
+                {{ form.percepcao_seguranca_bairro }}
             </div>
         </div>
     </fieldset>
@@ -730,79 +703,10 @@
 
     <!-- Field type: "checkboxes" id: "705933493" -->
     <fieldset>
-        <legend for="705933493">Qual(is) o maior(es) problemas do seu bairro?</legend>
+        <legend for="{{ form.problemas_bairro.id_for_label }}">{{ form.problemas_bairro.label }}</legend>
         <div class="form-group">
             <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Abastecimento de água" >
-                    Abastecimento de água
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Alagamentos" >
-                    Alagamentos
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Pavimentação (asfalto nas ruas)" >
-                    Pavimentação (asfalto nas ruas)
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Energia e iluminação pública" >
-                    Energia e iluminação pública
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Ruas esburacadas (erosão)" >
-                    Ruas esburacadas (erosão)
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Saneamento básico (esgoto)" >
-                    Saneamento básico (esgoto)
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Serviços de segurança" >
-                    Serviços de segurança
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Acessibilidade" >
-                    Acessibilidade
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Áreas de recreaçao e lazer" >
-                    Áreas de recreaçao e lazer
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Limpeza e coleta de lixo" >
-                    Limpeza e coleta de lixo
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Serviços de saúde" >
-                    Serviços de saúde
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="entry.1880223511" value="Transporte público" >
-                    Transporte público
-                </label>
+                {{ form.problemas_bairro }}
             </div>
         </div>
     </fieldset>
@@ -810,18 +714,18 @@
 
     <!-- Field type: "short" id: "1167854962" -->
     <fieldset>
-        <legend for="1167854962">Bairro</legend>
+        <legend for="{{ form.bairro.id_for_label }}">{{ form.bairro.label }}</legend>
         <div class="form-group">
-            <input id="621519565" type="text" name="entry.621519565" class="form-control" >
+            {{ form.bairro }}
         </div>
     </fieldset>
 
 
     <!-- Field type: "short" id: "422778065" -->
     <fieldset>
-        <legend for="422778065">Cidade</legend>
+        <legend for="{{ form.cidade.id_for_label}}">{{ form.cidade.label }}</legend>
         <div class="form-group">
-            <input id="1431255545" type="text" name="entry.1431255545" class="form-control" >
+            {{ form.cidade }}
         </div>
     </fieldset>
 
@@ -836,9 +740,14 @@
 
     <!-- Field type: "paragraph" id: "885604795" -->
     <fieldset>
-        <legend for="885604795">Fale mais sobre você e a sua família. </legend>
+        <legend for="{{ form.fale_mais_familia.id_for_label }}">{{ form.fale_mais_familia.label }} </legend>
+        <p class="help-block">
+Tem idosos e/ou crianças na família. A escolaridade dos pais ou responsáveis pela manutenção da familia.
+Quem é o responsável pela manutenção da casa/família.
+Do que mais gosta. O que te faz feliz. O que te causa tristeza. O que faz para se divertir, etc.
+</p>
         <div class="form-group">
-            <textarea id="1608731101" name="entry.1608731101" class="form-control" ></textarea>
+            {{ form.fale_mais_familia }}
         </div>
     </fieldset>
 
@@ -850,7 +759,7 @@
         Keep this in mind if you plan to change this code to recreate any sort of multipage-feature in your exported form.
         We're setting this to the total number of pages in this form because we're sending all fields from all the section together.
     -->
-    <input type="hidden" name="pageHistory" value="0,1,2,3,4,5,6,7">
+
 
     <input class="btn btn-primary" type="submit" value="Submit">
 </form>
