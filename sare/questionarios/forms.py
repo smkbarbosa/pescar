@@ -103,3 +103,41 @@ class QuestionarioForm(forms.Form):
     ]
     condicao_moradia = forms.ChoiceField(CONDICAO_MORADIA_CHOICES, widget=forms.RadioSelect,
                                          label='Condição da Moradia')
+
+    LOCAL_MORADIA_CHOICES = [
+        (1, 'Zona Urbana'),
+        (2, 'Zona Rural (fazenda, chácara, sítio)'),
+        (3, 'Zona Rural (indígena, quilombola, assentamento)'),
+        (4, 'Área de risco (inundação, deslizamento, ocupação, etc)')
+    ]
+    local_moradia = forms.ChoiceField(choices=LOCAL_MORADIA_CHOICES, widget=forms.RadioSelect,
+                                      label='Local de Moradia')
+
+    TOTAL_PESSOAS_CHOICES = [
+        (1, 'De 1 a 2 pessoas'),
+        (2, 'De 3 a 5 pessoas'),
+        (3, 'De 6 a 8 pessoas'),
+        (4, 'Acima de 9 pessoas')
+    ]
+    total_pessoas_casa = forms.ChoiceField(choices=TOTAL_PESSOAS_CHOICES, widget=forms.RadioSelect,
+                                           label='Incluindo você, quantas pessoas moram na casa?')
+
+    TOTAL_COMODOS_CHOICES = [
+        (1, 'Acima de 9 cômodos'),
+        (2, 'De 6 a 8 cômodos'),
+        (3, 'De 3 a 5 cômodos'),
+        (4, 'De 1 a 2 cômodos')
+    ]
+    total_comodos_casa = forms.ChoiceField(choices=TOTAL_COMODOS_CHOICES, widget=forms.RadioSelect,
+                                           label='Incluindo banheiros, quantos cômodos tem a sua casa (quarto, sala, '
+                                                 'cozinha, banheiro, área, garagem, sacada, despensa)')
+
+    TOTAL_KM_CHOICES=[
+        (1, '5 km (até)'),
+        (2, '6 a 10 km'),
+        (3, '11 a 25 km'),
+        (4, '26 km (acima de)')
+    ]
+    total_km_casa_campus = forms.ChoiceField(choices=TOTAL_KM_CHOICES, widget=forms.RadioSelect,
+                                             label='Quantos kilômetros tem entre a sua casa e o Câmpus')
+

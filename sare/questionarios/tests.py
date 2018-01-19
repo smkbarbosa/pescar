@@ -20,9 +20,9 @@ class QuestionarioTest(TestCase):
         self.assertContains(self.resp, '<fieldset', 53 )
         self.assertContains(self.resp, '<legend', 52)
         self.assertContains(self.resp, '<p', 6)
-        self.assertContains(self.resp, '<div', 165)
+        self.assertContains(self.resp, '<div', 153)
         self.assertContains(self.resp, '<input', 256)
-        self.assertContains(self.resp, '<label', 247)
+        self.assertContains(self.resp, '<label', 225)
         self.assertContains(self.resp, 'type="text"', 26)
         self.assertContains(self.resp, 'type="checkbox"', 18)
         self.assertContains(self.resp, 'type="radio"', 207)
@@ -48,6 +48,7 @@ class QuestionarioTest(TestCase):
                                   'despesas_educacao_capacitacao', 'despesas_educacao_material', 'despesas_bens_fcarro',
                                   'despesas_bens_fmoto', 'despesas_bens_terreno', 'despesas_domesticas_eletrica',
                                   'despesas_domesticas_agua', 'despesas_domesticas_alimentacao',
-                                  'condicao_responsavel_casa', 'meio_acesso_campus', 'condicao_moradia'
+                                  'condicao_responsavel_casa', 'meio_acesso_campus', 'condicao_moradia', 'local_moradia',
+                                  'total_pessoas_casa', 'total_comodos_casa', 'total_km_casa_campus'
                                   ], list(form.fields))
 

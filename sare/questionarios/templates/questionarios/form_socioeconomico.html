@@ -133,10 +133,10 @@
         <legend for="{{ form.renda_per_capita.id_for_label }}">{{ form.renda_per_capita.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
+
                     {{ form.renda_per_capita.errors }}
                     {{ form.renda_per_capita }}
-                </label>
+
             </div>
 
         </div>
@@ -156,10 +156,10 @@
         <legend for="{{ form.relacao_financeira.id_for_label }}">{{ form.relacao_financeira.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
+
                     {{ form.relacao_financeira.errors }}
                     {{ form.relacao_financeira }}
-                </label>
+
             </div>
 
         </div>
@@ -180,28 +180,28 @@
         <legend for="1972590190">Saúde</legend>
         <div class="form-group">
             <div>
-                <label>
+
                     {{ form.despesas_saude_tratamento.label }}
                     {{ form.despesas_saude_tratamento }}
-                </label>
+
             </div>
             <div >
-                <label>
+
                     {{ form.despesas_saude_medicamento.label }}
                     {{ form.despesas_saude_medicamento }}
-                </label>
+
             </div>
             <div>
-                <label>
+
                     {{ form.despesas_saude_cuidador.label }}
                     {{ form.despesas_saude_cuidador }}
-                </label>
+
             </div>
             <div>
-                <label>
+
                     {{ form.despesas_saude_plano.label }}
                     {{ form.despesas_saude_plano }}
-                </label>
+
             </div>
         </div>
     </fieldset>
@@ -212,11 +212,11 @@
         <legend for="transporte">Tranporte</legend>
         <div class="form-group">
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_transporte.errors}}
                     {{ form.despesas_transporte.label }}
                     {{ form.despesas_transporte }}
-                </label>
+
             </div>
         </div>
     </fieldset>
@@ -227,10 +227,10 @@
         <legend for="1813560314">Moradia</legend>
         <div class="form-group">
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_moradia.label }}
                     {{ form.despesas_moradia }}
-                </label>
+
             </div>
         </div>
     </fieldset>
@@ -241,34 +241,34 @@
         <legend for="757377950">Educação</legend>
         <div class="form-group">
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_educacao_superior.label }}
                     {{ form.despesas_educacao_superior }}
-                </label>
+
             </div>
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_educacao_basico.label }}
                     {{ form.despesas_educacao_basico }}
-                </label>
+
             </div>
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_educacao_cursinho.label }}
                     {{ form.despesas_educacao_cursinho }}
-                </label>
+
             </div>
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_educacao_capacitacao.label }}
                     {{ form.despesas_educacao_capacitacao }}
-                </label>
+
             </div>
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_educacao_material.label }}
                     {{ form.despesas_educacao_material }}
-                </label>
+
             </div>
         </div>
     </fieldset>
@@ -279,22 +279,22 @@
         <legend for="1410587304">Bens</legend>
         <div class="form-group">
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_bens_fcarro.label }}
                     {{ form.despesas_bens_fcarro }}
-                </label>
+
             </div>
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_bens_fmoto.label }}
                     {{ form.despesas_bens_fmoto }}
-                </label>
+
             </div>
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_bens_terreno.label }}
                     {{ form.despesas_bens_terreno }}
-                </label>
+
             </div>
         </div>
     </fieldset>
@@ -305,22 +305,22 @@
         <legend for="1379442497">Domésticas</legend>
         <div class="form-group">
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_domesticas_eletrica.label }}
                     {{ form.despesas_domesticas_eletrica }}
-                </label>
+
             </div>
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_domesticas_agua.label }}
                     {{ form.despesas_domesticas_agua }}
-                </label>
+
             </div>
             <div class="checkbox">
-                <label>
+
                     {{ form.despesas_domesticas_alimentacao.label }}
                     {{ form.despesas_domesticas_alimentacao }}
-                </label>
+
             </div>
         </div>
     </fieldset>
@@ -347,9 +347,9 @@
         <legend for="{{ form.condicao_responsavel_casa.id_for_label }}">{{ form.condicao_responsavel_casa.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
+
                     {{ form.condicao_responsavel_casa }}
-                </label>
+
             </div>
 
         </div>
@@ -361,10 +361,10 @@
         <legend for="{{ form.meio_acesso_campus.id_for_label }}">{{ form.meio_acesso_campus.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
+
                     {{ form.meio_acesso_campus.errors }}
                     {{ form.meio_acesso_campus }}
-                </label>
+
             </div>
 
         </div>
@@ -384,10 +384,10 @@
         <legend for="{{ form.condicao_moradia.id_for_label }}">{{ form.condicao_moradia.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
+
                     {{ form.condicao_moradia.errors }}
                     {{ form.condicao_moradia }}
-                </label>
+
             </div>
 
         </div>
@@ -396,31 +396,13 @@
 
     <!-- Field type: "choices" id: "1122808072" -->
     <fieldset>
-        <legend for="1122808072">Local de moradia</legend>
+        <legend for="{{ form.local_moradia.id_for_label }}">{{ form.local_moradia.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1779457187" value="Zona rural (indígena, quilombolo, assentamento)" required>
-                    Zona rural (indígena, quilombolo, assentamento)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1779457187" value="Zona rural (fazenda, chácara, sitio)" required>
-                    Zona rural (fazenda, chácara, sitio)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1779457187" value="Zona urbana" required>
-                    Zona urbana
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1779457187" value="Área de risco (inundação, deslizamento, ocupação, mineradoras, etc.)" required>
-                    Área de risco (inundação, deslizamento, ocupação, mineradoras, etc.)
-                </label>
+
+                    {{ form.local_moradia.errors }}
+                    {{ form.local_moradia }}
+
             </div>
         </div>
     </fieldset>
@@ -428,64 +410,30 @@
 
     <!-- Field type: "choices" id: "483563429" -->
     <fieldset>
-        <legend for="483563429">Incluindo você, quantas pessoas moram na sua casa</legend>
+        <legend for="{{ form.total_pessoas_casa.id_for_label }}">{{ form.total_pessoas_casa.label }}</legend>
         <div class="form-group">
+
             <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1330333711" value="de uma a duas pessoas" required>
-                    de uma a duas pessoas
-                </label>
+
+                    {{ form.total_pessoas_casa }}
+
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1330333711" value="De três a cinco pessoas" required>
-                    De três a cinco pessoas
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1330333711" value="De seis a oito pessoas" required>
-                    De seis a oito pessoas
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1330333711" value="Acima de nove pessoas" required>
-                    Acima de nove pessoas
-                </label>
-            </div>
+
+
         </div>
     </fieldset>
 
 
     <!-- Field type: "choices" id: "1002853834" -->
     <fieldset>
-        <legend for="1002853834">Incluindo banheiros, quantos cômodos tem a sua casa (quarto, sala, cozinha, banheiro, área, garagem, sacada, despensa)</legend>
+        <legend for="{{ form.total_comodos_casa.id_for_label }}">{{ form.total_comodos_casa.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1821539721" value="De um a dois cômodos" >
-                    De um a dois cômodos
-                </label>
+
+                    {{ form.total_comodos_casa }}
+
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1821539721" value="De três a cinco cômodos" >
-                    De três a cinco cômodos
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1821539721" value="De seis a oito cômodos" >
-                    De seis a oito cômodos
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1821539721" value="Acima de nove cômodos" >
-                    Acima de nove cômodos
-                </label>
-            </div>
+
         </div>
     </fieldset>
 
@@ -500,32 +448,14 @@
 
     <!-- Field type: "choices" id: "2039228830" -->
     <fieldset>
-        <legend for="2039228830">Quantos kilômetros tem entre a sua casa e o Câmpus</legend>
+        <legend for="{{ form.total_km_casa_campus.id_for_label }}">{{ form.total_km_casa_campus.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1513490692" value="5 km (até)" >
-                    5 km (até)
-                </label>
+
+                    {{ form.total_km_casa_campus }}
+
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1513490692" value="6 a 10 km" >
-                    6 a 10 km
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1513490692" value="11 a 25 km" >
-                    11 a 25 km
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.1513490692" value="26 km (acima de)" >
-                    26 km (acima de)
-                </label>
-            </div>
+
         </div>
     </fieldset>
 
