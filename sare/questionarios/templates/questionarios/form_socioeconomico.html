@@ -497,14 +497,14 @@
             <div>
                <span>{{ form.saude_bebida_drogas.label }}
                         {{ form.saude_bebida_drogas }}
-                   </span>
+               </span>
                 <span> {{ form.saude_doenca_grave.label }}
                 {{ form.saude_doenca_grave }}</span>
-            </div>
-             <span> {{ form.saude_doenca_cronica.label }}
+
+                <span> {{ form.saude_doenca_cronica.label }}
                 {{ form.saude_doenca_cronica }}</span>
-            </div>
-         <span> {{ form.saude_medicamento_diario.label }}
+
+                <span> {{ form.saude_medicamento_diario.label }}
                 {{ form.saude_medicamento_diario }}</span>
             </div>
 
@@ -517,101 +517,25 @@
         <legend for="1814637486">Necessidades Específicas</legend>
         <div class="form-group">
             <div>
-                <span>Tem deficiência parcial de visão/audição?: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.201815791" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.201815791" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.201815791" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.201815791" value="Não se aplica" required>
-                    Não se aplica
-                </label>
+                <span> {{ form.pne_def_fisica.label }}
+                {{ form.pne_def_fisica }}</span>
+
+                <span> {{ form.pne_parcial_visao_audicao.label }}
+                {{ form.pne_parcial_visao_audicao }}</span>
+
+                <span> {{ form.pne_total_visao_audicao.label }}
+                {{ form.pne_total_visao_audicao }}</span>
+
+                <span> {{ form.pne_def_mental_leve.label }}
+                {{ form.pne_def_mental_leve }}</span>
+
+                <span> {{ form.pne_def_mental_grave.label }}
+                {{ form.pne_def_mental_grave }}</span>
+
             </div>
-            <div>
-                <span>Possui deficiência física?: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1328720167" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1328720167" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1328720167" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1328720167" value="Não se aplica" required>
-                    Não se aplica
-                </label>
-            </div>
-            <div>
-                <span>Tem deficiência total  de visão/audição?: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.727546169" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.727546169" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.727546169" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.727546169" value="Não se aplica" required>
-                    Não se aplica
-                </label>
-            </div>
-            <div>
-                <span>Tem deficiência mental leve?: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1760128911" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1760128911" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1760128911" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1760128911" value="Não se aplica" required>
-                    Não se aplica
-                </label>
-            </div>
-            <div>
-                <span>Tem deficiência mental grave?: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1396973545" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1396973545" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1396973545" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1396973545" value="Não se aplica" required>
-                    Não se aplica
-                </label>
-            </div>
+
         </div>
+
     </fieldset>
 
 
@@ -628,61 +552,14 @@
         <legend for="1060121022">Psicológicas</legend>
         <div class="form-group">
             <div>
-                <span>Sente dificuldade em se concentrar?: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.848026225" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.848026225" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.848026225" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.848026225" value="Não se aplica" required>
-                    Não se aplica
-                </label>
-            </div>
-            <div>
-                <span>Vivencia algum problema/conflito familiar: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1713463604" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1713463604" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1713463604" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1713463604" value="Não se aplica" required>
-                    Não se aplica
-                </label>
-            </div>
-            <div>
-                <span>Sofre de depressão?: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.753156964" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.753156964" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.753156964" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.753156964" value="Não se aplica" required>
-                    Não se aplica
-                </label>
+                <span> {{ form.psico_dificudade_concentrar.label }}
+                {{ form.psico_dificudade_concentrar }}</span>
+
+                <span> {{ form.psico_conflito_familiar.label }}
+                {{ form.psico_conflito_familiar }}</span>
+
+                <span> {{ form.psico_depressao.label }}
+                {{ form.psico_depressao }}</span>
             </div>
         </div>
     </fieldset>

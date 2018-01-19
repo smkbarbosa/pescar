@@ -20,7 +20,7 @@ class QuestionarioTest(TestCase):
         self.assertContains(self.resp, '<fieldset', 53 )
         self.assertContains(self.resp, '<legend', 52)
         self.assertContains(self.resp, '<p', 6)
-        self.assertContains(self.resp, '<div', 145)
+        self.assertContains(self.resp, '<div', 139)
         self.assertContains(self.resp, '<input', 256)
         self.assertContains(self.resp, '<label', 225)
         self.assertContains(self.resp, 'type="text"', 26)
@@ -50,6 +50,8 @@ class QuestionarioTest(TestCase):
                                   'despesas_domesticas_agua', 'despesas_domesticas_alimentacao',
                                   'condicao_responsavel_casa', 'meio_acesso_campus', 'condicao_moradia', 'local_moradia',
                                   'total_pessoas_casa', 'total_comodos_casa', 'total_km_casa_campus', 'instituicao_anterior',
-                                  'saude_bebida_drogas','saude_doenca_grave','saude_doenca_cronica','saude_medicamento_diario'
+                                  'saude_bebida_drogas','saude_doenca_grave','saude_doenca_cronica','saude_medicamento_diario',
+                                  'pne_parcial_visao_audicao', 'pne_def_fisica', 'pne_total_visao_audicao', 'pne_def_mental_leve',
+                                  'pne_def_mental_grave', 'psico_dificudade_concentrar', 'psico_conflito_familiar','psico_depressao'
                                   ], list(form.fields))
 

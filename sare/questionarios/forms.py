@@ -180,9 +180,42 @@ class QuestionarioForm(forms.Form):
     saude_medicamento_diario = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
                                              widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
                                              label=SAUDE[3])
+    PNE = [
+        'Tem deficiência parcial de visão/audição?',
+        'Possui deficiência física?',
+        'Tem deficiência total  de visão/audição?',
+        'Tem deficiência mental leve?',
+        'Tem deficiência mental grave?',
+    ]
 
+    PSICO = [
+        'Sente dificuldade em se concentrar?',
+        'Vivencia algum problema/conflito familiar',
+        'Sofre de depressão?',
+    ]
 
+    pne_parcial_visao_audicao = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PNE[0])
 
-    # for item in SAUDE:
-    #    saude = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES, widget=forms.RadioSelect,
-    #                              label=item)
+    pne_def_fisica = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PNE[1])
+    pne_total_visao_audicao = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PNE[2])
+    pne_def_mental_leve = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PNE[3])
+    pne_def_mental_grave = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PNE[4])
+    psico_dificudade_concentrar = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PSICO[0])
+    psico_conflito_familiar = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PSICO[1])
+    psico_depressao = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PSICO[2])
