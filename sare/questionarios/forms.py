@@ -236,3 +236,117 @@ class QuestionarioForm(forms.Form):
     cor_raca = forms.ChoiceField(choices=COR_RACA_CHOICES,
                                              widget=forms.RadioSelect,
                                              label='Você se considera')
+
+    VIOLENCIA =[
+        'Verbal(xingamentos, desacatos, etc.)',
+        'Violência urbana(assalto, transito, etc)',
+        'Patrimonial/financeira',
+        'Cyberbulling (por meio de redes sociais)',
+        'Religiosa',
+        'Assédio Moral',
+        'Negligência / abandono familiar',
+        'Abuso por parte de familiares ou pessoas conhecidas',
+        'Atentado ao pudor',
+        'Tráfico de seres humanos',
+        'Psicológica / moral',
+        'Física',
+        'Sexual'
+    ]
+
+    violencia_verbal = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[0])
+    violencia_urbana = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[1])
+    violencia_patrimonial = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[2])
+    violencia_cyberbulling = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[3])
+    violencia_religiosa = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[4])
+    violencia_assedio_moral = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[5])
+    violencia_abandono = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[6])
+    violencia_abuso_familiar = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[7])
+    violencia_atentado_pudor = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[8])
+    violencia_trafico_humano = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[9])
+    violencia_psicologica_moral = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[10])
+    violencia_fisica = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[11])
+    violencia_sexual = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=VIOLENCIA[12])
+
+    PRECONCEITO = [
+        'Cultural',
+        'Estético',
+        'Econômico',
+        'Religioso',
+        'Mental',
+        'Racial',
+        'Gênero',
+        'Orientação sexual'
+    ]
+
+    preconceito_cultural = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PRECONCEITO[0])
+    preconceito_estetico = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PRECONCEITO[1])
+    preconceito_economico = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PRECONCEITO[2])
+    preconceito_religioso = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PRECONCEITO[3])
+    preconceito_mental = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PRECONCEITO[4])
+    preconceito_racial = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PRECONCEITO[5])
+    preconceito_genero = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PRECONCEITO[6])
+    preconceito_orientacao_sexual  = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=PRECONCEITO[7])
+
+    SERVICOS_INDISPONIVEIS_CHOICES = [
+        (1, 'Táxi'),
+        (2, 'Moto táxi'),
+        (3, 'Transporte escolar pago'),
+        (4, 'Ônibus escolar'),
+        (5, 'Transporte escolar público'),
+        (6, 'Ônibus coletivo')
+    ]
+
+    servicos_indisponiveis_bairro = forms.ChoiceField(choices=SERVICOS_INDISPONIVEIS_CHOICES, widget=forms.CheckboxSelectMultiple,
+                                               label='Quais são os serviços indisponiveis em seu bairro?')
+
+    DESCARTE_LIXO_CHOICE = [
+        (1, 'Serviço público de limpeza'),
+        (3, 'Jogado em terreno baldio ou em via pública'),
+        (2, 'Enterrado'),
+        (4, 'Queimado')
+    ]
+
+    forma_descarte_lixo = forms.ChoiceField(choices=DESCARTE_LIXO_CHOICE, widget=forms.RadioSelect,
+                                            label='A forma de descarte do lixo de sua casa é')

@@ -20,12 +20,12 @@ class QuestionarioTest(TestCase):
         self.assertContains(self.resp, '<fieldset', 53 )
         self.assertContains(self.resp, '<legend', 52)
         self.assertContains(self.resp, '<p', 6)
-        self.assertContains(self.resp, '<div', 132)
-        self.assertContains(self.resp, '<input', 256)
-        self.assertContains(self.resp, '<label', 225)
+        self.assertContains(self.resp, '<div', 105)
+        self.assertContains(self.resp, '<input', 240)
+        self.assertContains(self.resp, '<label', 209)
         self.assertContains(self.resp, 'type="text"', 26)
         self.assertContains(self.resp, 'type="checkbox"', 18)
-        self.assertContains(self.resp, 'type="radio"', 207)
+        self.assertContains(self.resp, 'type="radio"', 191)
         self.assertContains(self.resp, 'type="submit"')
 
     def test_csrf(self):
@@ -53,6 +53,12 @@ class QuestionarioTest(TestCase):
                                   'saude_bebida_drogas','saude_doenca_grave','saude_doenca_cronica','saude_medicamento_diario',
                                   'pne_parcial_visao_audicao', 'pne_def_fisica', 'pne_total_visao_audicao', 'pne_def_mental_leve',
                                   'pne_def_mental_grave', 'psico_dificudade_concentrar', 'psico_conflito_familiar','psico_depressao',
-                                  'cor_raca'
+                                  'cor_raca', 'violencia_verbal', 'violencia_urbana', 'violencia_patrimonial',
+                                  'violencia_cyberbulling', 'violencia_religiosa', 'violencia_assedio_moral', 'violencia_abandono',
+                                  'violencia_abuso_familiar', 'violencia_atentado_pudor', 'violencia_trafico_humano',
+                                  'violencia_psicologica_moral', 'violencia_fisica','violencia_sexual','preconceito_cultural',
+                                  'preconceito_estetico', 'preconceito_economico','preconceito_religioso', 'preconceito_mental',
+                                  'preconceito_racial','preconceito_genero', 'preconceito_orientacao_sexual','servicos_indisponiveis_bairro',
+                                  'forma_descarte_lixo'
                                   ], list(form.fields))
 
