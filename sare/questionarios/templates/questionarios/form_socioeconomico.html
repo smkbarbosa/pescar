@@ -470,44 +470,14 @@
 
     <!-- Field type: "choices" id: "1438363565" -->
     <fieldset>
-        <legend for="1438363565">Estudou anteriormente em instituição:</legend>
+        <legend for="{{ form.instituicao_anterior.id_for_label }}">{{ form.instituicao_anterior.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2091231362" value="Pública" required>
-                    Pública
-                </label>
+
+                    {{ form.instituicao_anterior }}
+
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2091231362" value="Particular" required>
-                    Particular
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2091231362" value="Bolsa parcial (vulnerabilidade)" required>
-                    Bolsa parcial (vulnerabilidade)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2091231362" value="Bolsa parcial (mérito)" required>
-                    Bolsa parcial (mérito)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2091231362" value="Bolsa total (vulnerabilidade)" required>
-                    Bolsa total (vulnerabilidade)
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.2091231362" value="Bolsa total (mérito)" required>
-                    Bolsa total (mérito)
-                </label>
-            </div>
+
         </div>
     </fieldset>
 
@@ -525,81 +495,19 @@
         <legend for="307143326">Saúde</legend>
         <div class="form-group">
             <div>
-                <span>Faz uso, abuso de bebida alcoolica e/ou drogas?: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.641139123" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.641139123" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.641139123" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.641139123" value="Não se aplica" required>
-                    Não se aplica
-                </label>
+               <span>{{ form.saude_bebida_drogas.label }}
+                        {{ form.saude_bebida_drogas }}
+                   </span>
+                <span> {{ form.saude_doenca_grave.label }}
+                {{ form.saude_doenca_grave }}</span>
             </div>
-            <div>
-                <span>Possui doença grave: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1520107463" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1520107463" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1520107463" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1520107463" value="Não se aplica" required>
-                    Não se aplica
-                </label>
+             <span> {{ form.saude_doenca_cronica.label }}
+                {{ form.saude_doenca_cronica }}</span>
             </div>
-            <div>
-                <span>Possui doença crônica?: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1065882124" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1065882124" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1065882124" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.1065882124" value="Não se aplica" required>
-                    Não se aplica
-                </label>
+         <span> {{ form.saude_medicamento_diario.label }}
+                {{ form.saude_medicamento_diario }}</span>
             </div>
-            <div>
-                <span>Faz uso de medicamento diário, de impacto na renda familiar: </span>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.156475830" value="Você" required>
-                    Você
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.156475830" value="Família" required>
-                    Família
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.156475830" value="Ambos" required>
-                    Ambos
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="entry.156475830" value="Não se aplica" required>
-                    Não se aplica
-                </label>
-            </div>
+
         </div>
     </fieldset>
 

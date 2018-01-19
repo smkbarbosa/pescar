@@ -1,5 +1,6 @@
 from django import forms
 
+
 class QuestionarioForm(forms.Form):
     # Dados Pessoais
     nome = forms.CharField(label='Nome')
@@ -141,3 +142,47 @@ class QuestionarioForm(forms.Form):
     total_km_casa_campus = forms.ChoiceField(choices=TOTAL_KM_CHOICES, widget=forms.RadioSelect,
                                              label='Quantos kilômetros tem entre a sua casa e o Câmpus')
 
+    INSTITUICAO_ANTERIOR_CHOICES = [
+        (1, 'Particular'),
+        (2, 'Bolsa total (mérito)'),
+        (3, 'Bolsa parcial (mérito)'),
+        (4, 'Bolsa parcial (vulnerabilidade)'),
+        (5, 'Bolsa total (vulnerabilidade)'),
+        (6, 'Pública')
+    ]
+
+    instituicao_anterior = forms.ChoiceField(choices=INSTITUICAO_ANTERIOR_CHOICES, widget=forms.RadioSelect,
+                                             label='Estudou anteriormente em instituição')
+
+    VOCE_FAMILIA_CHOICES = [
+        (1, 'Você'),
+        (1, 'Família'),
+        (1, 'Ambos'),
+        (0, 'Não se aplica')
+    ]
+
+    SAUDE = ['Faz uso, abuso de bebida alcóolica e/ou drogas?', 'Possui doença grave', 'Possui doença crônica?',
+             'Faz uso de medicamento diário, de impacto na renda familiar'
+    ]
+
+    saude_bebida_drogas = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                            widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                            label=SAUDE[0])
+
+    saude_doenca_grave = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                            widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                            label=SAUDE[1])
+
+    saude_doenca_cronica = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                           widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                           label=SAUDE[2])
+
+    saude_medicamento_diario = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
+                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
+                                             label=SAUDE[3])
+
+
+
+    # for item in SAUDE:
+    #    saude = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES, widget=forms.RadioSelect,
+    #                              label=item)
