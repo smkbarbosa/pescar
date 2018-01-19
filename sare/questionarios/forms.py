@@ -219,3 +219,20 @@ class QuestionarioForm(forms.Form):
     psico_depressao = forms.ChoiceField(choices=VOCE_FAMILIA_CHOICES,
                                              widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
                                              label=PSICO[2])
+
+    ## Cultural
+
+    COR_RACA_CHOICES = [
+        (1, 'Branca'),
+        (2, 'Amarela'),
+        (3, 'Parda'),
+        (4, 'Estrangeiro'),
+        (5, 'Preta'),
+        (6, 'Afro descendente Quilombola'),
+        (7, 'Indígena'),
+        (8, 'Estrangeiro refugiado')
+    ]
+
+    cor_raca = forms.ChoiceField(choices=COR_RACA_CHOICES,
+                                             widget=forms.RadioSelect,
+                                             label='Você se considera')

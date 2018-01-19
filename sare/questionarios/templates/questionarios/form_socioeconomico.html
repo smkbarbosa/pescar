@@ -575,55 +575,11 @@
 
     <!-- Field type: "choices" id: "866511513" -->
     <fieldset>
-        <legend for="866511513">Você se considera?</legend>
+        <legend for="{{ form.cor_raca.id_for_label }}">{{ form.cor_raca.label }}</legend>
         <div class="form-group">
             <div class="radio">
-                <label>
-                    <input type="radio" name="entry.763491477" value="Branca" required>
-                    Branca
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.763491477" value="Amarela" required>
-                    Amarela
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.763491477" value="Parda" required>
-                    Parda
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.763491477" value="Estrangeiro" required>
-                    Estrangeiro
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.763491477" value="Preta" required>
-                    Preta
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.763491477" value="Afro descendente Quilombola" required>
-                    Afro descendente Quilombola
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.763491477" value="Indígena" required>
-                    Indígena
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.763491477" value="Estrangeiro refugiado" required>
-                    Estrangeiro refugiado
-                </label>
+                {{ form.cor_raca.errors }}
+                {{ form.cor_raca }}
             </div>
         </div>
     </fieldset>
