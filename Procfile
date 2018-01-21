@@ -1,0 +1,1 @@
+web: gunicorn sare.wsgi --log-file -
