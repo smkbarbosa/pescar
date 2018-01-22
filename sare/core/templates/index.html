@@ -1,120 +1,79 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Página modelo do projeto Pescar do IFTO">
-    <meta name="author" content="Samuel Barbosa">
-
-    <title>PESCAR | Programa de Estudo Socioeconômico-cultural e de acompanhamento da realidade do estudante</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/landing-page.min.css' %}" rel="stylesheet">
-
-  </head>
-
-  <body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-light bg-light static-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">PESCAR</a>
-        <a class="btn btn-primary" href="/admin">Entrar</a>
-      </div>
-    </nav>
-
+{% block content %}
     <!-- Masthead -->
     <header class="masthead text-white text-center">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-9 mx-auto">
-            <h1 class="mb-5">Programa de Estudo Socioeconômico-Cultural e de Acompanhamento da Realidade do Estudante</h1>
-          </div>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5">Programa de Estudo Socioeconômico-Cultural e de Acompanhamento da Realidade do Estudante</h1>
+                </div>
+            </div>
         </div>
-      </div>
     </header>
 
     <!-- Icons Grid -->
     <section class="features-icons bg-light text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-screen-desktop m-auto text-primary"></i>
-              </div>
-              <h3>Plataforma WEB</h3>
-              <p class="lead mb-0">Sistema web para integrar equipes interprofissionais</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="features-icons-icon d-flex">
+                            <i class="icon-screen-desktop m-auto text-primary"></i>
+                        </div>
+                        <h3>Plataforma WEB</h3>
+                        <p class="lead mb-0">Sistema web para integrar equipes interprofissionais</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="features-icons-icon d-flex">
+                            <i class="icon-layers m-auto text-primary"></i>
+                        </div>
+                        <h3>Relatórios personalizados</h3>
+                        <p class="lead mb-0">Relatórios baseados nas vulnerabilidades dos estudantes!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                        <div class="features-icons-icon d-flex">
+                            <i class="icon-check m-auto text-primary"></i>
+                        </div>
+                        <h3>Atendimento a Estudantes</h3>
+                        <p class="lead mb-0">Pronto para atender e registrar ações junto aos estudantes!</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-layers m-auto text-primary"></i>
-              </div>
-              <h3>Relatórios personalizados</h3>
-              <p class="lead mb-0">Relatórios baseados nas vulnerabilidades dos estudantes!</p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
-              </div>
-              <h3>Atendimento a Estudantes</h3>
-              <p class="lead mb-0">Pronto para atender e registrar ações junto aos estudantes!</p>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
-
 
     <!-- Footer -->
     <footer class="footer bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-            <ul class="list-inline mb-2">
-              <li class="list-inline-item">
-                <a href="#">Sobre</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Contato</a>
-              </li>
-            </ul>
-            <p class="text-muted small mb-4 mb-lg-0">&copy; Trabalho de Conclusão de Curso | <a href="http://smkbarbosa.eti.br">Samuel Barbosa</a>. Todos os direitos reservados.</p>
-          </div>
-          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item mr-3">
-                <a href="http://portal.ifto.edu.br">
-                  <i class="fa fa-globe fa-2x fa-fw"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item">
+                            <a href="#">Sobre</a>
+                        </li>
+                        <li class="list-inline-item">&sdot;</li>
+                        <li class="list-inline-item">
+                            <a href="#">Contato</a>
+                        </li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">&copy; Trabalho de Conclusão de Curso | <a href="http://smkbarbosa.eti.br">Samuel Barbosa</a>.</p>
+                </div>
+                <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item mr-3">
+                            <a href="http://portal.ifto.edu.br">
+                                <i class="fa fa-globe fa-2x fa-fw"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-  </body>
-
-</html>
+{% endblock content %}
