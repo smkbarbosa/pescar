@@ -1,5 +1,6 @@
 from django.test import TestCase
 from  sare.questionarios.forms import QuestionarioForm
+from sare.questionarios.models import Questionario
 
 
 class QuestionarioGet(TestCase):
@@ -41,4 +42,13 @@ class QuestionarioGet(TestCase):
         self.assertIsInstance(form, QuestionarioForm)
 
 
+class QuestionarioPostValid(TestCase):
+    # def test_salva_questionario(self):
+    #    self.assertTrue(Questionario.objects.exists())
+    pass
 
+
+class QuestionarioPostInvalid(TestCase):
+    # def test_nao_salva_questionario(self):
+    #    self.assertFalse(Questionario.objects.exists())
+    pass
