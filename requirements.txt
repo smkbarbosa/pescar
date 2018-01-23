@@ -11,3 +11,5 @@ pytz==2017.3
 six==1.11.0
 static3==0.7.0
 typing==3.6.2
+gunicorn==19.4.1
+psycopg2==2.7.3.2
