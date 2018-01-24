@@ -1,0 +1,15 @@
+SISTEMA DE ACOMPANHAMENTO DA REALIDADE DO ESTUDANTE - SARE
+
+Confirmamos o recebimento questionário socioeconômico de:
+
+Nome: {{ nome }}
+CPF: {{ cpf }}
+e-mail: {{ email }}
+Cidade: {{ cidade }}
+
+Para visualizar suas respostas no questionário, clique aqui!
+
+Atenciosamente,
+
+------
+Equipe Pescar

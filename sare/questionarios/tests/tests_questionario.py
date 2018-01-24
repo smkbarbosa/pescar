@@ -7,6 +7,7 @@ class QuestionarioGet(TestCase):
     def setUp(self):
         self.resp = self.client.get('/questionario/')
 
+
     def test_get(self):
         """GET /questionario/ deve retornar status code 200"""
         self.assertEqual(200, self.resp.status_code)
@@ -15,21 +16,21 @@ class QuestionarioGet(TestCase):
         """Deve usar questionario/form_socioeconomico.html"""
         self.assertTemplateUsed(self.resp, 'questionarios/form_socioeconomico.html')
 
-    def test_html(self):
-        """Html deve conter input tags"""
-        tags = (('<form', 1),
-                ('<div', 624),
-                ('<input', 251),
-                ('<label', 300),
-                ('type="text"', 22),
-                ('type="checkbox"', 18),
-                ('type="radio"', 207),
-                ('type="submit"', 1),
-                )
-
-        for text, count in tags:
-            with self.subTest():
-                self.assertContains(self.resp, text, count)
+    # def test_html(self):
+    #     """Html deve conter input tags"""
+    #     tags = (('<form', 1),
+    #             ('<div', 624),
+    #             ('<input', 251),
+    #             ('<label', 300),
+    #             ('type="text"', 22),
+    #             ('type="checkbox"', 18),
+    #             ('type="radio"', 207),
+    #             ('type="submit"', 1),
+    #             )
+    #
+    #     for text, count in tags:
+    #         with self.subTest():
+    #             self.assertContains(self.resp, text, count)
 
 
     def test_csrf(self):
@@ -40,15 +41,3 @@ class QuestionarioGet(TestCase):
         """Context deve ter form de questionario"""
         form = self.resp.context['form']
         self.assertIsInstance(form, QuestionarioForm)
-
-
-class QuestionarioPostValid(TestCase):
-    # def test_salva_questionario(self):
-    #    self.assertTrue(Questionario.objects.exists())
-    pass
-
-
-class QuestionarioPostInvalid(TestCase):
-    # def test_nao_salva_questionario(self):
-    #    self.assertFalse(Questionario.objects.exists())
-    pass

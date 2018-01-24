@@ -11,7 +11,6 @@ class QuestionarioModelTest(TestCase):
                 cpf='12345678901',
                 sex='M',
                 cidade='Palmas',
-                bairro='Plano Diretor Norte'
         )
         self.obj.save()
 
