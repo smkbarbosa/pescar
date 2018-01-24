@@ -1,7 +1,7 @@
 from django.core import mail
 from django.test import TestCase
 from sare.questionarios.forms import QuestionarioForm
-from sare.questionarios.models import Questionario
+# from sare.questionarios.models import Questionario
 
 
 class QuestionarioFormTest(TestCase):
