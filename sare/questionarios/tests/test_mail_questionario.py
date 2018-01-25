@@ -1,10 +1,8 @@
-from http import client
-from unittest import TestCase, skipIf
-
 from django.core import mail
+from django.test import TestCase
 
 
-class QuestionarioPostValid(TestCase):
+class Questionario_Post_Valid(TestCase):
     def setUp(self):
         data = dict(nome='Samuel Barbosa', cpf='12345678901',
                     email='samuka1@gmail.com',
@@ -12,26 +10,25 @@ class QuestionarioPostValid(TestCase):
         self.client.post('/questionario/', data)
         self.email = mail.outbox[0]
 
-
-    @skipIf(IndexError, 'Descobrir o motivo depois')
+    # @skipIf(IndexError, 'Descobrir o motivo depois')
     def test_email_questionario_assunto(self):
         expect = 'Questionário Socioeconômico preenchido com sucesso'
 
         self.assertEqual(expect, self.email.subject)
 
-    @skipIf(IndexError, 'Descobrir o motivo depois')
+    # @skipIf(IndexError, 'Descobrir o motivo depois')
     def test_email_questionario_remetente(self):
         expect = 'pescar.gt.ss@gmail.com'
 
         self.assertEqual(expect, self.email.from_email)
 
-    @skipIf(IndexError, 'Descobrir o motivo depois')
+    # @skipIf(IndexError, 'Descobrir o motivo depois')
     def test_email_questionario_para(self):
         expect = ['samuka1@gmail.com',]
 
         self.assertEqual(expect, self.email.to)
 
-    @skipIf(IndexError, 'Descobrir o motivo depois')
+    # @skipIf(IndexError, 'Descobrir o motivo depois')
     def test_questionario_corpo_email(self):
         contents = [
             'Samuel Barbosa',
