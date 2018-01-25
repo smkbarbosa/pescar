@@ -1,9 +1,9 @@
 from unittest import skipIf
-import pytest
+
 from django.core import mail
 from django.test import TestCase
 from  sare.questionarios.forms import QuestionarioForm
-# from sare.questionarios.models import Questionario
+from sare.questionarios.models import Questionario
 
 
 class QuestionarioGet(TestCase):
@@ -18,21 +18,21 @@ class QuestionarioGet(TestCase):
         """Deve usar questionario/form_socioeconomico.html"""
         self.assertTemplateUsed(self.resp, 'questionarios/form_socioeconomico.html')
 
-    # def test_html(self):
-    #     """Html deve conter input tags"""
-    #     tags = (('<form', 1),
-    #             ('<div', 631),
-    #             ('<input', 252),
-    #             ('<label', 301),
-    #             ('type="text"', 22),
-    #             ('type="checkbox"', 18),
-    #             ('type="radio"', 207),
-    #             ('type="submit"', 1),
-    #             )
-    #
-    #     for text, count in tags:
-    #         with self.subTest():
-    #             self.assertContains(self.resp, text, count)
+    def test_html(self):
+        """Html deve conter input tags"""
+        tags = (('<form', 1),
+                ('<div', 631),
+                ('<input', 252),
+                ('<label', 301),
+                ('type="text"', 22),
+                ('type="checkbox"', 18),
+                ('type="radio"', 207),
+                ('type="submit"', 1),
+                )
+
+        for text, count in tags:
+            with self.subTest():
+                self.assertContains(self.resp, text, count)
 
     def test_csrf(self):
         """Html deve conter csrf"""
@@ -52,14 +52,16 @@ class QuestionarioPostValid(TestCase):
         self.resp = self.client.post('/questionario/', data)
         self.email = mail.outbox[0]
 
-    # @skipIf(IndexError, 'Descobrir o motivo depois')
     def test_post(self):
         """POST valid deve redirecionar to /questionario/"""
         self.assertEqual(302, self.resp.status_code)
 
-    # @skipIf(IndexError, 'Descobrir o motivo depois')
     def test_envia_email_questionario(self):
         self.assertEqual(1, len(mail.outbox))
+
+    @skipIf(AssertionError, "Salvar desabilitado na view")
+    def test_salva_questionario(self):
+        self.assertTrue(Questionario.objects.exists())
 
 
 class QuestionarioPostInvalid(TestCase):
@@ -85,12 +87,10 @@ class QuestionarioPostInvalid(TestCase):
         form = self.resp.context['form']
         self.assertTrue(form.errors)
 
-    # def test_nao_salva_questionario(self):
-    #    self.assertFalse(Questionario.objects.exists())
-    #    pass
+    def test_nao_salva_questionario(self):
+       self.assertFalse(Questionario.objects.exists())
 
 class QuestionarioSucessMessage(TestCase):
-    # @skipIf(IndexError, 'Descobrir o motivo depois')
     def test_message(self):
         data = dict(nome='Samuel Barbosa', cpf='12345678901',
                     email='samuka1@gmail.com',

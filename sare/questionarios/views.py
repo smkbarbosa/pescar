@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 
 from sare.questionarios.forms import QuestionarioForm
+from sare.questionarios.models import Questionario
 
 
 def questionario(request):
@@ -28,6 +29,8 @@ def create(request):
                form.cleaned_data['email'],
                'questionarios/questionario_email.txt',
                form.cleaned_data)
+
+    # Questionario.objects.create(**form.cleaned_data)
 
     messages.success(request, 'Questionário respondido com sucesso!')
 
