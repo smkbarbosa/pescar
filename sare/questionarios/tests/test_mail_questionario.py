@@ -40,7 +40,3 @@ class Questionario_Post_Valid(TestCase):
         for content in contents:
             with self.subTest():
                 self.assertIn(content, self.email.body)
-
-    # def test_salva_questionario(self):
-    #    self.assertTrue(Questionario.objects.exists())
-    #   pass

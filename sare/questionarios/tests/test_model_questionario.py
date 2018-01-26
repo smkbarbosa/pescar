@@ -15,7 +15,7 @@ class QuestionarioModelTest(TestCase):
         )
         self.obj.save()
 
-    @skipIf(AssertionError, "Salvar desabilitado na view")
+    # @skipIf(AssertionError, "Salvar desabilitado na view")
     def test_create(self):
         self.assertTrue(Questionario.objects.exists())
 
