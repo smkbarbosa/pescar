@@ -1,0 +1,43 @@
+{% load static %}
+
+<html>
+<head>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+
+    <title>Formulário Socioeconômico-cultural</title>
+
+       <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/landing-page.min.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="row valign change-form">
+    <div class="{% block formclass %}col s12 m8 offset-m2 l8 offset-l2{% endblock %}">
+        <div class="card">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="card-content">
+                    <span class="card-title grey-text text-darken-2">{% block formtitle %}{{ form.title }}{% endblock formtitle%}</span>
+
+                    {% block form_content %}
+
+                    {% endblock form_content %}
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+   <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

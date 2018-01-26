@@ -179,7 +179,7 @@ class QuestionarioSocialForm(forms.Form):
         (9, 'Com terceiros (com contribuição)'),
         (10, 'Ocupação')
     ]
-    condicao_moradia = forms.ChoiceField(CONDICAO_MORADIA_CHOICES, widget=forms.RadioSelect,
+    condicao_moradia = forms.ChoiceField(choices=CONDICAO_MORADIA_CHOICES, widget=forms.RadioSelect,
                                          required=False, label='Condição da Moradia')
 
     LOCAL_MORADIA_CHOICES = [
@@ -549,3 +549,5 @@ class QuestionarioFinalForm(forms.Form):
         Fieldset("Comentários finais"),
         Row('fale_mais_familia')
     )
+
+

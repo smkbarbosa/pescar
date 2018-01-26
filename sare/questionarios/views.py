@@ -62,15 +62,22 @@ from sare.questionarios.models import Questionario
 #
 #     template_name = TEMPLATES
 
+def show_message_form_condition(wizard):
+    # try to get the cleaned data of step 1
+    cleaned_data = wizard.get_cleaned_data_for_step('0') or {}
+    # check if the field ``leave_message`` was checked.
+    return cleaned_data.get('leave_message', True)
 
 class QuestionarioWizard(SessionWizardView):
-    # template_name = 'questionarios/form_socioeconomico.html'
+    template_name = 'questionarios/form_socioeconomico.html'
+    form_list = [
+        QuestionarioPessoalForm,
+        QuestionarioEconomicoForm,
+        QuestionarioCulturalForm,
+        QuestionarioAmbientalForm,
+        QuestionarioFinalForm
+    ]
     def done(self, form_list, **kwargs):
         return render(self.request, 'questionarios/form_final.html', {
             'form_data': [form.cleaned_data for form in form_list]
         })
-
-    # def done(self, form_list, **kwargs):
-    #     return render(self.request, 'questionarios/form_final.html', {
-    #         'form_data': [form.cleaned_data for form in form_list],
-    #     })
