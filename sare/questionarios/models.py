@@ -1,18 +1,18 @@
-from django.db import models
-
-
-class Questionario(models.Model):
-    nome = models.CharField(max_length=100)
-    cpf = models.CharField(max_length=11)
-    email = models.EmailField()
-    SEXO_CHOICES = (
-        ('M', 'Masculino'),
-        ('F', 'Feminino')
-    )
-    sexo = models.CharField(null=True, max_length=1, choices=SEXO_CHOICES)
-    cidade = models.CharField(max_length=100)
-    bairro = models.CharField(null=True, max_length=100)
-    criado_em = models.DateTimeField(auto_now_add=True)
+# from django.db import models
+#
+#
+# class Questionario(models.Model):
+#     nome = models.CharField(max_length=100)
+#     cpf = models.CharField(max_length=11)
+#     email = models.EmailField()
+#     SEXO_CHOICES = (
+#         ('M', 'Masculino'),
+#         ('F', 'Feminino')
+#     )
+#     sexo = models.CharField(null=True, max_length=1, choices=SEXO_CHOICES)
+#     cidade = models.CharField(max_length=100)
+#     bairro = models.CharField(null=True, max_length=100)
+#     criado_em = models.DateTimeField(auto_now_add=True)
 
     # # Dimensão economica
     # dependentes_RBD = models.IntegerField(null=True, max_length=10)
