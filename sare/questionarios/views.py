@@ -7,7 +7,7 @@ from formtools.wizard.views import SessionWizardView
 
 from sare.questionarios.forms import QuestionarioPessoalForm, QuestionarioEconomicoForm, QuestionarioSocialForm, \
     QuestionarioCulturalForm, QuestionarioAmbientalForm, QuestionarioFinalForm
-from sare.questionarios.models import Questionario
+# from sare.questionarios.models import Questionario
 
 
 # def questionario(request):
@@ -17,50 +17,42 @@ from sare.questionarios.models import Questionario
 #         return new(request)
 
 
-# def create(request):
-#     # Recebe os dados do formulário
-#     form = QuestionarioWizard(request.POST)
-#
-#     if not form.is_valid():
-#         return render(request, ['questionarios/form_socioeconomico.html', 'material/includes/material_css.html',
-#                                 'material/includes/material_js.html', 'material/form.html'],
-#                       {'form': form})
-#
-#     _send_mail('Questionário Socioeconômico preenchido com sucesso',
-#                'pescar.gt.ss@gmail.com',
-#                form.cleaned_data['email'],
-#                'questionarios/questionario_email.txt',
-#                form.cleaned_data)
-#
-#     Questionario.objects.create(**form.cleaned_data)
-#
-#     messages.success(request, 'Questionário respondido com sucesso!')
-#
-#     return HttpResponseRedirect('/questionario/')
+def create(request):
+    # Recebe os dados do formulário
+    form = QuestionarioWizard(request.POST)
+
+    if not form.is_valid():
+        return render(request, ['questionarios/form_socioeconomico.html', 'material/includes/material_css.html',
+                                'material/includes/material_js.html', 'material/form.html'],
+                      {'form': form})
+
+    _send_mail('Questionário Socioeconômico preenchido com sucesso',
+               'pescar.gt.ss@gmail.com',
+               form.cleaned_data['email'],
+               'questionarios/questionario_email.txt',
+               form.cleaned_data)
+
+    Questionario.objects.create(**form.cleaned_data)
+
+    messages.success(request, 'Questionário respondido com sucesso!')
+
+    return HttpResponseRedirect('/questionario/')
 
 
-# def new(request):
-#
-#     return render(request, 'questionarios/form_socioeconomico.html',
-#                   {'form': QuestionarioWizard()})
-#
-#
-# def _send_mail(subject, from_, to, template_name, context):
-#     body = render_to_string(template_name, context)
-#
-#     mail.send_mail(subject,
-#                    body,
-#                    from_,
-#                    [to])
+def new(request):
+
+    return render(request, 'questionarios/form_socioeconomico.html',
+                  {'form': QuestionarioWizard()})
 
 
-# class QuestionarioWizard(SessionWizardView):
-#     TEMPLATES = 'questionarios/form_socioeconomico.html'
-#     # 'material/includes/material_css.html', 'material/includes/material_js.html',
-#     #             'material/form.html']
-#
-#
-#     template_name = TEMPLATES
+def _send_mail(subject, from_, to, template_name, context):
+    body = render_to_string(template_name, context)
+
+    mail.send_mail(subject,
+                   body,
+                   from_,
+                   [to])
+
 
 def show_message_form_condition(wizard):
     # try to get the cleaned data of step 1

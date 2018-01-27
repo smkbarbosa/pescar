@@ -1,27 +1,30 @@
-{% include 'material/includes/material_css.html' %}
-{% include 'material/includes/material_js.html' %}
-{% load static %}
-{% load material_form %}
+{% extends "base_form.html" %}
+{% load i18n material_form %}
 
+{% block extrahead %}
+{{ wizard.form.media }}
+{% endblock %}
 
-<html>
-<head>
-    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
-
-    <title>Formulário Socioeconômico-cultural</title>
-</head>
-
-<div class="row valign change-form">
+{% block content %}
+<div class="row valign">
     <div class="{% block formclass %}col s12 m8 offset-m2 l8 offset-l2{% endblock %}">
         <div class="card">
-
-           <div>
-  {{ form_data }}
-</div>
+            <div class="card-content">
+                <span class="card-title grey-text text-darken-2">{% trans Complete! %}</span>
+                <div class="row">
+                    <div class="col s12">
+                        Questionário enviado com sucesso!
+                        <pre>{{ form_data }}</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action right-align">
+                <a class="btn white-text" href="/questionario/">
+                    {% trans "One more time" %}
+                    <i class="mdi-av-repeat left"></i>
+                </a>
+            </div>
         </div>
     </div>
 </div>
-<script src="{% static 'material/js/jquery.js' %}"></script>
-
-
-</html>
+{% endblock %}

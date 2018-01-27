@@ -1,43 +1,46 @@
-{% load static %}
-
-<html>
+<!DOCTYPE html>{% load static %}
+<html lang="en">
 <head>
-    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Questionário SócioEconômico-cultural{% endblock %}</title>
 
-    <title>Formulário Socioeconômico-cultural</title>
+    {% block head %}
+        {% include 'material/includes/material_css.html' %}
+        <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
 
-       <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/landing-page.min.css' %}" rel="stylesheet">
+    {% endblock %}
+    {% block extrahead %}
+    {% endblock %}
 </head>
 <body>
-
-<div class="row valign change-form">
-    <div class="{% block formclass %}col s12 m8 offset-m2 l8 offset-l2{% endblock %}">
-        <div class="card">
-            <form method="POST" enctype="multipart/form-data">
-                <div class="card-content">
-                    <span class="card-title grey-text text-darken-2">{% block formtitle %}{{ form.title }}{% endblock formtitle%}</span>
-
-                    {% block form_content %}
-
-                    {% endblock form_content %}
-
-                </div>
-            </form>
+{% block content %}
+    <div class="row valign change-form">
+        <div class="{% block formclass %}col s12 m8 offset-m2 l8 offset-l2{% endblock %}">
+            <div class="card">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-2">{% block formtitle %}Form{% endblock %}</span>
+                        {% csrf_token %}
+                        {% block formbody %}{% endblock %}
+                    </div>
+                    <div class="card-action">
+                        {% block actions %}
+                            <div class="right-align">
+                                {% block formbuttons %}<button class="btn btn-primary" type="submit">Submit</button>{% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-   <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-</body>
+    {% block result %}
+    {% endblock %}
+{% endblock %}
+<script src="{% static 'material/js/jquery.js' %}"></script>
+{% include 'material/includes/material_js.html' %}
 
+</body>
 </html>
