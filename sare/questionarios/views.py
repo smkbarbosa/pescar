@@ -32,7 +32,7 @@ def create(request):
                'questionarios/questionario_email.txt',
                form.cleaned_data)
 
-    Questionario.objects.create(**form.cleaned_data)
+    # Questionario.objects.create(**form.cleaned_data)
 
     messages.success(request, 'Questionário respondido com sucesso!')
 

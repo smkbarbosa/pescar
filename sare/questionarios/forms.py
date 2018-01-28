@@ -89,7 +89,7 @@ class QuestionarioEconomicoForm(forms.Form):
     despesas_domesticas_agua = forms.CharField(required=False, label='Água (até R$ 150,00/mês')
     despesas_domesticas_alimentacao = forms.CharField(required=False, label='Alimentação (até R$ 650,00/mês')
 
-    Layout(
+    layout = Layout(
         Fieldset("Dimensão: Econômica"),
 
         Fieldset("Incluindo você, quantas "
@@ -291,7 +291,7 @@ class QuestionarioSocialForm(forms.Form):
                                         widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
                                         required=False, label=PSICO[2])
 
-    Layout =(
+    layout = Layout(
         Fieldset("Dimensão: Social"),
 
         Fieldset("Manutenção do lar"),
@@ -440,7 +440,7 @@ class QuestionarioCulturalForm(forms.Form):
                                                       widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
                                                       required=False, label=PRECONCEITO[7])
 
-    Layout = (
+    layout = Layout(
         Fieldset("Dimensão: Cultural"),
 
         Row('cor_raca'),
@@ -528,7 +528,7 @@ class QuestionarioAmbientalForm(forms.Form):
     problemas_bairro = forms.ChoiceField(choices=PROBLEMAS_BAIRRO_CHOICES, widget=forms.CheckboxSelectMultiple,
                                          label='Qual(is) o maior(es) problemas do seu bairro?', required=False)
 
-    Layout = (
+    layout = Layout(
         Fieldset("Dimensão: Cultural"),
 
         Fieldset("Sobre seu bairro"),
@@ -545,7 +545,7 @@ class QuestionarioFinalForm(forms.Form):
     fale_mais_familia = forms.CharField(widget=forms.Textarea,
                                         required=False, label='Fale mais sobre você e a sua família.')
 
-    Layout = (
+    layout = Layout(
         Fieldset("Comentários finais"),
         Row('fale_mais_familia')
     )
