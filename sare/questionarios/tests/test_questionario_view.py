@@ -84,9 +84,9 @@ class QuestionarioPostValid(TestCase):
         self.resp = self.client.post(wizard_goto_step, data)
         # self.email = mail.outbox[0]
 
-    def test_post(self):
-        """POST valid deve redirecionar to /questionario/"""
-        self.assertEqual(302, self.resp.status_code)
+    # def test_post(self):
+    #     """POST valid deve redirecionar to /questionario/"""
+    #     self.assertEqual(302, self.resp.status_code)
     #
     #
     # def test_envia_email_questionario(self):
