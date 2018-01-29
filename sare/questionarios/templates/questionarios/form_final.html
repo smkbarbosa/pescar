@@ -13,14 +13,20 @@
                 <span class="card-title grey-text text-darken-2">{% trans "Complete!" %}</span>
                 <div class="row">
                     <div class="col s12">
-                        Questionário enviado com sucesso!
+                        {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert-info">
+                                <p>{{ message }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                         <pre>{{ form_data }}</pre>
                     </div>
                 </div>
             </div>
             <div class="card-action right-align">
                 <a class="btn white-text" href="/questionario/">
-                    {% trans "One more time" %}
+                    {% trans "Novo questionário" %}
                     <i class="mdi-av-repeat left"></i>
                 </a>
             </div>

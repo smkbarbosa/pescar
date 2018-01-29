@@ -20,6 +20,7 @@ class QuestionarioPessoalTest(TestCase):
                     ]
         self.assertSequenceEqual(expected, list(self.form.fields))
 
+
 class QuestionarioEconomicoTest(TestCase):
     def setUp(self):
         self.form = QuestionarioEconomicoForm()

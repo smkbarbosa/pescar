@@ -23,7 +23,6 @@ class QuestionarioPessoalForm(forms.Form):
     sexo = forms.ChoiceField(choices=(('M', 'Masculino'),('F', 'Feminino')),
                              widget=forms.RadioSelect, label='Sexo', required=False)
 
-
     title = 'Formulário Socioeconômico-Cultural'
     objetivo = 'teste'
 
@@ -549,5 +548,3 @@ class QuestionarioFinalForm(forms.Form):
         Fieldset("Comentários finais"),
         Row('fale_mais_familia')
     )
-
-
