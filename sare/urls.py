@@ -13,24 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf import settings
-from django.conf.urls import url, include
+from django.conf.urls import url
 from django.contrib import admin
 
 from sare.core.views import home
-from sare.questionarios.forms import QuestionarioPessoalForm, QuestionarioEconomicoForm, QuestionarioSocialForm, \
-    QuestionarioCulturalForm, QuestionarioAmbientalForm, QuestionarioFinalForm
-from sare.questionarios.views import QuestionarioWizard
+from sare.questionarios.views import questionario
+
 
 urlpatterns = [
     url(r'^$', home, name='home'),
-    # url(r'^questionario/$', questionario),
-    url(r'^questionario/$', QuestionarioWizard.as_view([QuestionarioPessoalForm,
-                                                        QuestionarioEconomicoForm,
-                                                        QuestionarioSocialForm,
-                                                        QuestionarioCulturalForm,
-                                                        QuestionarioAmbientalForm,
-                                                        QuestionarioFinalForm
-                                                        ])),
+    url(r'^questionario/$', questionario),
+    # url(r'^questionario/$', QuestionarioWizard.as_view([QuestionarioPessoalForm,
+    #                                                     QuestionarioEconomicoForm,
+    #                                                     QuestionarioSocialForm,
+    #                                                     QuestionarioCulturalForm,
+    #                                                     QuestionarioAmbientalForm,
+    #                                                     QuestionarioFinalForm
+    #                                                     ])),
     url(r'^admin/', admin.site.urls),
 ]
