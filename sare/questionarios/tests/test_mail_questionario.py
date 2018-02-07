@@ -6,7 +6,16 @@ class Questionario_Post_Valid(TestCase):
     def setUp(self):
         data = dict(nome='Samuel Barbosa', cpf='12345678901',
                     email='samuka1@gmail.com',
-                    cidade='Palmas')
+                    cidade='Palmas',
+                    condicao_responsavel_casa=1,
+                    meio_acesso_campus=1,
+                    condicao_moradia=5,
+                    local_moradia=1,
+                    total_pessoas_casa=2,
+                    total_comodos_casa=3,
+                    total_km_casa_campus=2,
+                    instituicao_anterior=6
+                    )
         self.client.post('/questionario/', data)
         self.email = mail.outbox[0]
 

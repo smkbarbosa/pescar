@@ -4,10 +4,12 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template.loader import render_to_string
 
-from sare.questionarios.forms import QuestionarioPessoalForm
+from sare.questionarios.forms import QuestionarioForm
 
 
 # from sare.questionarios.models import Questionario
+from sare.questionarios.models import Questionario
+
 
 def questionario(request):
     if request.method == 'POST':
@@ -18,11 +20,11 @@ def questionario(request):
 def new(request):
 
     return render(request, 'questionarios/form_socioeconomico.html',
-                  {'form': QuestionarioPessoalForm()})
+                  {'form': QuestionarioForm()})
 
 def create(request):
     # Recebe os dados do formulário
-    form = QuestionarioPessoalForm(request.POST)
+    form = QuestionarioForm(request.POST)
 
     if not form.is_valid():
         return render(request, ['questionarios/form_socioeconomico.html', 'material/includes/material_css.html',
@@ -36,7 +38,7 @@ def create(request):
 
                form.cleaned_data)
 
-    # Questionario.objects.create(**form.cleaned_data)
+    Questionario.objects.create(**form.cleaned_data)
 
     messages.success(request, 'Questionário respondido com sucesso!')
     return HttpResponseRedirect('/questionario/')

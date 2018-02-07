@@ -5,12 +5,12 @@ from material import *
 ## Choices Global
 VOCE_FAMILIA_CHOICES = [
     (1, 'Você'),
-    (1, 'Família'),
-    (1, 'Ambos'),
+    (2, 'Família'),
+    (3, 'Ambos'),
     (0, 'Não se aplica')
 ]
 
-class QuestionarioPessoalForm(forms.Form):
+class QuestionarioForm(forms.Form):
 
         # Dados Pessoais
         nome = forms.CharField(label='Nome')
@@ -22,21 +22,9 @@ class QuestionarioPessoalForm(forms.Form):
         sexo = forms.ChoiceField(choices=(('M', 'Masculino'),('F', 'Feminino')),
                                  widget=forms.RadioSelect, label='Sexo', required=False)
 
-        title = 'Formulário Socioeconômico-Cultural'
-        objetivo = 'teste'
-
-        layout = Layout(
-            Fieldset("Dados Pessoais"),
-            Row(Span4('nome'),Span4('email'),
-                 Span4('sexo')),
-            Row(Span4('cpf'), Span4('cidade'),
-                  Span4('bairro')),
-        )
-
-
-class QuestionarioEconomicoForm(forms.Form):
         # Dimensão: Economica
-        dependentes_RBD = forms.IntegerField(required=False, label='Quantidade de dependentes da Renda Bruta Domiciliar (RBD)')
+        dependentes_RBD = forms.IntegerField(required=False,
+                                             label='Quantidade de dependentes da Renda Bruta Domiciliar (RBD)')
         origem_renda = forms.IntegerField(required=False, label='Origem da renda')
         renda_bruta_domiciliar = forms.FloatField(required=False, label='Renda Bruta Domiciliar')
         responsavel_domicilio = forms.CharField(required=False, label="Responsável pela manutenção do domicílio")
@@ -64,80 +52,29 @@ class QuestionarioEconomicoForm(forms.Form):
 
         # Despesas
 
-        despesas_saude_tratamento = forms.CharField(required=False, label='Tratamento de saúde (a partir de R$ 234,24)')
-        despesas_saude_medicamento = forms.CharField(required=False, label='Medicamentos (a partir de R$ 200,00)')
-        despesas_saude_cuidador = forms.CharField(required=False, label='Cuidador de idoso/criança/PNE')
-        despesas_saude_plano = forms.CharField(required=False, label='Plano de Saúde')
+        despesas_saude_tratamento = forms.FloatField(required=False, label='Tratamento de saúde (a partir de R$ 234,24)')
+        despesas_saude_medicamento = forms.FloatField(required=False, label='Medicamentos (a partir de R$ 200,00)')
+        despesas_saude_cuidador = forms.FloatField(required=False, label='Cuidador de idoso/criança/PNE')
+        despesas_saude_plano = forms.FloatField(required=False, label='Plano de Saúde')
 
-        despesas_transporte = forms.CharField(required=False, label='Transporte para acessar o Campus')
+        despesas_transporte = forms.FloatField(required=False, label='Transporte para acessar o Campus')
 
-        despesas_moradia = forms.CharField(required=False, label='Aluguel/Financiamento')
+        despesas_moradia = forms.FloatField(required=False, label='Aluguel/Financiamento')
 
-        despesas_educacao_superior = forms.CharField(required=False, label='Educação Superior')
-        despesas_educacao_basico = forms.CharField(required=False, label='Educação Básica (Fundamental e Médio')
-        despesas_educacao_cursinho = forms.CharField(required=False, label='Curso Preparatório (cursinhos, etc)')
-        despesas_educacao_capacitacao = forms.CharField(required=False, label='Curso de Capacitação')
-        despesas_educacao_material = forms.CharField(required=False, label='Material Didático')
+        despesas_educacao_superior = forms.FloatField(required=False, label='Educação Superior')
+        despesas_educacao_basico = forms.FloatField(required=False, label='Educação Básica (Fundamental e Médio')
+        despesas_educacao_cursinho = forms.FloatField(required=False, label='Curso Preparatório (cursinhos, etc)')
+        despesas_educacao_capacitacao = forms.FloatField(required=False, label='Curso de Capacitação')
+        despesas_educacao_material = forms.FloatField(required=False, label='Material Didático')
 
-        despesas_bens_fcarro = forms.CharField(required=False, label='Financiamento de carro (até R$ 800,00/mês)')
-        despesas_bens_fmoto = forms.CharField(required=False, label='Financiamento de moto (até R$ 300,00/mês')
-        despesas_bens_terreno = forms.CharField(required=False, label='Terreno/Lote (até R$ 600,00/mês')
+        despesas_bens_fcarro = forms.FloatField(required=False, label='Financiamento de carro (até R$ 800,00/mês)')
+        despesas_bens_fmoto = forms.FloatField(required=False, label='Financiamento de moto (até R$ 300,00/mês')
+        despesas_bens_terreno = forms.FloatField(required=False, label='Terreno/Lote (até R$ 600,00/mês')
 
-        despesas_domesticas_eletrica = forms.CharField(required=False, label='Energia (até R$ 200,00/mês)')
-        despesas_domesticas_agua = forms.CharField(required=False, label='Água (até R$ 150,00/mês')
-        despesas_domesticas_alimentacao = forms.CharField(required=False, label='Alimentação (até R$ 650,00/mês')
+        despesas_domesticas_eletrica = forms.FloatField(required=False, label='Energia (até R$ 200,00/mês)')
+        despesas_domesticas_agua = forms.FloatField(required=False, label='Água (até R$ 150,00/mês')
+        despesas_domesticas_alimentacao = forms.FloatField(required=False, label='Alimentação (até R$ 650,00/mês')
 
-        layout = Layout(
-            Fieldset("Dimensão: Econômica"),
-
-            Fieldset("Incluindo você, quantas "
-                     "pessoas moram em sua casa?"),
-            Row('dependentes_RBD'),
-
-            Fieldset("Dessas pessoas, quantas possuem renda (seja por trabalho formal, informal, aposentadoria,etc.)?"),
-            Row('origem_renda'),
-
-            Fieldset("Qual é o valor Renda Bruta Domiciliar (considere a renda total dos membros do domicilio "
-                     "sem os descontos)?"),
-            Row('renda_bruta_domiciliar'),
-
-            Fieldset("Quem é o principal responsável pela manutenção do domicílio? Qual é o vinculo de parentesco?"),
-            Row('responsavel_domicilio'),
-
-            Fieldset("Renda per capita"),
-            Row(Span4('renda_per_capita')),
-
-            Fieldset("Dependência Financeira"), Row('relacao_financeira'),
-
-            Fieldset("Despesas e Gastos: Saúde"),
-            Row(Column('despesas_saude_tratamento',
-                       'despesas_saude_medicamento'),
-                Column('despesas_saude_cuidador',
-                       'despesas_saude_plano')),
-
-            Fieldset("Despesas e Gastos: Transporte e Moradia"),
-
-            Row(Column('despesas_transporte'),
-                Column('despesas_moradia')),
-
-            Fieldset("Despesas e Gastos: Educação"),
-            Row('despesas_educacao_superior'),
-            Row('despesas_educacao_basico'),
-            Row('despesas_educacao_cursinho'),
-            Row('despesas_educacao_capacitacao'),
-            Row('despesas_educacao_material'),
-
-            Fieldset("Despesas e Gastos: Bens e Domésticas"),
-            Row(Column('despesas_bens_fcarro',
-                       'despesas_bens_fmoto',
-                       'despesas_bens_terreno'),
-                Column('despesas_domesticas_eletrica',
-                       'despesas_domesticas_agua',
-                       'despesas_domesticas_alimentacao')),
-        )
-
-
-class QuestionarioSocialForm(forms.Form):
         # Dimensao Social
         CONDICAO_RESPONSAVEL_CASA_CHOICES = [
             (1, 'Servidor Público'),
@@ -289,46 +226,6 @@ class QuestionarioSocialForm(forms.Form):
                                             widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
                                             required=False, label=PSICO[2])
 
-        layout = Layout(
-            Fieldset("Dimensão: Social"),
-
-            Fieldset("Manutenção do lar"),
-            Row('condicao_responsavel_casa'),
-
-            Fieldset("Acesso ao Campus"),
-            Row('meio_acesso_campus'),
-
-            Fieldset("Moradia"),
-            Row(Span6('condicao_moradia'), Span6('local_moradia')),
-
-            Fieldset("Sobre sua casa"),
-            Row(Span4('total_pessoas_casa'), Span4('total_comodos_casa'),
-                Span4('total_km_casa_campus')),
-
-            Fieldset("Sobre sua formação anterior"),
-            Row('instituicao_anterior'),
-
-            Fieldset("Saúde Física"),
-            Row('saude_bebida_drogas'),
-            Row('saude_doenca_grave'),
-            Row('saude_doenca_cronica'),
-            Row('saude_medicamento_diario'),
-
-            Fieldset("Necessidades Específicas"),
-            Row('pne_parcial_visao_audicao'),
-            Row('pne_def_fisica'),
-            Row('pne_total_visao_audicao'),
-            Row('pne_def_mental_leve'),
-            Row('pne_def_mental_grave'),
-
-            Fieldset("Saúde Psíquica"),
-            Row('psico_dificuldade_concentrar'),
-            Row('psico_conflito_familiar'),
-            Row('psico_depressao'),
-        )
-
-
-class QuestionarioCulturalForm(forms.Form):
         ## Cultural
 
         COR_RACA_CHOICES = [
@@ -438,39 +335,6 @@ class QuestionarioCulturalForm(forms.Form):
                                                           widget=forms.RadioSelect(attrs={'display': 'inline-block'}),
                                                           required=False, label=PRECONCEITO[7])
 
-        layout = Layout(
-            Fieldset("Dimensão: Cultural"),
-
-            Row('cor_raca'),
-
-            Fieldset("Sofreu/sofre algum tipo de violência: "),
-            Row('violencia_verbal'),
-            Row('violencia_urbana'),
-            Row('violencia_patrimonial'),
-            Row('violencia_cyberbulling'),
-            Row('violencia_religiosa'),
-            Row('violencia_assedio_moral'),
-            Row('violencia_abandono'),
-            Row('violencia_abuso_familiar'),
-            Row('violencia_atentado_pudor'),
-            Row('violencia_trafico_humano'),
-            Row('violencia_psicologica_moral'),
-            Row('violencia_fisica'),
-            Row('violencia_sexual'),
-
-            Fieldset("Sofreu/sofre algum tipo de preconceito: "),
-            Row('preconceito_cultural'),
-            Row('preconceito_estetico'),
-            Row('preconceito_economico'),
-            Row('preconceito_religioso'),
-            Row('preconceito_mental'),
-            Row('preconceito_racial'),
-            Row('preconceito_genero'),
-            Row('preconceito_orientacao_sexual')
-        )
-
-
-class QuestionarioAmbientalForm(forms.Form):
         SERVICOS_INDISPONIVEIS_CHOICES = [
             (1, 'Táxi'),
             (2, 'Moto táxi'),
@@ -523,10 +387,134 @@ class QuestionarioAmbientalForm(forms.Form):
             (12, 'Transporte público'),
         ]
 
-        problemas_bairro = forms.ChoiceField(choices=PROBLEMAS_BAIRRO_CHOICES, widget=forms.CheckboxSelectMultiple,
+        problemas_bairro = forms.MultipleChoiceField(choices=PROBLEMAS_BAIRRO_CHOICES, widget=forms.CheckboxSelectMultiple,
                                              label='Qual(is) o maior(es) problemas do seu bairro?', required=False)
 
+        fale_mais_familia = forms.CharField(widget=forms.Textarea,
+                                            required=False, label='Fale mais sobre você e a sua família.')
+
+        title = 'Formulário Socioeconômico-Cultural'
+        objetivo = 'teste'
+
         layout = Layout(
+            Fieldset("Dados Pessoais"),
+            Row(Span4('nome'),Span4('email'),
+                 Span4('sexo')),
+            Row(Span4('cpf'), Span4('cidade'),
+                  Span4('bairro')),
+
+            Fieldset("Dimensão: Econômica"),
+
+            Fieldset("Incluindo você, quantas "
+                     "pessoas moram em sua casa?"),
+            Row('dependentes_RBD'),
+
+            Fieldset("Dessas pessoas, quantas possuem renda (seja por trabalho formal, informal, aposentadoria,etc.)?"),
+            Row('origem_renda'),
+
+            Fieldset("Qual é o valor Renda Bruta Domiciliar (considere a renda total dos membros do domicilio "
+                     "sem os descontos)?"),
+            Row('renda_bruta_domiciliar'),
+
+            Fieldset("Quem é o principal responsável pela manutenção do domicílio? Qual é o vinculo de parentesco?"),
+            Row('responsavel_domicilio'),
+
+            Fieldset("Renda per capita"),
+            Row(Span4('renda_per_capita')),
+
+            Fieldset("Dependência Financeira"), Row('relacao_financeira'),
+
+            Fieldset("Despesas e Gastos: Saúde"),
+            Row(Column('despesas_saude_tratamento',
+                       'despesas_saude_medicamento'),
+                Column('despesas_saude_cuidador',
+                       'despesas_saude_plano')),
+
+            Fieldset("Despesas e Gastos: Transporte e Moradia"),
+
+            Row(Column('despesas_transporte'),
+                Column('despesas_moradia')),
+
+            Fieldset("Despesas e Gastos: Educação"),
+            Row('despesas_educacao_superior'),
+            Row('despesas_educacao_basico'),
+            Row('despesas_educacao_cursinho'),
+            Row('despesas_educacao_capacitacao'),
+            Row('despesas_educacao_material'),
+
+            Fieldset("Despesas e Gastos: Bens e Domésticas"),
+            Row(Column('despesas_bens_fcarro',
+                       'despesas_bens_fmoto',
+                       'despesas_bens_terreno'),
+                Column('despesas_domesticas_eletrica',
+                       'despesas_domesticas_agua',
+                       'despesas_domesticas_alimentacao')),
+
+            Fieldset("Dimensão: Social"),
+
+            Fieldset("Manutenção do lar"),
+            Row('condicao_responsavel_casa'),
+
+            Fieldset("Acesso ao Campus"),
+            Row('meio_acesso_campus'),
+
+            Fieldset("Moradia"),
+            Row(Span6('condicao_moradia'), Span6('local_moradia')),
+
+            Fieldset("Sobre sua casa"),
+            Row(Span4('total_pessoas_casa'), Span4('total_comodos_casa'),
+                Span4('total_km_casa_campus')),
+
+            Fieldset("Sobre sua formação anterior"),
+            Row('instituicao_anterior'),
+
+            Fieldset("Saúde Física"),
+            Row('saude_bebida_drogas'),
+            Row('saude_doenca_grave'),
+            Row('saude_doenca_cronica'),
+            Row('saude_medicamento_diario'),
+
+            Fieldset("Necessidades Específicas"),
+            Row('pne_parcial_visao_audicao'),
+            Row('pne_def_fisica'),
+            Row('pne_total_visao_audicao'),
+            Row('pne_def_mental_leve'),
+            Row('pne_def_mental_grave'),
+
+            Fieldset("Saúde Psíquica"),
+            Row('psico_dificuldade_concentrar'),
+            Row('psico_conflito_familiar'),
+            Row('psico_depressao'),
+
+            Fieldset("Dimensão: Cultural"),
+
+            Row('cor_raca'),
+
+            Fieldset("Sofreu/sofre algum tipo de violência: "),
+            Row('violencia_verbal'),
+            Row('violencia_urbana'),
+            Row('violencia_patrimonial'),
+            Row('violencia_cyberbulling'),
+            Row('violencia_religiosa'),
+            Row('violencia_assedio_moral'),
+            Row('violencia_abandono'),
+            Row('violencia_abuso_familiar'),
+            Row('violencia_atentado_pudor'),
+            Row('violencia_trafico_humano'),
+            Row('violencia_psicologica_moral'),
+            Row('violencia_fisica'),
+            Row('violencia_sexual'),
+
+            Fieldset("Sofreu/sofre algum tipo de preconceito: "),
+            Row('preconceito_cultural'),
+            Row('preconceito_estetico'),
+            Row('preconceito_economico'),
+            Row('preconceito_religioso'),
+            Row('preconceito_mental'),
+            Row('preconceito_racial'),
+            Row('preconceito_genero'),
+            Row('preconceito_orientacao_sexual'),
+
             Fieldset("Dimensão: Cultural"),
 
             Fieldset("Sobre seu bairro"),
@@ -536,14 +524,7 @@ class QuestionarioAmbientalForm(forms.Form):
             Row('percepcao_seguranca_bairro'),
             Fieldset(" "),
             Row('problemas_bairro'),
-        )
 
-
-class QuestionarioFinalForm(forms.Form):
-        fale_mais_familia = forms.CharField(widget=forms.Textarea,
-                                            required=False, label='Fale mais sobre você e a sua família.')
-
-        layout = Layout(
             Fieldset("Comentários finais"),
             Row('fale_mais_familia')
         )
