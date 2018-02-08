@@ -2,17 +2,17 @@ from django.db import models
 
 
 class Questionario(models.Model):
-    nome = models.CharField(max_length=100)
-    cpf = models.CharField(max_length=11)
-    email = models.EmailField()
+    nome = models.CharField('nome', max_length=100)
+    cpf = models.CharField('CPF', max_length=11)
+    email = models.EmailField('e-mail')
     SEXO_CHOICES = (
         ('M', 'Masculino'),
         ('F', 'Feminino')
     )
-    sexo = models.CharField(null=True, max_length=1, choices=SEXO_CHOICES)
-    cidade = models.CharField(max_length=100)
-    bairro = models.CharField(null=True, max_length=100)
-    criado_em = models.DateTimeField(auto_now_add=True)
+    sexo = models.CharField('sexo', null=True, max_length=1, choices=SEXO_CHOICES)
+    cidade = models.CharField('cidade' ,max_length=100)
+    bairro = models.CharField('bairro', null=True, max_length=100)
+    criado_em = models.DateTimeField('criado em', auto_now_add=True)
 
     # Dimensão economica
     dependentes_RBD = models.IntegerField(null=True)
@@ -300,4 +300,13 @@ class Questionario(models.Model):
 
     problemas_bairro = models.CharField(null=True, choices=PROBLEMAS_BAIRRO_CHOICES, max_length=1)
 
-    fale_mais_familia = models.CharField(null=True, max_length=500)
+    fale_mais_familia = models.CharField('Fale mais sobre sua família',null=True, max_length=500)
+
+
+    class Meta:
+        verbose_name_plural = 'questionários'
+        verbose_name = 'questionário'
+        ordering = ('-criado_em', )
+
+    def __str__(self):
+        return self.nome

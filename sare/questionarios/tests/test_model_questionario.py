@@ -22,4 +22,7 @@ class QuestionarioModelTest(TestCase):
 
     def test_criado_em(self):
        """Questionario deve conter campo para registro de quando foi criado"""
-#        self.assertIsInstance(self.obj.criado_em, datetime)
+       self.assertIsInstance(self.obj.criado_em, datetime)
+
+    def test_str(self):
+        self.assertEqual('Samuel Barbosa', str(self.obj))

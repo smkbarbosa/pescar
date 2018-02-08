@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'material',
     'material.frontend',
     'sare.core',
-    'sare.questionarios',
+    'sare.questionarios.apps.QuestionariosConfig',
 ]
 
 MIDDLEWARE = [

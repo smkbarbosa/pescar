@@ -6,8 +6,6 @@ from django.template.loader import render_to_string
 
 from sare.questionarios.forms import QuestionarioForm
 
-
-# from sare.questionarios.models import Questionario
 from sare.questionarios.models import Questionario
 
 
@@ -17,10 +15,12 @@ def questionario(request):
     else:
         return new(request)
 
+
 def new(request):
 
     return render(request, 'questionarios/form_socioeconomico.html',
                   {'form': QuestionarioForm()})
+
 
 def create(request):
     # Recebe os dados do formulário

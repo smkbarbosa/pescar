@@ -1,0 +1,7 @@
+{
+  "sare/questionarios/tests/test_form_questionario.py::QuestionarioAmbientalTest::test_form_has_fields": true,
+  "sare/questionarios/tests/test_form_questionario.py::QuestionarioCulturalTest::test_form_has_fields": true,
+  "sare/questionarios/tests/test_form_questionario.py::QuestionarioEconomicoTest::test_form_has_fields": true,
+  "sare/questionarios/tests/test_form_questionario.py::QuestionarioFinalTest::test_form_has_fields": true,
+  "sare/questionarios/tests/test_form_questionario.py::QuestionarioSocialTest::test_form_has_fields": true
+}
