@@ -1,19 +1,18 @@
-<h1>SISTEMA DE ACOMPANHAMENTO DA REALIDADE DO ESTUDANTE - SARE</h1>
+SISTEMA DE ACOMPANHAMENTO DA REALIDADE DO ESTUDANTE - SARE
 
-<p>Confirmamos o recebimento questionário socioeconômico de:</p>
+Confirmamos o recebimento questionário socioeconômico de:
 
-<ul>
-<li>Nome: {{ quest.nome }} </li>
-<li>CPF: {{ quest.cpf }} </li>
-<li>e-mail: {{ quest.email }} </li>
-<li>Cidade: {{ quest.cidade }} </li>
-</ul>
 
-<p>Para visualizar o comprovante no site, utilize o código <strong> {{ quest.id }}</strong></p>
+Nome: {{ quest.nome }}
+CPF: {{ quest.cpf }}
+e-mail: {{ quest.email }}
+Cidade: {{ quest.cidade }}
 
-<p>Atenciosamente,</p>
 
-<p>
+Para visualizar o comprovante no site, utilize o código {{ quest.id }}
+
+Atenciosamente,
+
+
 ------
 Equipe Pescar
-</p
