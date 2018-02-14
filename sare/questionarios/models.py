@@ -1,10 +1,12 @@
+import uuid
+
 from django.db import models
 from shortuuidfield import ShortUUIDField
 
 
-
 class Questionario(models.Model):
-    id = ShortUUIDField(max_length=8, editable=False, primary_key=True)
+    # id = ShortUUIDField(max_length=8, editable=False, primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nome = models.CharField('nome', max_length=100)
     cpf = models.CharField('CPF', max_length=11)
     email = models.EmailField('e-mail')
