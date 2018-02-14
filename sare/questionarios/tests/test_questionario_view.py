@@ -1,5 +1,6 @@
 from django.core import mail
 from django.test import TestCase
+from django.shortcuts import resolve_url as r
 
 from sare.questionarios.forms import QuestionarioForm
 from sare.questionarios.models import Questionario
@@ -53,12 +54,13 @@ class QuestionarioPostValid(TestCase):
                 'instituicao_anterior':'6'
         }
 
-        self.resp = self.client.post('/questionario/', data)
+        self.resp = self.client.post(r('questionario'), data)
+        self.id = Questionario.objects.first().id  # agregado
         self.email = mail.outbox[0]
 
     def test_post(self):
         """POST valid deve redirecionar to /questionario/1/"""
-        self.assertRedirects(self.resp, '/questionario/1/')
+        self.assertRedirects(self.resp, r('detalhes', self.id))
 
     def test_envia_email_questionario(self):
         self.assertEqual(1, len(mail.outbox))
@@ -71,7 +73,7 @@ class QuestionarioPostValid(TestCase):
 
 class QuestionarioPostInvalid(TestCase):
     def setUp(self):
-        self.resp = self.client.post('/questionario/', {}) # data é um dicionário vazio
+        self.resp = self.client.post(r('questionario'), {})  # data é um dicionário vazio
 
     def test_post(self):
         """Post Invalid não deve redirecionar"""

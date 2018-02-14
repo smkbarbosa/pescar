@@ -28,15 +28,8 @@ def detalhe(request, pk):
     except Questionario.DoesNotExist:
         raise Http404
 
-    # questionario = Questionario(
-    #     nome='Samuel Barbosa',
-    #     email='samuka1@gmail.com',
-    #     cpf='12345678901',
-    #     cidade='Palmas',
-    # )
     return render(request, 'questionarios/detalhes.html',
                   {'quest':questionario})
-
 
 
 def create(request):

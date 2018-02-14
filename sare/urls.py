@@ -22,7 +22,7 @@ from sare.questionarios.views import questionario, detalhe
 
 urlpatterns = [
     url(r'^$', home, name='home'),
-    url(r'^questionario/$', questionario),
-    url(r'^questionario/(\d+)/$', detalhe),
+    url(r'^questionario/$', questionario, name='questionario'),
+    url(r'^questionario/([\w-]+)/$', detalhe, name='detalhes'),
     url(r'^admin/', admin.site.urls),
 ]

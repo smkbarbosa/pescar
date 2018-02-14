@@ -1,6 +1,8 @@
 from django.test import TestCase
+from django.shortcuts import resolve_url as r
 
 from sare.questionarios.models import Questionario
+
 
 
 class QuestionarioDetalhe(TestCase):
