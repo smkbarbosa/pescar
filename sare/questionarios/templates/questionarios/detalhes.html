@@ -1,0 +1,41 @@
+{% extends "base_form.html" %}
+{% load i18n material_form %}
+
+{% block extrahead %}
+{{ wizard.form.media }}
+{% endblock %}
+
+{% block content %}
+<div class="row valign">
+    <div class="{% block formclass %}col s12 m8 offset-m2 l8 offset-l2{% endblock %}">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title grey-text text-darken-2">SISTEMA DE ACOMPANHAMENTO DA REALIDADE DO ESTUDANTE - SARE</span>
+                <div class="row">
+                    <div class="col s12">
+
+                        <p>Comprovante de preenchimento de questionário sócioeconômico-cultural</p>
+                        <p>Campus: <b>Palmas</b>                        </p>
+
+                        <ul>
+                            <li>Nome: {{ quest.nome }}</li>
+                            <li>CPF: {{ quest.cpf }}</li>
+                            <li>E-mail: {{ quest.email }}</li>
+                            <li>Cidade: {{ quest.cidade }}</li>
+
+                        </ul>
+                        <p>Você deve imprimir este comprovante e anexar junto aos documentos solicitados no edital xx/2018.</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-action right-align">
+                <a class="btn white-text" href="/questionario/">
+                    {% trans "Novo questionário" %}
+                    <i class="mdi-av-repeat left"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

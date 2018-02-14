@@ -17,18 +17,12 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from sare.core.views import home
-from sare.questionarios.views import questionario
+from sare.questionarios.views import questionario, detalhe
 
 
 urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'^questionario/$', questionario),
-    # url(r'^questionario/$', QuestionarioWizard.as_view([QuestionarioPessoalForm,
-    #                                                     QuestionarioEconomicoForm,
-    #                                                     QuestionarioSocialForm,
-    #                                                     QuestionarioCulturalForm,
-    #                                                     QuestionarioAmbientalForm,
-    #                                                     QuestionarioFinalForm
-    #                                                     ])),
+    url(r'^questionario/(\d+)/$', detalhe),
     url(r'^admin/', admin.site.urls),
 ]

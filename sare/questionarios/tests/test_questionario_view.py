@@ -57,8 +57,8 @@ class QuestionarioPostValid(TestCase):
         self.email = mail.outbox[0]
 
     def test_post(self):
-        """POST valid deve redirecionar to /questionario/"""
-        self.assertEqual(302, self.resp.status_code)
+        """POST valid deve redirecionar to /questionario/1/"""
+        self.assertRedirects(self.resp, '/questionario/1/')
 
     def test_envia_email_questionario(self):
         self.assertEqual(1, len(mail.outbox))
@@ -92,23 +92,4 @@ class QuestionarioPostInvalid(TestCase):
         self.assertTrue(form.errors)
 
     def test_nao_salva_questionario(self):
-       self.assertFalse(Questionario.objects.exists())
-
-
-class QuestionarioSucessMessage(TestCase):
-    def test_message(self):
-        data = dict(nome='Samuel Barbosa', cpf='12345678901',
-                    email='samuka1@gmail.com',
-                    cidade='Palmas',
-                    condicao_responsavel_casa=1,
-                    meio_acesso_campus=1,
-                    condicao_moradia=5,
-                    local_moradia=1,
-                    total_pessoas_casa=2,
-                    total_comodos_casa=3,
-                    total_km_casa_campus=2,
-                    instituicao_anterior=6
-                    )
-
-        response = self.client.post('/questionario/', data, follow=True)
-        self.assertContains(response, 'Questionário respondido com sucesso!')
+        self.assertFalse(Questionario.objects.exists())

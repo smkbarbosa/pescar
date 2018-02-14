@@ -2,10 +2,10 @@ SISTEMA DE ACOMPANHAMENTO DA REALIDADE DO ESTUDANTE - SARE
 
 Confirmamos o recebimento questionário socioeconômico de:
 
-Nome: {{ nome }}
-CPF: {{ cpf }}
-e-mail: {{ email }}
-Cidade: {{ cidade }}
+Nome: {{ quest.nome }}
+CPF: {{ quest.cpf }}
+e-mail: {{ quest.email }}
+Cidade: {{ quest.cidade }}
 
 Para visualizar suas respostas no questionário, clique aqui!
 
