@@ -6,7 +6,7 @@ from sare.questionarios.forms import QuestionarioForm
 from sare.questionarios.models import Questionario
 
 
-class QuestionarioGet(TestCase):
+class QuestionarioNovoGet(TestCase):
     def setUp(self):
         self.resp = self.client.get(r('questionarios:new'))
 
@@ -38,7 +38,7 @@ class QuestionarioGet(TestCase):
         self.assertIsInstance(form, QuestionarioForm)
 
 
-class QuestionarioPostValid(TestCase):
+class QuestionarioNovoPost(TestCase):
     def setUp(self):
         data = {'nome':'Samuel Barbosa',
                 'cpf':'12345678901',
@@ -60,7 +60,7 @@ class QuestionarioPostValid(TestCase):
 
     def test_post(self):
         """POST valid deve redirecionar to /questionario/1/"""
-        self.assertRedirects(self.resp, r('questionarios:detalhe', '11111111-1111-1111-1111-111111111111'))
+        self.assertRedirects(self.resp, r('questionarios:detalhe', self.id))
 
     def test_envia_email_questionario(self):
         self.assertEqual(1, len(mail.outbox))
@@ -71,7 +71,7 @@ class QuestionarioPostValid(TestCase):
         self.assertTrue(Questionario.objects.exists())
 
 
-class QuestionarioPostInvalid(TestCase):
+class QuestionarioNovoPostInvalid(TestCase):
     def setUp(self):
         self.resp = self.client.post(r('questionarios:new'), {})  # data é um dicionário vazio
 

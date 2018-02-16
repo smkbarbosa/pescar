@@ -1,5 +1,6 @@
 from django.core import mail
 from django.test import TestCase
+from django.shortcuts import resolve_url as r
 
 
 class Questionario_Post_Valid(TestCase):
@@ -16,7 +17,7 @@ class Questionario_Post_Valid(TestCase):
                     total_km_casa_campus=2,
                     instituicao_anterior=6
                     )
-        self.client.post('/questionario/', data)
+        self.client.post(r('questionarios:new'), data)
         self.email = mail.outbox[0]
 
     # @skipIf(IndexError, 'Descobrir o motivo depois')

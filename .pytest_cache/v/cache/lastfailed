@@ -3,5 +3,7 @@
   "sare/questionarios/tests/test_form_questionario.py::QuestionarioCulturalTest::test_form_has_fields": true,
   "sare/questionarios/tests/test_form_questionario.py::QuestionarioEconomicoTest::test_form_has_fields": true,
   "sare/questionarios/tests/test_form_questionario.py::QuestionarioFinalTest::test_form_has_fields": true,
-  "sare/questionarios/tests/test_form_questionario.py::QuestionarioSocialTest::test_form_has_fields": true
+  "sare/questionarios/tests/test_form_questionario.py::QuestionarioSocialTest::test_form_has_fields": true,
+  "sare/questionarios/tests/test_questionario_view.py::QuestionarioGet::test_template": true,
+  "sare/questionarios/tests/test_questionario_view.py::QuestionarioPostValid::test_post": true
 }

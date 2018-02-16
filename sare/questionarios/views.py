@@ -1,22 +1,19 @@
-from django.contrib import messages
 from django.core import mail
 from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render
+from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string
 
 from sare.questionarios.forms import QuestionarioForm
-
 from sare.questionarios.models import Questionario
 
 
-def questionario(request):
+def new(request):
     if request.method == 'POST':
         return create(request)
-    else:
-        return new(request)
+    return empty_form(request)
 
 
-def new(request):
+def empty_form(request):
 
     return render(request, 'questionarios/form_socioeconomico.html',
                   {'form': QuestionarioForm()})
@@ -49,7 +46,7 @@ def create(request):
                'questionarios/questionario_email.txt',
                {'quest': quest})
 
-    return HttpResponseRedirect('/questionario/{}/'.format(quest.pk))
+    return HttpResponseRedirect(r('questionarios:detalhe', quest.pk))
 
 
 def _send_mail(subject, from_, to, template_name, context):
