@@ -33,6 +33,9 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'material.theme.red',
+    'material',
+    # 'material.frontend',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,8 +45,6 @@ INSTALLED_APPS = [
     'formtools',
     'test_without_migrations',
     'django_extensions',
-    'material',
-    'material.frontend',
     'sare.core',
     'sare.questionarios.apps.QuestionariosConfig',
 ]
@@ -130,6 +131,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+
 
 # Configura Email
 EMAIL_BACKEND = config('EMAIL_BACKEND')

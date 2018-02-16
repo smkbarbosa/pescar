@@ -8,11 +8,9 @@ from sare.questionarios.forms import QuestionarioForm
 
 class QuestionarioPessoalTest(TestCase):
 
-    def setUp(self):
-        self.form = QuestionarioForm()
-
     def test_form_has_fields(self):
         """Form deve conter campos """
+        form = QuestionarioForm()
         expected = ['nome', 'cpf', 'email',
                     'bairro',
                     'cidade',
@@ -48,4 +46,37 @@ class QuestionarioPessoalTest(TestCase):
                     'forma_descarte_lixo', 'percepcao_seguranca_bairro',
                     'problemas_bairro', 'fale_mais_familia'
                     ]
-        self.assertSequenceEqual(expected, list(self.form.fields))
+        self.assertSequenceEqual(expected, list(form.fields))
+
+    def test_cpf_is_digit(self):
+        """CPF deve ter apenas digitos"""
+        form = self.make_validated_form(cpf='ABCD5678901')
+        self.assertFormErrorCode(form, 'cpf', 'digits')
+
+    def test_cpf_tem_11_digitos(self):
+        """CPF Deve ter 11 digitos"""
+        form = self.make_validated_form(cpf='1234')
+        self.assertFormErrorCode(form, 'cpf', 'length')
+
+    def assertFormErrorCode(self, form, field, code):
+        errors = form.errors.as_data()
+        errors_list = errors[field]
+
+        exception = errors_list[0]
+
+        self.assertEqual(code, exception.code)
+
+    # def assertFormErrorMessage(self, form, field, msg):
+    #     errors = form.errors
+    #     errors_list = errors['cpf']
+    #     self.assertListEqual([msg], errors_list)
+
+    def make_validated_form(self, **kwargs):
+        valid = dict(nome="samuel barbosa", email="samuka1@gmail.com",
+                    cidade='Palmas', cpf="12345678901")
+
+        data = dict(valid, **kwargs)
+
+        form = QuestionarioForm(data)
+        form.is_valid()
+        return form

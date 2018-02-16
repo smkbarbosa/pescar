@@ -1,8 +1,17 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from material import *
 
 
-## Choices Global
+def validate_cpf(value):
+    if not value.isdigit():
+        raise ValidationError('CPF deve conter apenas números.', 'digits')
+
+    if len(value) != 11:
+        raise ValidationError('CPF deve ter 11 números.', 'length')
+
+
+# Choices Global
 VOCE_FAMILIA_CHOICES = [
     (1, 'Você'),
     (2, 'Família'),
@@ -10,11 +19,12 @@ VOCE_FAMILIA_CHOICES = [
     (0, 'Não se aplica')
 ]
 
+
 class QuestionarioForm(forms.Form):
 
         # Dados Pessoais
         nome = forms.CharField(label='Nome')
-        cpf = forms.CharField(label='CPF')
+        cpf = forms.CharField(label='CPF', validators=[validate_cpf])
         email = forms.EmailField(label='E-mail')
         bairro = forms.CharField(label='Bairro', required=False)
         cidade = forms.CharField(label='Cidade')
