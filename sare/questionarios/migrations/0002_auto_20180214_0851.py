@@ -49,11 +49,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='questionario',
-            name='id',
-            field=shortuuidfield.fields.ShortUUIDField(blank=True, editable=False, max_length=22, primary_key=True, serialize=False),
-        ),
-        migrations.AlterField(
-            model_name='questionario',
             name='nome',
             field=models.CharField(max_length=100, verbose_name='nome'),
         ),
