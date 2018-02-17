@@ -1,7 +1,6 @@
 import uuid
 
 from django.db import models
-from shortuuidfield import ShortUUIDField
 
 
 class Questionario(models.Model):
@@ -105,7 +104,7 @@ class Questionario(models.Model):
         ('9', 'Com terceiros (com contribuição)'),
         ('10', 'Ocupação')
     ]
-    condicao_moradia = models.CharField(null=True, choices=CONDICAO_MORADIA_CHOICES, max_length=1)
+    condicao_moradia = models.CharField(null=True, choices=CONDICAO_MORADIA_CHOICES, max_length=2)
 
     LOCAL_MORADIA_CHOICES = [
         ('1', 'Zona Urbana'),
@@ -302,7 +301,7 @@ class Questionario(models.Model):
         ('12', 'Transporte público'),
     ]
 
-    problemas_bairro = models.CharField(null=True, choices=PROBLEMAS_BAIRRO_CHOICES, max_length=1)
+    problemas_bairro = models.CharField(null=True, choices=PROBLEMAS_BAIRRO_CHOICES, max_length=2)
 
     fale_mais_familia = models.CharField('Fale mais sobre sua família',null=True, max_length=500)
 

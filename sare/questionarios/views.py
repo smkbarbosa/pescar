@@ -26,7 +26,7 @@ def detalhe(request, hashid):
         raise Http404
 
     return render(request, 'questionarios/detalhes.html',
-                  {'quest':questionario})
+                  {'quest': questionario})
 
 
 def create(request):
