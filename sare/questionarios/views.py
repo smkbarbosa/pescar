@@ -19,9 +19,9 @@ def empty_form(request):
                   {'form': QuestionarioForm()})
 
 
-def detalhe(request, pk):
+def detalhe(request, hashid):
     try:
-        questionario = Questionario.objects.get(pk=pk)
+        questionario = Questionario.objects.get(hashId=hashid)
     except Questionario.DoesNotExist:
         raise Http404
 
@@ -46,7 +46,7 @@ def create(request):
                'questionarios/questionario_email.txt',
                {'quest': quest})
 
-    return HttpResponseRedirect(r('questionarios:detalhe', quest.pk))
+    return HttpResponseRedirect(r('questionarios:detalhe', quest.hashId))
 
 
 def _send_mail(subject, from_, to, template_name, context):

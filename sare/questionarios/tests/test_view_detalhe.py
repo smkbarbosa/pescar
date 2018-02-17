@@ -12,7 +12,7 @@ class QuestionarioDetalhe(TestCase):
             email='samuka1@gmail.com',
             cidade='Palmas'
         )
-        self.resp = self.client.get(r('questionarios:detalhe', self.obj.pk))
+        self.resp = self.client.get(r('questionarios:detalhe', self.obj.hashId))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)

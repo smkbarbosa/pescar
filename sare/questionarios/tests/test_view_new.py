@@ -55,7 +55,7 @@ class QuestionarioNovoPost(TestCase):
         }
 
         self.resp = self.client.post(r('questionarios:new'), data)
-        self.id = Questionario.objects.first().id  # agregado
+        self.id = Questionario.objects.first().hashId  # agregado
         self.email = mail.outbox[0]
 
     def test_post(self):
