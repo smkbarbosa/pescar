@@ -40,18 +40,19 @@ class QuestionarioNovoGet(TestCase):
 
 class QuestionarioNovoPost(TestCase):
     def setUp(self):
-        data = {'nome':'Samuel Barbosa',
-                'cpf':'12345678901',
-                'email':'samuka1@gmail.com',
-                'cidade':'Palmas',
-                'condicao_responsavel_casa':'1',
-                'meio_acesso_campus':'1',
-                'condicao_moradia':'5',
-                'local_moradia':'1',
-                'total_pessoas_casa':'2',
-                'total_comodos_casa':'3',
-                'total_km_casa_campus':'2',
-                'instituicao_anterior':'6'
+        data = {'nome': 'Samuel Barbosa',
+                'cpf': '12345678901',
+                'email': 'samuka1@gmail.com',
+                'cidade': 'Palmas',
+                'sexo': 'M',
+                'condicao_responsavel_casa': '1',
+                'meio_acesso_campus': '1',
+                'condicao_moradia': '5',
+                'local_moradia': '1',
+                'total_pessoas_casa': '2',
+                'total_comodos_casa': '3',
+                'total_km_casa_campus': '2',
+                'instituicao_anterior': '6'
         }
 
         self.resp = self.client.post(r('questionarios:new'), data)

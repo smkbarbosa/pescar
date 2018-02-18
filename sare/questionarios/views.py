@@ -38,7 +38,7 @@ def create(request):
                                 'material/includes/material_js.html', 'material/form.html'],
                       {'form': form})
 
-    quest = Questionario.objects.create(**form.cleaned_data)
+    quest = form.save()
 
     _send_mail('Questionário Socioeconômico preenchido com sucesso',
                'pescar.gt.ss@gmail.com',

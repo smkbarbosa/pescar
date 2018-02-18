@@ -8,6 +8,7 @@ class Questionario_Post_Valid(TestCase):
         data = dict(nome='Samuel Barbosa', cpf='12345678901',
                     email='samuka1@gmail.com',
                     cidade='Palmas',
+                    sexo='M',
                     condicao_responsavel_casa=1,
                     meio_acesso_campus=1,
                     condicao_moradia=5,

@@ -2,26 +2,39 @@ import uuid
 
 from django.db import models
 
+from sare.questionarios.validators import validate_cpf
+
+SEXO_CHOICES = (
+    ('M', 'Masculino'),
+    ('F', 'Feminino')
+)
+
+DEPENDENCIA_FINANCEIRA_CHOICE = (
+    (1, 'É independente financeiramente'),
+    (2, 'É independente financeiramente e responsável por parte das despesas domésticas'),
+    (3, 'É independente totalmente e responsável por todas as despesas domésticas'),
+    (4, 'Dependente inteiramente da renda dos pais ou companheiro(s)'),
+    (5, 'Dependente inteiramente da renda de outros parentes')
+)
+
 
 class Questionario(models.Model):
     hashId = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
     nome = models.CharField('nome', max_length=100)
-    cpf = models.CharField('CPF', max_length=11)
+    cpf = models.CharField('CPF', max_length=11, validators=[validate_cpf])
     email = models.EmailField('e-mail')
-    SEXO_CHOICES = (
-        ('M', 'Masculino'),
-        ('F', 'Feminino')
-    )
-    sexo = models.CharField('sexo', null=True, max_length=1, choices=SEXO_CHOICES)
-    cidade = models.CharField('cidade' ,max_length=100)
-    bairro = models.CharField('bairro', null=True, max_length=100)
+
+    bairro = models.CharField('bairro', blank=True, max_length=100)
+    cidade = models.CharField('cidade', max_length=100)
+    sexo = models.CharField('sexo', max_length=1, choices=SEXO_CHOICES)
+
     criado_em = models.DateTimeField('criado em', auto_now_add=True)
 
     # Dimensão economica
-    dependentes_RBD = models.IntegerField(null=True)
-    origem_renda = models.IntegerField(null=True)
-    renda_bruta_domiciliar = models.FloatField(null=True)
-    responsavel_domicilio = models.CharField(null=True, max_length=100)
+    dependentes_RBD = models.IntegerField('Dependentes da Renda Bruta Domiciliar', blank=True)
+    origem_renda = models.IntegerField('Quantidade de pessoas que possuem renda',blank=True)
+    renda_bruta_domiciliar = models.FloatField(blank=True)
+    responsavel_domicilio = models.CharField(blank=True, max_length=100)
 
     # Finanças
     RENDA_PER_CAPITA_CHOICE = [
@@ -31,43 +44,35 @@ class Questionario(models.Model):
         (4, '234,25 até 468,49'),
         (5, 'de 0 até 234, 24')
     ]
-    renda_per_capita = models.CharField(null=True, choices=RENDA_PER_CAPITA_CHOICE, max_length=1)
+    renda_per_capita = models.CharField('Faixa de renda', blank=True, max_length=1, choices=RENDA_PER_CAPITA_CHOICE)
 
-    DEPENDENCIA_FINANCEIRA_CHOICE = [
-        (1, 'É independente financeiramente'),
-        (2, 'É independente financeiramente e responsável por parte das despesas domésticas'),
-        (3, 'É independente totalmente e responsável por todas as despesas domésticas'),
-        (4, 'Dependente inteiramente da renda dos pais ou companheiro(s)'),
-        (5, 'Dependente inteiramente da renda de outros parentes')
-    ]
-    relacao_financeira = models.CharField(null=True, choices=DEPENDENCIA_FINANCEIRA_CHOICE,
-                                          max_length=1
-                                          )
+    relacao_financeira = models.CharField(choices=DEPENDENCIA_FINANCEIRA_CHOICE,
+                                          max_length=1, blank=True)
 
     # Despesas
 
-    despesas_saude_tratamento = models.FloatField(null=True, )
-    despesas_saude_medicamento = models.FloatField(null=True, )
-    despesas_saude_cuidador = models.FloatField(null=True, )
-    despesas_saude_plano = models.FloatField(null=True, )
+    despesas_saude_tratamento = models.FloatField('Tratamento de Saúde',blank=True, )
+    despesas_saude_medicamento = models.FloatField('Medicamentos', blank=True, )
+    despesas_saude_cuidador = models.FloatField('Cuidador de idoso/criança', blank=True, )
+    despesas_saude_plano = models.FloatField('Plano de saúde', blank=True, )
 
-    despesas_transporte = models.FloatField(null=True, )
+    despesas_transporte = models.FloatField('Transporte', blank=True, )
 
-    despesas_moradia = models.FloatField(null=True, )
+    despesas_moradia = models.FloatField('Moradia', blank=True, )
 
-    despesas_educacao_superior = models.FloatField(null=True, )
-    despesas_educacao_basico = models.FloatField(null=True, )
-    despesas_educacao_cursinho = models.FloatField(null=True, )
-    despesas_educacao_capacitacao = models.FloatField(null=True, )
-    despesas_educacao_material = models.FloatField(null=True, )
+    despesas_educacao_superior = models.FloatField('Graduação', blank=True, )
+    despesas_educacao_basico = models.FloatField('Ensino Fundamental', blank=True, )
+    despesas_educacao_cursinho = models.FloatField('Cursinhos', blank=True, )
+    despesas_educacao_capacitacao = models.FloatField('Cursos de Capacitação', blank=True, )
+    despesas_educacao_material = models.FloatField('Material escolar', blank=True, )
 
-    despesas_bens_fcarro = models.FloatField(null=True, )
-    despesas_bens_fmoto = models.FloatField(null=True, )
-    despesas_bens_terreno = models.FloatField(null=True, )
+    despesas_bens_fcarro = models.FloatField('Parcela Carro', blank=True, )
+    despesas_bens_fmoto = models.FloatField('Parcela Moto', blank=True, )
+    despesas_bens_terreno = models.FloatField('Parcela Terreno', blank=True, )
 
-    despesas_domesticas_eletrica = models.FloatField(null=True, )
-    despesas_domesticas_agua = models.FloatField(null=True, )
-    despesas_domesticas_alimentacao = models.FloatField(null=True, )
+    despesas_domesticas_eletrica = models.FloatField('Energia elétrica', blank=True, )
+    despesas_domesticas_agua = models.FloatField('Água e esgoto', blank=True, )
+    despesas_domesticas_alimentacao = models.FloatField('Alimentação', blank=True, )
 
     # Dimensao Social
     CONDICAO_RESPONSAVEL_CASA_CHOICES = [
@@ -77,7 +82,7 @@ class Questionario(models.Model):
         ('4', 'Trabalhador informal (s/ contrib)'),
         ('5', 'Desempregado')
     ]
-    condicao_responsavel_casa = models.CharField(null=True, choices=CONDICAO_RESPONSAVEL_CASA_CHOICES, max_length=1)
+    condicao_responsavel_casa = models.CharField(blank=True, choices=CONDICAO_RESPONSAVEL_CASA_CHOICES, max_length=1)
 
     MEIO_ACESSO_CAMPUS_CHOICES = [
         ('1', 'Próprio (carro)'),
@@ -90,7 +95,7 @@ class Questionario(models.Model):
         ('8', 'Coletivo público (paga passagem)'),
         ('9', 'Alternativo (van, etc)')
     ]
-    meio_acesso_campus = models.CharField(null=True, choices=MEIO_ACESSO_CAMPUS_CHOICES, max_length=1)
+    meio_acesso_campus = models.CharField(blank=True, choices=MEIO_ACESSO_CAMPUS_CHOICES, max_length=1)
 
     CONDICAO_MORADIA_CHOICES = [
         ('1', 'Herança'),
@@ -104,7 +109,7 @@ class Questionario(models.Model):
         ('9', 'Com terceiros (com contribuição)'),
         ('10', 'Ocupação')
     ]
-    condicao_moradia = models.CharField(null=True, choices=CONDICAO_MORADIA_CHOICES, max_length=2)
+    condicao_moradia = models.CharField(blank=True, choices=CONDICAO_MORADIA_CHOICES, max_length=2)
 
     LOCAL_MORADIA_CHOICES = [
         ('1', 'Zona Urbana'),
@@ -112,7 +117,7 @@ class Questionario(models.Model):
         ('3', 'Zona Rural (indígena, quilombola, assentamento)'),
         ('4', 'Área de risco (inundação, deslizamento, ocupação, etc)')
     ]
-    local_moradia = models.CharField(null=True, choices=LOCAL_MORADIA_CHOICES, max_length=1)
+    local_moradia = models.CharField(blank=True, choices=LOCAL_MORADIA_CHOICES, max_length=1)
 
     TOTAL_PESSOAS_CHOICES = [
         ('1', 'De 1 a 2 pessoas'),
@@ -120,7 +125,7 @@ class Questionario(models.Model):
         ('3', 'De 6 a 8 pessoas'),
         ('4', 'Acima de 9 pessoas')
     ]
-    total_pessoas_casa = models.CharField(null=True, choices=TOTAL_PESSOAS_CHOICES, max_length=1)
+    total_pessoas_casa = models.CharField(blank=True, choices=TOTAL_PESSOAS_CHOICES, max_length=1)
 
     TOTAL_COMODOS_CHOICES = [
         ('1', 'Acima de 9 cômodos'),
@@ -128,7 +133,7 @@ class Questionario(models.Model):
         ('3', 'De 3 a 5 cômodos'),
         ('4', 'De 1 a 2 cômodos')
     ]
-    total_comodos_casa = models.CharField(null=True, choices=TOTAL_COMODOS_CHOICES, max_length=1)
+    total_comodos_casa = models.CharField(blank=True, choices=TOTAL_COMODOS_CHOICES, max_length=1)
 
     TOTAL_KM_CHOICES = [
         ('1', '5 km (até)'),
@@ -136,7 +141,7 @@ class Questionario(models.Model):
         ('3', '11 a 25 km'),
         ('4', '26 km (acima de)')
     ]
-    total_km_casa_campus = models.CharField(null=True, choices=TOTAL_KM_CHOICES, max_length=1)
+    total_km_casa_campus = models.CharField(blank=True, choices=TOTAL_KM_CHOICES, max_length=1)
 
     INSTITUICAO_ANTERIOR_CHOICES = [
         ('1', 'Particular'),
@@ -147,7 +152,7 @@ class Questionario(models.Model):
         ('6', 'Pública')
     ]
 
-    instituicao_anterior = models.CharField(null=True, choices=INSTITUICAO_ANTERIOR_CHOICES, max_length=1)
+    instituicao_anterior = models.CharField(blank=True, choices=INSTITUICAO_ANTERIOR_CHOICES, max_length=1)
 
     VOCE_FAMILIA_CHOICES = [
         ('1', 'Você'),
@@ -156,17 +161,18 @@ class Questionario(models.Model):
         ('0', 'Não se aplica')
     ]
 
-    SAUDE = ['Faz uso, abuso de bebida alcóolica e/ou drogas?', 'Possui doença grave', 'Possui doença crônica?',
+    S = ['Faz uso, abuso de bebida alcóolica e/ou drogas?', 'Possui doença grave', 'Possui doença crônica?',
              'Faz uso de medicamento diário, de impacto na renda familiar'
              ]
 
-    saude_bebida_drogas = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    saude_bebida_drogas = models.CharField(S[0], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
 
-    saude_doenca_grave = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    saude_doenca_grave = models.CharField(S[1], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
 
-    saude_doenca_cronica = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    saude_doenca_cronica = models.CharField(S[2], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
 
-    saude_medicamento_diario = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    saude_medicamento_diario = models.CharField(S[3], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+
     PNE = [
         'Tem deficiência parcial de visão/audição?',
         'Possui deficiência física?',
@@ -175,21 +181,21 @@ class Questionario(models.Model):
         'Tem deficiência mental grave?',
     ]
 
-    PSICO = [
+    PSI = [
         'Sente dificuldade em se concentrar?',
         'Vivencia algum problema/conflito familiar',
         'Sofre de depressão?',
     ]
 
-    pne_parcial_visao_audicao = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    pne_def_fisica = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    pne_total_visao_audicao = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    pne_def_mental_leve = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    pne_def_mental_grave = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    pne_parcial_visao_audicao = models.CharField(PNE[0],blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    pne_def_fisica = models.CharField(PNE[1], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    pne_total_visao_audicao = models.CharField(PNE[2], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    pne_def_mental_leve = models.CharField(PNE[3], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    pne_def_mental_grave = models.CharField(PNE[4], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
 
-    psico_dificuldade_concentrar = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    psico_conflito_familiar = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    psico_depressao = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    psico_dificuldade_concentrar = models.CharField(PSI[0], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    psico_conflito_familiar = models.CharField(PSI[1], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    psico_depressao = models.CharField(PSI[2], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
 
     ## Cultural
 
@@ -204,9 +210,9 @@ class Questionario(models.Model):
         ('8', 'Estrangeiro refugiado')
     ]
 
-    cor_raca = models.CharField(null=True, choices=COR_RACA_CHOICES, max_length=1)
+    cor_raca = models.CharField('Como você considera sua cor/raça?', blank=True, choices=COR_RACA_CHOICES, max_length=1)
 
-    VIOLENCIA = [
+    V = [
         'Verbal(xingamentos, desacatos, etc.)',
         'Violência urbana(assalto, transito, etc)',
         'Patrimonial/financeira',
@@ -222,21 +228,21 @@ class Questionario(models.Model):
         'Sexual'
     ]
 
-    violencia_verbal = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_urbana = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_patrimonial = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_cyberbulling = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_religiosa = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_assedio_moral = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_abandono = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_abuso_familiar = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_atentado_pudor = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_trafico_humano = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_psicologica_moral = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_fisica = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_sexual = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_verbal = models.CharField(V[0], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_urbana = models.CharField(V[1], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_patrimonial = models.CharField(V[2], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_cyberbulling = models.CharField(V[3], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_religiosa = models.CharField(V[4], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_assedio_moral = models.CharField(V[5], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_abandono = models.CharField(V[6], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_abuso_familiar = models.CharField(V[7], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_atentado_pudor = models.CharField(V[8], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_trafico_humano = models.CharField(V[9], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_psicologica_moral = models.CharField(V[10], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_fisica = models.CharField(V[11], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_sexual = models.CharField(V[12], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
 
-    PRECONCEITO = [
+    PREC = [
         'Cultural',
         'Estético',
         'Econômico',
@@ -247,14 +253,14 @@ class Questionario(models.Model):
         'Orientação sexual'
     ]
 
-    preconceito_cultural = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_estetico = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_economico = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_religioso = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_mental = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_racial = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_genero = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_orientacao_sexual = models.CharField(null=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    preconceito_cultural = models.CharField(PREC[0], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    preconceito_estetico = models.CharField(PREC[1], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    preconceito_economico = models.CharField(PREC[2], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    preconceito_religioso = models.CharField(PREC[3], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    preconceito_mental = models.CharField(PREC[4], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    preconceito_racial = models.CharField(PREC[5], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    preconceito_genero = models.CharField(PREC[6], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    preconceito_orientacao_sexual = models.CharField(PREC[7], blank=True, choices=VOCE_FAMILIA_CHOICES, max_length=1)
 
     SERVICOS_INDISPONIVEIS_CHOICES = [
         ('1', 'Táxi'),
@@ -265,7 +271,7 @@ class Questionario(models.Model):
         ('6', 'Ônibus coletivo')
     ]
 
-    servicos_indisponiveis_bairro = models.CharField(null=True, choices=SERVICOS_INDISPONIVEIS_CHOICES, max_length=1)
+    servicos_indisponiveis_bairro = models.CharField(blank=True, choices=SERVICOS_INDISPONIVEIS_CHOICES, max_length=1)
 
     DESCARTE_LIXO_CHOICE = [
         ('1', 'Serviço público de limpeza'),
@@ -274,7 +280,7 @@ class Questionario(models.Model):
         ('4', 'Queimado')
     ]
 
-    forma_descarte_lixo = models.CharField(null=True, choices=DESCARTE_LIXO_CHOICE, max_length=1)
+    forma_descarte_lixo = models.CharField(blank=True, choices=DESCARTE_LIXO_CHOICE, max_length=1)
 
     PERCEPCAO_CHOICES = [
         ('1', 'Não oferece risco de segurança aos seus moradores'),
@@ -284,7 +290,7 @@ class Questionario(models.Model):
         ('3', 'Não há registro de violência sofrida pelo moradores do bairro')
     ]
 
-    percepcao_seguranca_bairro = models.CharField(null=True, choices=PERCEPCAO_CHOICES, max_length=1)
+    percepcao_seguranca_bairro = models.CharField(blank=True, choices=PERCEPCAO_CHOICES, max_length=1)
 
     PROBLEMAS_BAIRRO_CHOICES = [
         ('1', 'Abastecimento de água'),
@@ -301,9 +307,9 @@ class Questionario(models.Model):
         ('12', 'Transporte público'),
     ]
 
-    problemas_bairro = models.CharField(null=True, choices=PROBLEMAS_BAIRRO_CHOICES, max_length=2)
+    problemas_bairro = models.CharField(blank=True, choices=PROBLEMAS_BAIRRO_CHOICES, max_length=2)
 
-    fale_mais_familia = models.CharField('Fale mais sobre sua família',null=True, max_length=500)
+    fale_mais_familia = models.CharField('Fale mais sobre sua família',blank=True, max_length=500)
 
 
     class Meta:
