@@ -1,18 +1,20 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
+from model_mommy import mommy
 
 from sare.questionarios.models import Questionario
 
 
 class QuestionarioDetalhe(TestCase):
     def setUp(self):
-        self.obj = Questionario.objects.create(
-            nome='Samuel Barbosa',
-            cpf='12345678901',
-            email='samuka1@gmail.com',
-            cidade='Palmas'
-        )
-        self.resp = self.client.get(r('questionarios:detalhe', self.obj.hashId))
+        # self.obj = Questionario.objects.create(
+        #     nome='Samuel Barbosa',
+        #     cpf='12345678901',
+        #     email='samuka1@gmail.com',
+        #     cidade='Palmas'
+        # )
+        self.obj = mommy.make(Questionario)
+        self.resp = self.client.get(r('questionarios:detalhe', self.obj.pk))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
@@ -36,5 +38,6 @@ class QuestionarioDetalhe(TestCase):
 
 class QuestionarioDetalheNaoEncontrado(TestCase):
     def test_nao_encontrado(self):
-        resp = self.client.get(r('questionarios:detalhe', '00000000-0000-0000-0000-000000000000'))
+        # resp = self.client.get(r('questionarios:detalhe', '000000000-0000-0000-0000-000000000000'))
+        resp = self.client.get(r('questionarios:detalhe', '1'))
         self.assertEqual(404, resp.status_code)
