@@ -64,8 +64,8 @@ class QuestionarioNovoPost(TestCase):
                        'violencia_trafico_humano', 'violencia_psicologica_moral', 'violencia_fisica', 'violencia_sexual',
                        'preconceito_cultural', 'preconceito_estetico', 'preconceito_economico', 'preconceito_religioso',
                        'preconceito_mental', 'preconceito_racial', 'preconceito_genero', 'preconceito_orientacao_sexual',
-                       'servicos_indisponiveis_bairro', 'forma_descarte_lixo', 'percepcao_seguranca_bairro',
-                       'problemas_bairro', 'fale_mais_familia'
+                       'forma_descarte_lixo', 'percepcao_seguranca_bairro',
+                       'fale_mais_familia'
                        ]
 
         data = {field: getattr(self.obj, field) for field in form_fields}
@@ -73,14 +73,14 @@ class QuestionarioNovoPost(TestCase):
         self.resp = self.client.post(r('questionarios:new'), data)
 
         self.uuid = Questionario.objects.first().hashId
-        # self.email = mail.outbox[0]
+        self.email = mail.outbox[0]
 
     def test_post(self):
         """POST valid deve redirecionar to /questionario/00000000-0000-0000-0000-000000000000/"""
         self.assertRedirects(self.resp, r('questionarios:detalhe', self.uuid))
 
-    # def test_envia_email_questionario(self):
-    #     self.assertEqual(1, len(mail.outbox))
+    def test_envia_email_questionario(self):
+        self.assertEqual(1, len(mail.outbox))
 
 #
 #     # @skipIf(AssertionError, "Salvar desabilitado na view")

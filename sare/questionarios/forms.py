@@ -1,10 +1,11 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import Select, RadioSelect, Textarea
+from django.forms import RadioSelect, Textarea, MultipleChoiceField, SelectMultiple, CheckboxSelectMultiple
 from material import *
 
 from sare.questionarios.models import Questionario
 from sare.questionarios.validators import validate_cpf
+
 
 # Choices Global
 
@@ -22,7 +23,6 @@ RENDA_PER_CAPITA_CHOICE = [
             (4, '234,25 até 468,49'),
             (5, 'de 0 até 234, 24')
         ]
-
 
 
 class QuestionarioFormOld(forms.Form):
@@ -666,12 +666,12 @@ class QuestionarioForm(forms.ModelForm):
         Fieldset("Dimensão: Cultural"),
 
         Fieldset("Sobre seu bairro"),
-        Row(Column('servicos_indisponiveis_bairro'),
-            Column('forma_descarte_lixo')),
+        #Row(#Column('servicos_indisponiveis_bairro'),
+        Row('forma_descarte_lixo'),
         Fieldset(" "),
         Row('percepcao_seguranca_bairro'),
-        Fieldset(" "),
-        Row('problemas_bairro'),
+        # Fieldset(" "),
+        # Row('problemas_bairro'),
 
         Fieldset("Comentários finais"),
         Row('fale_mais_familia')
@@ -726,23 +726,28 @@ class QuestionarioForm(forms.ModelForm):
             'preconceito_racial': RadioSelect,
             'preconceito_genero': RadioSelect,
             'preconceito_orientacao_sexual': RadioSelect,
-            'servicos_indisponiveis_bairro': RadioSelect,
+            # 'servicos_indisponiveis_bairro': CheckboxSelectMultiple,
             'forma_descarte_lixo': RadioSelect,
             'percepcao_seguranca_bairro': RadioSelect,
-            'problemas_bairro': RadioSelect,
-            'fale_mais_familia': Textarea(attrs={'cols': 80, 'rows': 20}),
+            # 'problemas_bairro': CheckboxSelectMultiple,
+            'fale_mais_familia': Textarea(attrs={'cols': 80, 'rows': 40}),
         }
 
-    # def clean_nome(self):
-    #
-    #     nome = self.cleaned_data['nome']
-    #     words = [w.capitalize() for w in nome.split()]
-    #     return " ".join(words)
+    # def clean_problemas_bairro(self):
+    #     if len(self.cleaned_data['problemas_bairro']) > 13:
+    #         raise ValidationError('!')
+    #     return self.cleaned_data['problemas_bairro']
+
+    def clean_nome(self):
+
+        nome = self.cleaned_data['nome']
+        words = [w.capitalize() for w in nome.split()]
+        return " ".join(words)
 
     def clean(self):
         self.cleaned_data = super().clean()
 
-        # if not self.cleaned_data.get('email') and not self.cleaned_data.get('cpf'):
-        #     raise ValidationError('Informe seu e-mail ou cpf.')
+        if not self.cleaned_data.get('email') and not self.cleaned_data.get('cpf'):
+            raise ValidationError('Informe seu e-mail ou cpf.')
 
         return  self.cleaned_data

@@ -42,9 +42,10 @@ class QuestionarioPessoalTest(TestCase):
                     'preconceito_estetico', 'preconceito_economico', 'preconceito_religioso',
                     'preconceito_mental',
                     'preconceito_racial', 'preconceito_genero', 'preconceito_orientacao_sexual',
-                    'servicos_indisponiveis_bairro',
+                    # 'servicos_indisponiveis_bairro',
                     'forma_descarte_lixo', 'percepcao_seguranca_bairro',
-                    'problemas_bairro', 'fale_mais_familia'
+                    # 'problemas_bairro',
+                    'fale_mais_familia'
                     ]
         self.assertSequenceEqual(expected, list(form.fields))
 

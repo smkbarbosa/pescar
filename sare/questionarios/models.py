@@ -10,19 +10,19 @@ SEXO_CHOICES = (
 )
 
 DEPENDENCIA_FINANCEIRA_CHOICE = (
-    (1, 'É independente financeiramente'),
-    (2, 'É independente financeiramente e responsável por parte das despesas domésticas'),
-    (3, 'É independente totalmente e responsável por todas as despesas domésticas'),
-    (4, 'Dependente inteiramente da renda dos pais ou companheiro(s)'),
-    (5, 'Dependente inteiramente da renda de outros parentes')
+    ('1', 'É independente financeiramente'),
+    ('2', 'É independente financeiramente e responsável por parte das despesas domésticas'),
+    ('3', 'É independente totalmente e responsável por todas as despesas domésticas'),
+    ('4', 'Dependente inteiramente da renda dos pais ou companheiro(s)'),
+    ('5', 'Dependente inteiramente da renda de outros parentes')
 )
 
 RENDA_PER_CAPITA_CHOICE = (
-    (1, '1.405,51 (a partir)'),
-    (2, '937,01 a 1405,50'),
-    (3, '468,50 a 937,00'),
-    (4, '234,25 até 468,49'),
-    (5, 'de 0 até 234, 24')
+    ('1', '1.405,51 (a partir)'),
+    ('2', '937,01 a 1405,50'),
+    ('3', '468,50 a 937,00'),
+    ('4', '234,25 até 468,49'),
+    ('5', 'de 0 até 234, 24')
 )
 
 CONDICAO_RESPONSAVEL_CASA_CHOICES = (
@@ -310,13 +310,13 @@ class Questionario(models.Model):
     preconceito_genero = models.CharField(PREC[6], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
     preconceito_orientacao_sexual = models.CharField(PREC[7], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
-    servicos_indisponiveis_bairro = models.CharField(choices=SERVICOS_INDISPONIVEIS_CHOICES, max_length=1, default=None)
+    # servicos_indisponiveis_bairro = models.CharField(choices=SERVICOS_INDISPONIVEIS_CHOICES, max_length=20, default=None, null=True)
 
     forma_descarte_lixo = models.CharField(choices=DESCARTE_LIXO_CHOICE, max_length=1, default=None)
 
     percepcao_seguranca_bairro = models.CharField(choices=PERCEPCAO_CHOICES, max_length=1, default=None)
 
-    problemas_bairro = models.CharField(choices=PROBLEMAS_BAIRRO_CHOICES, max_length=2, default=None)
+    # problemas_bairro = models.CharField(choices=PROBLEMAS_BAIRRO_CHOICES, max_length=20, default=None, null=True)
 
     fale_mais_familia = models.CharField('Fale mais sobre sua família',max_length=500)
 

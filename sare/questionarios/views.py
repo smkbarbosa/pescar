@@ -32,9 +32,9 @@ def create(request):
     # Recebe os dados do formulário
     form = QuestionarioForm(request.POST)
 
-    import ipdb
-
-    ipdb.set_trace()
+    # import ipdb
+    #
+    # ipdb.set_trace()
     if not form.is_valid():
         return render(request, 'questionarios/form_socioeconomico.html',
                       {'form': form})

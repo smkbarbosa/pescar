@@ -42,9 +42,8 @@ class QuestionarioNewPostValid(TestCase):
                        'preconceito_estetico', 'preconceito_economico', 'preconceito_religioso',
                        'preconceito_mental',
                        'preconceito_racial', 'preconceito_genero', 'preconceito_orientacao_sexual',
-                       'servicos_indisponiveis_bairro',
                        'forma_descarte_lixo', 'percepcao_seguranca_bairro',
-                       'problemas_bairro', 'fale_mais_familia'
+                       'fale_mais_familia'
                        ]
         self.data = {field: getattr(self.obj, field) for field in form_fields}
 
