@@ -6,10 +6,10 @@ from model_mommy import mommy
 from sare.questionarios.models import Questionario
 
 
-class QuestionarioPostValid(TestCase):
+class QuestionarioNewPostValid(TestCase):
     def setUp(self):
         self.obj = mommy.make(Questionario,nome='Samuel Barbosa', cpf='12345678901', email='samuka1@gmail.com',
-                              cidade='Palmas', _fill_optional=True)
+                              cidade='Palmas', bairro='Plano Diretor norte', _fill_optional=True)
         # self.obj = mommy.prepare_recipe('sare.questionarios.quest', _fill_optional=True, _save_related=True)
         form_fields = ['hashId', 'criado_em', 'nome', 'cpf', 'email',
                        'bairro',

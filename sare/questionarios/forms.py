@@ -680,6 +680,7 @@ class QuestionarioForm(forms.ModelForm):
     class Meta:
         model = Questionario
         exclude = ['hashId', 'criado_em', ]
+        # fields = '__all__'
         widgets = {
             'sexo': RadioSelect,
             'renda_per_capita': RadioSelect,
@@ -732,16 +733,16 @@ class QuestionarioForm(forms.ModelForm):
             'fale_mais_familia': Textarea(attrs={'cols': 80, 'rows': 20}),
         }
 
-    def clean_nome(self):
-
-        nome = self.cleaned_data['nome']
-        words = [w.capitalize() for w in nome.split()]
-        return " ".join(words)
+    # def clean_nome(self):
+    #
+    #     nome = self.cleaned_data['nome']
+    #     words = [w.capitalize() for w in nome.split()]
+    #     return " ".join(words)
 
     def clean(self):
         self.cleaned_data = super().clean()
 
-        if not self.cleaned_data.get('email') and not self.cleaned_data.get('cpf'):
-            raise ValidationError('Informe seu e-mail ou cpf.')
+        # if not self.cleaned_data.get('email') and not self.cleaned_data.get('cpf'):
+        #     raise ValidationError('Informe seu e-mail ou cpf.')
 
         return  self.cleaned_data

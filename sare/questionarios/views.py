@@ -14,7 +14,6 @@ def new(request):
 
 
 def empty_form(request):
-
     return render(request, 'questionarios/form_socioeconomico.html',
                   {'form': QuestionarioForm()})
 
@@ -33,9 +32,11 @@ def create(request):
     # Recebe os dados do formulário
     form = QuestionarioForm(request.POST)
 
+    import ipdb
+
+    ipdb.set_trace()
     if not form.is_valid():
-        return render(request, ['questionarios/form_socioeconomico.html', 'material/includes/material_css.html',
-                                'material/includes/material_js.html', 'material/form.html'],
+        return render(request, 'questionarios/form_socioeconomico.html',
                       {'form': form})
 
     quest = form.save()
@@ -46,7 +47,7 @@ def create(request):
                'questionarios/questionario_email.txt',
                {'quest': quest})
 
-    return HttpResponseRedirect(r('questionarios:detalhe', quest.hashId))
+    return HttpResponseRedirect(r('questionarios:detalhe', str(quest.hashId)))
 
 
 def _send_mail(subject, from_, to, template_name, context):

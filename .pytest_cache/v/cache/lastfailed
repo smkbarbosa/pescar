@@ -12,5 +12,10 @@
   "sare/questionarios/tests/test_questionario_view.py::QuestionarioPostValid::test_post": true,
   "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPost::test_envia_email_questionario": true,
   "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPost::test_post": true,
-  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPost::test_salva_questionario": true
+  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPost::test_salva_questionario": true,
+  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPostInvalid::test_form_has_errors": true,
+  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPostInvalid::test_has_form": true,
+  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPostInvalid::test_nao_salva_questionario": true,
+  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPostInvalid::test_post": true,
+  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPostInvalid::test_template": true
 }
