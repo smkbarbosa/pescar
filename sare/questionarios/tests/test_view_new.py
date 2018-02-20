@@ -1,6 +1,7 @@
 from django.core import mail
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
+from model_mommy import mommy
 
 from sare.questionarios.forms import QuestionarioForm
 from sare.questionarios.models import Questionario
@@ -40,27 +41,43 @@ class QuestionarioNovoGet(TestCase):
 
 class QuestionarioNovoPost(TestCase):
     def setUp(self):
-        data = {'nome':'Samuel Barbosa',
-                'cpf':'12345678901',
-                'email':'samuka1@gmail.com',
-                'cidade':'Palmas',
-                'condicao_responsavel_casa':'1',
-                'meio_acesso_campus':'1',
-                'condicao_moradia':'5',
-                'local_moradia':'1',
-                'total_pessoas_casa':'2',
-                'total_comodos_casa':'3',
-                'total_km_casa_campus':'2',
-                'instituicao_anterior':'6'
-        }
+        self.obj = mommy.make(Questionario, nome='Samuel Barbosa', cpf='12345678901', email='samuka1@gmail.com',
+                              cidade='Palmas', bairro='Plano Diretor norte', origem_renda='2',fale_mais_familia='OK Teste' , _fill_optional=True)
+        # self.obj = mommy.prepare_recipe('sare.questionarios.quest', _fill_optional=True, _save_related=True)
+        form_fields = ['hashId', 'criado_em','nome', 'cpf', 'email', 'bairro', 'cidade', 'sexo', 'dependentes_RBD', 'origem_renda',
+                       'renda_bruta_domiciliar', 'responsavel_domicilio', 'renda_per_capita', 'relacao_financeira',
+                       'despesas_saude_tratamento', 'despesas_saude_medicamento', 'despesas_saude_cuidador',
+                       'despesas_saude_plano', 'despesas_transporte', 'despesas_moradia', 'despesas_educacao_superior',
+                       'despesas_educacao_basico', 'despesas_educacao_cursinho', 'despesas_educacao_capacitacao',
+                       'despesas_educacao_material', 'despesas_bens_fcarro',
+                       'despesas_bens_fmoto', 'despesas_bens_terreno', 'despesas_domesticas_eletrica',
+                       'despesas_domesticas_agua', 'despesas_domesticas_alimentacao',
+                       'condicao_responsavel_casa', 'meio_acesso_campus', 'condicao_moradia', 'local_moradia',
+                       'total_pessoas_casa', 'total_comodos_casa', 'total_km_casa_campus',
+                       'instituicao_anterior', 'saude_bebida_drogas', 'saude_doenca_grave', 'saude_doenca_cronica',
+                       'saude_medicamento_diario', 'pne_parcial_visao_audicao', 'pne_def_fisica',
+                       'pne_total_visao_audicao', 'pne_def_mental_leve', 'pne_def_mental_grave',
+                       'psico_dificuldade_concentrar', 'psico_conflito_familiar', 'psico_depressao',
+                       'cor_raca', 'violencia_verbal', 'violencia_urbana', 'violencia_patrimonial',
+                       'violencia_cyberbulling', 'violencia_religiosa', 'violencia_assedio_moral',
+                       'violencia_abandono', 'violencia_abuso_familiar', 'violencia_atentado_pudor',
+                       'violencia_trafico_humano', 'violencia_psicologica_moral', 'violencia_fisica', 'violencia_sexual',
+                       'preconceito_cultural', 'preconceito_estetico', 'preconceito_economico', 'preconceito_religioso',
+                       'preconceito_mental', 'preconceito_racial', 'preconceito_genero', 'preconceito_orientacao_sexual',
+                       'forma_descarte_lixo', 'percepcao_seguranca_bairro',
+                       'fale_mais_familia'
+                       ]
+
+        data = {field: getattr(self.obj, field) for field in form_fields}
 
         self.resp = self.client.post(r('questionarios:new'), data)
-        self.id = Questionario.objects.first().hashId  # agregado
+
+        self.uuid = Questionario.objects.first().hashId
         self.email = mail.outbox[0]
 
     def test_post(self):
-        """POST valid deve redirecionar to /questionario/1/"""
-        self.assertRedirects(self.resp, r('questionarios:detalhe', self.id))
+        """POST valid deve redirecionar to /questionario/00000000-0000-0000-0000-000000000000/"""
+        self.assertRedirects(self.resp, r('questionarios:detalhe', self.uuid))
 
     def test_envia_email_questionario(self):
         self.assertEqual(1, len(mail.outbox))

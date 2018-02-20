@@ -1,26 +1,31 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.forms import RadioSelect, Textarea, MultipleChoiceField, SelectMultiple, CheckboxSelectMultiple
 from material import *
 
-
-def validate_cpf(value):
-    if not value.isdigit():
-        raise ValidationError('CPF deve conter apenas números.', 'digits')
-
-    if len(value) != 11:
-        raise ValidationError('CPF deve ter 11 números.', 'length')
+from sare.questionarios.models import Questionario
+from sare.questionarios.validators import validate_cpf
 
 
 # Choices Global
+
+
 VOCE_FAMILIA_CHOICES = [
     (1, 'Você'),
     (2, 'Família'),
     (3, 'Ambos'),
     (0, 'Não se aplica')
 ]
+RENDA_PER_CAPITA_CHOICE = [
+            (1, '1.405,51 (a partir)'),
+            (2, '937,01 a 1405,50'),
+            (3, '468,50 a 937,00'),
+            (4, '234,25 até 468,49'),
+            (5, 'de 0 até 234, 24')
+        ]
 
 
-class QuestionarioForm(forms.Form):
+class QuestionarioFormOld(forms.Form):
 
         # Dados Pessoais
         nome = forms.CharField(label='Nome')
@@ -40,13 +45,7 @@ class QuestionarioForm(forms.Form):
         responsavel_domicilio = forms.CharField(required=False, label="Responsável pela manutenção do domicílio")
 
         # Finanças
-        RENDA_PER_CAPITA_CHOICE = [
-            (1, '1.405,51 (a partir)'),
-            (2, '937,01 a 1405,50'),
-            (3, '468,50 a 937,00'),
-            (4, '234,25 até 468,49'),
-            (5, 'de 0 até 234, 24')
-        ]
+
         renda_per_capita = forms.ChoiceField(choices=RENDA_PER_CAPITA_CHOICE, widget=forms.RadioSelect,
                                              required=False, label='Renda per capita domiciliar')
 
@@ -538,3 +537,217 @@ class QuestionarioForm(forms.Form):
             Fieldset("Comentários finais"),
             Row('fale_mais_familia')
         )
+
+
+class QuestionarioForm(forms.ModelForm):
+
+    title = 'Formulário Socioeconômico-Cultural'
+    objetivo = 'teste'
+
+    layout = Layout(
+        Fieldset("Dados Pessoais"),
+        Row(Span4('nome'), Span4('email'),
+            Span4('sexo')),
+        Row(Span4('cpf'), Span4('cidade'),
+            Span4('bairro')),
+
+        Fieldset("Dimensão: Econômica"),
+
+        Fieldset("Incluindo você, quantas "
+                 "pessoas moram em sua casa?"),
+        Row('dependentes_RBD'),
+
+        Fieldset("Dessas pessoas, quantas possuem renda (seja por trabalho formal, informal, aposentadoria,etc.)?"),
+        Row('origem_renda'),
+
+        Fieldset("Qual é o valor Renda Bruta Domiciliar (considere a renda total dos membros do domicilio "
+                 "sem os descontos)?"),
+        Row('renda_bruta_domiciliar'),
+
+        Fieldset("Quem é o principal responsável pela manutenção do domicílio? Qual é o vinculo de parentesco?"),
+        Row('responsavel_domicilio'),
+
+        Fieldset("Renda per capita"),
+        Row(Span4('renda_per_capita')),
+
+        Fieldset("Dependência Financeira"), Row('relacao_financeira'),
+
+        Fieldset("Despesas e Gastos: Saúde"),
+        Row(Column('despesas_saude_tratamento',
+                   'despesas_saude_medicamento'),
+            Column('despesas_saude_cuidador',
+                   'despesas_saude_plano')),
+
+        Fieldset("Despesas e Gastos: Transporte e Moradia"),
+
+        Row(Column('despesas_transporte'),
+            Column('despesas_moradia')),
+
+        Fieldset("Despesas e Gastos: Educação"),
+        Row('despesas_educacao_superior'),
+        Row('despesas_educacao_basico'),
+        Row('despesas_educacao_cursinho'),
+        Row('despesas_educacao_capacitacao'),
+        Row('despesas_educacao_material'),
+
+        Fieldset("Despesas e Gastos: Bens e Domésticas"),
+        Row(Column('despesas_bens_fcarro',
+                   'despesas_bens_fmoto',
+                   'despesas_bens_terreno'),
+            Column('despesas_domesticas_eletrica',
+                   'despesas_domesticas_agua',
+                   'despesas_domesticas_alimentacao')),
+
+        Fieldset("Dimensão: Social"),
+
+        Fieldset("Manutenção do lar"),
+        Row('condicao_responsavel_casa'),
+
+        Fieldset("Acesso ao Campus"),
+        Row('meio_acesso_campus'),
+
+        Fieldset("Moradia"),
+        Row(Span6('condicao_moradia'), Span6('local_moradia')),
+
+        Fieldset("Sobre sua casa"),
+        Row(Span4('total_pessoas_casa'), Span4('total_comodos_casa'),
+            Span4('total_km_casa_campus')),
+
+        Fieldset("Sobre sua formação anterior"),
+        Row('instituicao_anterior'),
+
+        Fieldset("Saúde Física"),
+        Row('saude_bebida_drogas'),
+        Row('saude_doenca_grave'),
+        Row('saude_doenca_cronica'),
+        Row('saude_medicamento_diario'),
+
+        Fieldset("Necessidades Específicas"),
+        Row('pne_parcial_visao_audicao'),
+        Row('pne_def_fisica'),
+        Row('pne_total_visao_audicao'),
+        Row('pne_def_mental_leve'),
+        Row('pne_def_mental_grave'),
+
+        Fieldset("Saúde Psíquica"),
+        Row('psico_dificuldade_concentrar'),
+        Row('psico_conflito_familiar'),
+        Row('psico_depressao'),
+
+        Fieldset("Dimensão: Cultural"),
+
+        Row('cor_raca'),
+
+        Fieldset("Sofreu/sofre algum tipo de violência: "),
+        Row('violencia_verbal'),
+        Row('violencia_urbana'),
+        Row('violencia_patrimonial'),
+        Row('violencia_cyberbulling'),
+        Row('violencia_religiosa'),
+        Row('violencia_assedio_moral'),
+        Row('violencia_abandono'),
+        Row('violencia_abuso_familiar'),
+        Row('violencia_atentado_pudor'),
+        Row('violencia_trafico_humano'),
+        Row('violencia_psicologica_moral'),
+        Row('violencia_fisica'),
+        Row('violencia_sexual'),
+
+        Fieldset("Sofreu/sofre algum tipo de preconceito: "),
+        Row('preconceito_cultural'),
+        Row('preconceito_estetico'),
+        Row('preconceito_economico'),
+        Row('preconceito_religioso'),
+        Row('preconceito_mental'),
+        Row('preconceito_racial'),
+        Row('preconceito_genero'),
+        Row('preconceito_orientacao_sexual'),
+
+        Fieldset("Dimensão: Cultural"),
+
+        Fieldset("Sobre seu bairro"),
+        #Row(#Column('servicos_indisponiveis_bairro'),
+        Row('forma_descarte_lixo'),
+        Fieldset(" "),
+        Row('percepcao_seguranca_bairro'),
+        # Fieldset(" "),
+        # Row('problemas_bairro'),
+
+        Fieldset("Comentários finais"),
+        Row('fale_mais_familia')
+    )
+
+    class Meta:
+        model = Questionario
+        exclude = ['hashId', 'criado_em', ]
+        # fields = '__all__'
+        widgets = {
+            'sexo': RadioSelect,
+            'renda_per_capita': RadioSelect,
+            'relacao_financeira': RadioSelect,
+            'condicao_responsavel_casa': RadioSelect,
+            'meio_acesso_campus': RadioSelect,
+            'condicao_moradia': RadioSelect,
+            'local_moradia': RadioSelect,
+            'total_pessoas_casa': RadioSelect,
+            'total_comodos_casa': RadioSelect,
+            'total_km_casa_campus': RadioSelect,
+            'instituicao_anterior': RadioSelect,
+            'saude_bebida_drogas': RadioSelect,
+            'saude_doenca_grave': RadioSelect,
+            'saude_doenca_cronica': RadioSelect,
+            'saude_medicamento_diario': RadioSelect,
+            'pne_parcial_visao_audicao': RadioSelect,
+            'pne_def_fisica': RadioSelect,
+            'pne_total_visao_audicao': RadioSelect,
+            'pne_def_mental_leve': RadioSelect,
+            'pne_def_mental_grave': RadioSelect,
+            'psico_dificuldade_concentrar': RadioSelect,
+            'psico_conflito_familiar': RadioSelect,
+            'psico_depressao': RadioSelect,
+            'cor_raca': RadioSelect,
+            'violencia_verbal': RadioSelect,
+            'violencia_urbana': RadioSelect,
+            'violencia_patrimonial': RadioSelect,
+            'violencia_cyberbulling': RadioSelect,
+            'violencia_religiosa': RadioSelect,
+            'violencia_assedio_moral': RadioSelect,
+            'violencia_abandono': RadioSelect,
+            'violencia_abuso_familiar': RadioSelect,
+            'violencia_atentado_pudor': RadioSelect,
+            'violencia_trafico_humano': RadioSelect,
+            'violencia_psicologica_moral': RadioSelect,
+            'violencia_fisica': RadioSelect,
+            'preconceito_cultural': RadioSelect,
+            'preconceito_estetico': RadioSelect,
+            'preconceito_economico': RadioSelect,
+            'preconceito_religioso': RadioSelect,
+            'preconceito_mental': RadioSelect,
+            'preconceito_racial': RadioSelect,
+            'preconceito_genero': RadioSelect,
+            'preconceito_orientacao_sexual': RadioSelect,
+            # 'servicos_indisponiveis_bairro': CheckboxSelectMultiple,
+            'forma_descarte_lixo': RadioSelect,
+            'percepcao_seguranca_bairro': RadioSelect,
+            # 'problemas_bairro': CheckboxSelectMultiple,
+            'fale_mais_familia': Textarea(attrs={'cols': 80, 'rows': 40}),
+        }
+
+    # def clean_problemas_bairro(self):
+    #     if len(self.cleaned_data['problemas_bairro']) > 13:
+    #         raise ValidationError('!')
+    #     return self.cleaned_data['problemas_bairro']
+
+    def clean_nome(self):
+
+        nome = self.cleaned_data['nome']
+        words = [w.capitalize() for w in nome.split()]
+        return " ".join(words)
+
+    def clean(self):
+        self.cleaned_data = super().clean()
+
+        if not self.cleaned_data.get('email') and not self.cleaned_data.get('cpf'):
+            raise ValidationError('Informe seu e-mail ou cpf.')
+
+        return  self.cleaned_data
