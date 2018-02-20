@@ -162,75 +162,75 @@ class Questionario(models.Model):
 
     bairro = models.CharField('bairro', max_length=100)
     cidade = models.CharField('cidade', max_length=100)
-    sexo = models.CharField('sexo', max_length=1, choices=SEXO_CHOICES)
+    sexo = models.CharField('sexo', max_length=1, choices=SEXO_CHOICES, default=None)
 
     criado_em = models.DateTimeField('criado em', auto_now_add=True)
 
     # Dimensão economica
     dependentes_RBD = models.IntegerField('Dependentes da Renda Bruta Domiciliar', )
     origem_renda = models.IntegerField('Quantidade de pessoas que possuem renda',)
-    renda_bruta_domiciliar = models.FloatField()
+    renda_bruta_domiciliar = models.DecimalField(max_digits=8, decimal_places=2)
     responsavel_domicilio = models.CharField(max_length=100)
 
     # Finanças
-    renda_per_capita = models.CharField('Faixa de renda', max_length=1, choices=RENDA_PER_CAPITA_CHOICE)
+    renda_per_capita = models.CharField('Faixa de renda', max_length=1, choices=RENDA_PER_CAPITA_CHOICE, default=None)
 
     relacao_financeira = models.CharField(choices=DEPENDENCIA_FINANCEIRA_CHOICE,
-                                          max_length=1, )
+                                          max_length=1, default=None)
 
     # Despesas
 
-    despesas_saude_tratamento = models.FloatField('Tratamento de Saúde',)
-    despesas_saude_medicamento = models.FloatField('Medicamentos', )
-    despesas_saude_cuidador = models.FloatField('Cuidador de idoso/criança', )
-    despesas_saude_plano = models.FloatField('Plano de saúde', )
+    despesas_saude_tratamento = models.DecimalField('Tratamento de Saúde', max_digits=8, decimal_places=2)
+    despesas_saude_medicamento = models.DecimalField('Medicamentos', max_digits=8, decimal_places=2)
+    despesas_saude_cuidador = models.DecimalField('Cuidador de idoso/criança', max_digits=8, decimal_places=2)
+    despesas_saude_plano = models.DecimalField('Plano de saúde', max_digits=8, decimal_places=2)
 
-    despesas_transporte = models.FloatField('Transporte', )
+    despesas_transporte = models.DecimalField('Transporte', max_digits=8, decimal_places=2)
 
-    despesas_moradia = models.FloatField('Moradia', )
+    despesas_moradia = models.DecimalField('Moradia', max_digits=8, decimal_places=2)
 
-    despesas_educacao_superior = models.FloatField('Graduação', )
-    despesas_educacao_basico = models.FloatField('Ensino Fundamental', )
-    despesas_educacao_cursinho = models.FloatField('Cursinhos', )
-    despesas_educacao_capacitacao = models.FloatField('Cursos de Capacitação', )
-    despesas_educacao_material = models.FloatField('Material escolar', )
+    despesas_educacao_superior = models.DecimalField('Graduação', max_digits=8, decimal_places=2)
+    despesas_educacao_basico = models.DecimalField('Ensino Fundamental', max_digits=8, decimal_places=2)
+    despesas_educacao_cursinho = models.DecimalField('Cursinhos', max_digits=8, decimal_places=2)
+    despesas_educacao_capacitacao = models.DecimalField('Cursos de Capacitação', max_digits=8, decimal_places=2)
+    despesas_educacao_material = models.DecimalField('Material escolar', max_digits=8, decimal_places=2)
 
-    despesas_bens_fcarro = models.FloatField('Parcela Carro', )
-    despesas_bens_fmoto = models.FloatField('Parcela Moto', )
-    despesas_bens_terreno = models.FloatField('Parcela Terreno', )
+    despesas_bens_fcarro = models.DecimalField('Parcela Carro', max_digits=8, decimal_places=2)
+    despesas_bens_fmoto = models.DecimalField('Parcela Moto', max_digits=8, decimal_places=2)
+    despesas_bens_terreno = models.DecimalField('Parcela Terreno', max_digits=8, decimal_places=2)
 
-    despesas_domesticas_eletrica = models.FloatField('Energia elétrica', )
-    despesas_domesticas_agua = models.FloatField('Água e esgoto', )
-    despesas_domesticas_alimentacao = models.FloatField('Alimentação', )
+    despesas_domesticas_eletrica = models.DecimalField('Energia elétrica', max_digits=8, decimal_places=2)
+    despesas_domesticas_agua = models.DecimalField('Água e esgoto', max_digits=8, decimal_places=2)
+    despesas_domesticas_alimentacao = models.DecimalField('Alimentação', max_digits=8, decimal_places=2)
 
     # Dimensao Social
-    condicao_responsavel_casa = models.CharField(choices=CONDICAO_RESPONSAVEL_CASA_CHOICES, max_length=1)
+    condicao_responsavel_casa = models.CharField(choices=CONDICAO_RESPONSAVEL_CASA_CHOICES, max_length=1, default=None)
 
-    meio_acesso_campus = models.CharField(choices=MEIO_ACESSO_CAMPUS_CHOICES, max_length=1)
+    meio_acesso_campus = models.CharField(choices=MEIO_ACESSO_CAMPUS_CHOICES, max_length=1, default=None)
     
-    condicao_moradia = models.CharField(choices=CONDICAO_MORADIA_CHOICES, max_length=2)
+    condicao_moradia = models.CharField(choices=CONDICAO_MORADIA_CHOICES, max_length=2, default=None)
 
-    local_moradia = models.CharField(choices=LOCAL_MORADIA_CHOICES, max_length=1)
+    local_moradia = models.CharField(choices=LOCAL_MORADIA_CHOICES, max_length=1, default=None)
 
-    total_pessoas_casa = models.CharField(choices=TOTAL_PESSOAS_CHOICES, max_length=1)
+    total_pessoas_casa = models.CharField(choices=TOTAL_PESSOAS_CHOICES, max_length=1, default=None)
 
-    total_comodos_casa = models.CharField(choices=TOTAL_COMODOS_CHOICES, max_length=1)
+    total_comodos_casa = models.CharField(choices=TOTAL_COMODOS_CHOICES, max_length=1, default=None)
 
-    total_km_casa_campus = models.CharField(choices=TOTAL_KM_CHOICES, max_length=1)
+    total_km_casa_campus = models.CharField(choices=TOTAL_KM_CHOICES, max_length=1, default=None)
 
-    instituicao_anterior = models.CharField(choices=INSTITUICAO_ANTERIOR_CHOICES, max_length=1)
+    instituicao_anterior = models.CharField(choices=INSTITUICAO_ANTERIOR_CHOICES, max_length=1, default=None)
 
     S = ['Faz uso, abuso de bebida alcóolica e/ou drogas?', 'Possui doença grave', 'Possui doença crônica?',
              'Faz uso de medicamento diário, de impacto na renda familiar'
              ]
 
-    saude_bebida_drogas = models.CharField(S[0], choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    saude_bebida_drogas = models.CharField(S[0], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
-    saude_doenca_grave = models.CharField(S[1], choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    saude_doenca_grave = models.CharField(S[1], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
-    saude_doenca_cronica = models.CharField(S[2], choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    saude_doenca_cronica = models.CharField(S[2], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
-    saude_medicamento_diario = models.CharField(S[3], choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    saude_medicamento_diario = models.CharField(S[3], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
     PNE = [
         'Tem deficiência parcial de visão/audição?',
@@ -246,19 +246,19 @@ class Questionario(models.Model):
         'Sofre de depressão?',
     ]
 
-    pne_parcial_visao_audicao = models.CharField(PNE[0],choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    pne_def_fisica = models.CharField(PNE[1], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    pne_total_visao_audicao = models.CharField(PNE[2], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    pne_def_mental_leve = models.CharField(PNE[3], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    pne_def_mental_grave = models.CharField(PNE[4], choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    pne_parcial_visao_audicao = models.CharField(PNE[0],choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    pne_def_fisica = models.CharField(PNE[1], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    pne_total_visao_audicao = models.CharField(PNE[2], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    pne_def_mental_leve = models.CharField(PNE[3], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    pne_def_mental_grave = models.CharField(PNE[4], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
-    psico_dificuldade_concentrar = models.CharField(PSI[0], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    psico_conflito_familiar = models.CharField(PSI[1], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    psico_depressao = models.CharField(PSI[2], choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    psico_dificuldade_concentrar = models.CharField(PSI[0], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    psico_conflito_familiar = models.CharField(PSI[1], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    psico_depressao = models.CharField(PSI[2], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
     ## Cultural
 
-    cor_raca = models.CharField('Como você considera sua cor/raça?', choices=COR_RACA_CHOICES, max_length=1)
+    cor_raca = models.CharField('Como você considera sua cor/raça?', choices=COR_RACA_CHOICES, max_length=1, default=None)
 
     V = [
         'Verbal(xingamentos, desacatos, etc.)',
@@ -276,19 +276,19 @@ class Questionario(models.Model):
         'Sexual'
     ]
 
-    violencia_verbal = models.CharField(V[0], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_urbana = models.CharField(V[1], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_patrimonial = models.CharField(V[2], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_cyberbulling = models.CharField(V[3], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_religiosa = models.CharField(V[4], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_assedio_moral = models.CharField(V[5], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_abandono = models.CharField(V[6], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_abuso_familiar = models.CharField(V[7], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_atentado_pudor = models.CharField(V[8], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_trafico_humano = models.CharField(V[9], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_psicologica_moral = models.CharField(V[10], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_fisica = models.CharField(V[11], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    violencia_sexual = models.CharField(V[12], choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    violencia_verbal = models.CharField(V[0], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_urbana = models.CharField(V[1], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_patrimonial = models.CharField(V[2], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_cyberbulling = models.CharField(V[3], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_religiosa = models.CharField(V[4], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_assedio_moral = models.CharField(V[5], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_abandono = models.CharField(V[6], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_abuso_familiar = models.CharField(V[7], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_atentado_pudor = models.CharField(V[8], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_trafico_humano = models.CharField(V[9], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_psicologica_moral = models.CharField(V[10], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_fisica = models.CharField(V[11], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    violencia_sexual = models.CharField(V[12], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
     PREC = [
         'Cultural',
@@ -301,25 +301,24 @@ class Questionario(models.Model):
         'Orientação sexual'
     ]
 
-    preconceito_cultural = models.CharField(PREC[0], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_estetico = models.CharField(PREC[1], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_economico = models.CharField(PREC[2], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_religioso = models.CharField(PREC[3], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_mental = models.CharField(PREC[4], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_racial = models.CharField(PREC[5], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_genero = models.CharField(PREC[6], choices=VOCE_FAMILIA_CHOICES, max_length=1)
-    preconceito_orientacao_sexual = models.CharField(PREC[7], choices=VOCE_FAMILIA_CHOICES, max_length=1)
+    preconceito_cultural = models.CharField(PREC[0], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    preconceito_estetico = models.CharField(PREC[1], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    preconceito_economico = models.CharField(PREC[2], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    preconceito_religioso = models.CharField(PREC[3], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    preconceito_mental = models.CharField(PREC[4], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    preconceito_racial = models.CharField(PREC[5], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    preconceito_genero = models.CharField(PREC[6], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
+    preconceito_orientacao_sexual = models.CharField(PREC[7], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
-    servicos_indisponiveis_bairro = models.CharField(choices=SERVICOS_INDISPONIVEIS_CHOICES, max_length=1)
+    servicos_indisponiveis_bairro = models.CharField(choices=SERVICOS_INDISPONIVEIS_CHOICES, max_length=1, default=None)
 
-    forma_descarte_lixo = models.CharField(choices=DESCARTE_LIXO_CHOICE, max_length=1)
+    forma_descarte_lixo = models.CharField(choices=DESCARTE_LIXO_CHOICE, max_length=1, default=None)
 
-    percepcao_seguranca_bairro = models.CharField(choices=PERCEPCAO_CHOICES, max_length=1)
+    percepcao_seguranca_bairro = models.CharField(choices=PERCEPCAO_CHOICES, max_length=1, default=None)
 
-    problemas_bairro = models.CharField(choices=PROBLEMAS_BAIRRO_CHOICES, max_length=2)
+    problemas_bairro = models.CharField(choices=PROBLEMAS_BAIRRO_CHOICES, max_length=2, default=None)
 
     fale_mais_familia = models.CharField('Fale mais sobre sua família',max_length=500)
-
 
     class Meta:
         verbose_name_plural = 'questionários'

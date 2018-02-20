@@ -13,8 +13,9 @@ class QuestionarioDetalhe(TestCase):
         #     email='samuka1@gmail.com',
         #     cidade='Palmas'
         # )
-        self.obj = mommy.make(Questionario)
-        self.resp = self.client.get(r('questionarios:detalhe', self.obj.pk))
+        self.obj = mommy.make(Questionario, cpf='12345678901', nome='Samuel Barbosa', cidade='Palmas',
+                              email='samuka1@gmail.com', _fill_optional=True)
+        self.resp = self.client.get(r('questionarios:detalhe', self.obj.hashId))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
@@ -38,6 +39,5 @@ class QuestionarioDetalhe(TestCase):
 
 class QuestionarioDetalheNaoEncontrado(TestCase):
     def test_nao_encontrado(self):
-        # resp = self.client.get(r('questionarios:detalhe', '000000000-0000-0000-0000-000000000000'))
-        resp = self.client.get(r('questionarios:detalhe', '1'))
+        resp = self.client.get(r('questionarios:detalhe', '00000000-0000-0000-0000-000000000000'))
         self.assertEqual(404, resp.status_code)
