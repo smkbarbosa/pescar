@@ -9,8 +9,5 @@
   "sare/questionarios/tests/test_mail_questionario.py::Questionario_Post_Valid::test_email_questionario_remetente": true,
   "sare/questionarios/tests/test_mail_questionario.py::Questionario_Post_Valid::test_questionario_corpo_email": true,
   "sare/questionarios/tests/test_questionario_view.py::QuestionarioGet::test_template": true,
-  "sare/questionarios/tests/test_questionario_view.py::QuestionarioPostValid::test_post": true,
-  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPost::test_envia_email_questionario": true,
-  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPost::test_post": true,
-  "sare/questionarios/tests/test_view_new.py::QuestionarioNovoPost::test_salva_questionario": true
+  "sare/questionarios/tests/test_questionario_view.py::QuestionarioPostValid::test_post": true
 }

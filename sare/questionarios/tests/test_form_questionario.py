@@ -11,10 +11,11 @@ class QuestionarioPessoalTest(TestCase):
     def test_form_has_fields(self):
         """Form deve conter campos """
         form = QuestionarioForm()
-        expected = ['nome', 'cpf', 'email',
-                    'bairro',
-                    'cidade',
+        expected = ['nome', 'cpf', 'email','fone',
+                    'endereco', 'num_casa', 'cep', 'bairro',
+                    'cidade', 'estado',
                     'sexo',
+                    'curso', 'sem_mod_ano', 'matricula', 'campus',
                     'dependentes_RBD', 'origem_renda',
                     'renda_bruta_domiciliar',
                     'responsavel_domicilio', 'renda_per_capita', 'relacao_financeira',
@@ -42,9 +43,10 @@ class QuestionarioPessoalTest(TestCase):
                     'preconceito_estetico', 'preconceito_economico', 'preconceito_religioso',
                     'preconceito_mental',
                     'preconceito_racial', 'preconceito_genero', 'preconceito_orientacao_sexual',
-                    'servicos_indisponiveis_bairro',
+                    # 'servicos_indisponiveis_bairro',
                     'forma_descarte_lixo', 'percepcao_seguranca_bairro',
-                    'problemas_bairro', 'fale_mais_familia'
+                    # 'problemas_bairro',
+                    'fale_mais_familia'
                     ]
         self.assertSequenceEqual(expected, list(form.fields))
 
