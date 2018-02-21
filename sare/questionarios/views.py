@@ -1,7 +1,8 @@
 from django.core import mail
+from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, resolve_url as r
-from django.template.loader import render_to_string
+from django.template.loader import render_to_string, get_template
 
 from sare.questionarios.forms import QuestionarioForm
 from sare.questionarios.models import Questionario
@@ -47,21 +48,28 @@ def create(request):
                'pescar.gt.ss@gmail.com',
                quest.email,
                'questionarios/questionario_email.txt',
-               'questionarios/detalhes-email.html',
                {'quest': quest}
                )
 
     return HttpResponseRedirect(r('questionarios:detalhe', str(quest.hashId)))
 
 
-def _send_mail(subject, from_, to, template_name, html_message, context):
+def _send_mail(subject, from_, to, template_name, context):
     body = render_to_string(template_name, context)
-    msg_html = render_to_string(template_name, context)
+    template_html = 'questionarios/detalhes-email.html'
+    html = get_template(template_html)
+    html_content = html.render(context)
 
-    mail.send_mail(subject,
-                   body,
-                   from_,
-                   [to],
-                   html_message=msg_html,
-                   )
+    # mail.send_mail(subject,
+    #                body,
+    #                from_,
+    #                [to],
+    #                html_message=msg_html,
+    #                )
+
+    msg = EmailMultiAlternatives(subject, body, from_, [to])
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
+
+
 

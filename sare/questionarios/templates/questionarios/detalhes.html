@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base-detalhes.html" %}
 {% load i18n material_form %}
 
 {% block content %}
@@ -35,13 +35,20 @@
                     </div>
                 </div>
             </div>
-            <div class="card-action right-align">
-                <a class="btn white-text green" href="/questionario/">
-                    {% trans "Novo questionário" %}
-                    <i class="mdi-av-repeat left"></i>
-                </a>
-            </div>
+{#            <div class="card-action right-align">#}
+{#                <a class="btn white-text green" href="/questionario/">#}
+{#                    {% trans "Novo questionário" %}#}
+{#                    <i class="mdi-av-repeat left"></i>#}
+{#                </a>#}
+{#            </div>#}
         </div>
     </div>
 </div>
+
+    <script>
+        (function(){
+            window.print();
+        })();
+    </script>
+
 {% endblock %}
