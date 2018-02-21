@@ -16,7 +16,7 @@ class QuestionarioModelTest(TestCase):
         #         cidade='Palmas',
         #         email='samuka1@gmail.com'
         # )
-        self.obj = mommy.make(Questionario, nome='Samuel Barbosa')
+        self.obj = mommy.make(Questionario, nome='Samuel Barbosa',  _fill_optional=True )
         self.obj.save()
 
 
@@ -25,8 +25,8 @@ class QuestionarioModelTest(TestCase):
         self.assertTrue(Questionario.objects.exists())
 
     def test_criado_em(self):
-       """Questionario deve conter campo para registro de quando foi criado"""
-       self.assertIsInstance(self.obj.criado_em, datetime)
+        """Questionario deve conter campo para registro de quando foi criado"""
+        self.assertIsInstance(self.obj.criado_em, datetime)
 
     # @skipIf(AssertionError, "utilizando mommy model")
     def test_str(self):

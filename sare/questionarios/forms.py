@@ -1,10 +1,11 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import Select, RadioSelect, Textarea
+from django.forms import RadioSelect, Textarea, MultipleChoiceField, SelectMultiple, CheckboxSelectMultiple, Select
 from material import *
 
 from sare.questionarios.models import Questionario
 from sare.questionarios.validators import validate_cpf
+
 
 # Choices Global
 
@@ -22,7 +23,6 @@ RENDA_PER_CAPITA_CHOICE = [
             (4, '234,25 até 468,49'),
             (5, 'de 0 até 234, 24')
         ]
-
 
 
 class QuestionarioFormOld(forms.Form):
@@ -547,9 +547,14 @@ class QuestionarioForm(forms.ModelForm):
     layout = Layout(
         Fieldset("Dados Pessoais"),
         Row(Span4('nome'), Span4('email'),
-            Span4('sexo')),
-        Row(Span4('cpf'), Span4('cidade'),
-            Span4('bairro')),
+            Span4('cpf')),
+        Row(Span4('sexo'), Span3('cep'),
+            Span5('endereco')),
+        Row(Span3('num_casa'), Span3('bairro'), Span3('cidade'), Span3('estado')),
+
+        Fieldset('Dados acadêmicos'),
+        Field('curso'),
+        Row(Span4('sem_mod_ano'), Span4('matricula'), Span4('campus')),
 
         Fieldset("Dimensão: Econômica"),
 
@@ -666,12 +671,12 @@ class QuestionarioForm(forms.ModelForm):
         Fieldset("Dimensão: Cultural"),
 
         Fieldset("Sobre seu bairro"),
-        Row(Column('servicos_indisponiveis_bairro'),
-            Column('forma_descarte_lixo')),
+        #Row(#Column('servicos_indisponiveis_bairro'),
+        Row('forma_descarte_lixo'),
         Fieldset(" "),
         Row('percepcao_seguranca_bairro'),
-        Fieldset(" "),
-        Row('problemas_bairro'),
+        # Fieldset(" "),
+        # Row('problemas_bairro'),
 
         Fieldset("Comentários finais"),
         Row('fale_mais_familia')
@@ -680,7 +685,9 @@ class QuestionarioForm(forms.ModelForm):
     class Meta:
         model = Questionario
         exclude = ['hashId', 'criado_em', ]
+        # fields = '__all__'
         widgets = {
+            'curso': Select,
             'sexo': RadioSelect,
             'renda_per_capita': RadioSelect,
             'relacao_financeira': RadioSelect,
@@ -717,6 +724,7 @@ class QuestionarioForm(forms.ModelForm):
             'violencia_trafico_humano': RadioSelect,
             'violencia_psicologica_moral': RadioSelect,
             'violencia_fisica': RadioSelect,
+            'violencia_sexual': RadioSelect,
             'preconceito_cultural': RadioSelect,
             'preconceito_estetico': RadioSelect,
             'preconceito_economico': RadioSelect,
@@ -725,12 +733,17 @@ class QuestionarioForm(forms.ModelForm):
             'preconceito_racial': RadioSelect,
             'preconceito_genero': RadioSelect,
             'preconceito_orientacao_sexual': RadioSelect,
-            'servicos_indisponiveis_bairro': RadioSelect,
+            # 'servicos_indisponiveis_bairro': CheckboxSelectMultiple,
             'forma_descarte_lixo': RadioSelect,
             'percepcao_seguranca_bairro': RadioSelect,
-            'problemas_bairro': RadioSelect,
-            'fale_mais_familia': Textarea(attrs={'cols': 80, 'rows': 20}),
+            # 'problemas_bairro': CheckboxSelectMultiple,
+            'fale_mais_familia': Textarea(attrs={'cols': 80, 'rows': 40}),
         }
+
+    # def clean_problemas_bairro(self):
+    #     if len(self.cleaned_data['problemas_bairro']) > 13:
+    #         raise ValidationError('!')
+    #     return self.cleaned_data['problemas_bairro']
 
     def clean_nome(self):
 

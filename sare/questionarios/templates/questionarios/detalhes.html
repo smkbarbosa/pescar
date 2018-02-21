@@ -13,13 +13,17 @@
                     <div class="col s12">
 
                         <p>Comprovante de preenchimento de questionário sócioeconômico-cultural</p>
-                        <p>Campus: <b>Palmas</b>                        </p>
+                        <p>Campus: <b>{{ quest.campus }}</b>                        </p>
 
                         <ul>
-                            <li>Nome: {{ quest.nome }}</li>
-                            <li>CPF: {{ quest.cpf }}</li>
-                            <li>E-mail: {{ quest.email }}</li>
-                            <li>Cidade: {{ quest.cidade }}</li>
+                            <li><strong>Nome:</strong> {{ quest.nome }}</li>
+                            <li><strong>CPF:</strong> {{ quest.cpf }}</li>
+                            <li><strong>E-mail:</strong> {{ quest.email }}</li>
+                            <li><strong>Cidade:</strong> {{ quest.cidade.capitalize }}</li>
+                            <hr/>
+                            <li><strong>Curso:</strong> {{ quest.get_curso_display }}</li>
+                            <li><strong>Curso:</strong> {{ quest.matricula }}</li>
+                            <li><strong>Curso:</strong> {{ quest.sem_mod_ano }}</li>
 
                         </ul>
                         <p>Você deve imprimir este comprovante e anexar junto aos documentos solicitados no edital xx/2018.</p>
