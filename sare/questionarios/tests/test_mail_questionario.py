@@ -11,10 +11,13 @@ class QuestionarioNewPostValid(TestCase):
         self.obj = mommy.make(Questionario,nome='Samuel Barbosa', cpf='12345678901', email='samuka1@gmail.com',
                               cidade='Palmas', bairro='Plano Diretor norte', _fill_optional=True)
         # self.obj = mommy.prepare_recipe('sare.questionarios.quest', _fill_optional=True, _save_related=True)
-        form_fields = ['hashId', 'criado_em', 'nome', 'cpf', 'email',
-                       'bairro',
-                       'cidade',
+
+        form_fields = ['hashId', 'criado_em','nome', 'cpf', 'email','fone',
+                       'endereco','num_casa', 'cep', 'bairro',
+                       'cidade', 'estado',
                        'sexo',
+                       'curso', 'sem_mod_ano', 'matricula', 'campus',
+
                        'dependentes_RBD', 'origem_renda',
                        'renda_bruta_domiciliar',
                        'responsavel_domicilio', 'renda_per_capita', 'relacao_financeira',
@@ -42,7 +45,9 @@ class QuestionarioNewPostValid(TestCase):
                        'preconceito_estetico', 'preconceito_economico', 'preconceito_religioso',
                        'preconceito_mental',
                        'preconceito_racial', 'preconceito_genero', 'preconceito_orientacao_sexual',
+                       # 'servicos_indisponiveis_bairro',
                        'forma_descarte_lixo', 'percepcao_seguranca_bairro',
+                       # 'problemas_bairro',
                        'fale_mais_familia'
                        ]
         self.data = {field: getattr(self.obj, field) for field in form_fields}

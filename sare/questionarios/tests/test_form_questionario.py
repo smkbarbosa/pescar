@@ -11,10 +11,11 @@ class QuestionarioPessoalTest(TestCase):
     def test_form_has_fields(self):
         """Form deve conter campos """
         form = QuestionarioForm()
-        expected = ['nome', 'cpf', 'email',
-                    'bairro',
-                    'cidade',
+        expected = ['nome', 'cpf', 'email','fone',
+                    'endereco', 'num_casa', 'cep', 'bairro',
+                    'cidade', 'estado',
                     'sexo',
+                    'curso', 'sem_mod_ano', 'matricula', 'campus',
                     'dependentes_RBD', 'origem_renda',
                     'renda_bruta_domiciliar',
                     'responsavel_domicilio', 'renda_per_capita', 'relacao_financeira',

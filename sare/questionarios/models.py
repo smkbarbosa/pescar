@@ -18,11 +18,11 @@ DEPENDENCIA_FINANCEIRA_CHOICE = (
 )
 
 RENDA_PER_CAPITA_CHOICE = (
-    ('1', '1.405,51 (a partir)'),
-    ('2', '937,01 a 1405,50'),
-    ('3', '468,50 a 937,00'),
-    ('4', '234,25 até 468,49'),
-    ('5', 'de 0 até 234, 24')
+    ('1', '1.431,01 (a partir)'),
+    ('2', '954,01 a 1431,00'),
+    ('3', '477,01 a 954,00'),
+    ('4', '238,50 até 477,00'),
+    ('5', 'de 0 até 238, 49')
 )
 
 CONDICAO_RESPONSAVEL_CASA_CHOICES = (
@@ -153,16 +153,58 @@ DESCARTE_LIXO_CHOICE = (
     ('4', 'Queimado')
 )
 
+CURSO_CHOICE = (
+    ('1', 'PROEJA - ATENDIMENTO'),
+    ('2', 'PROEJA - MANUTENÇÃO E OPERAÇÃO DE MICROCOMPUTADORESs'),
+    ('3', 'TEC. INT. - TÉCNICO EM ADMINISTRAÇÃO'),
+    ('4', 'TEC. INT. - TÉCNICO EM AGRIMENSURA'),
+    ('5', 'TEC. INT. - TÉCNICO EM AGRONEGÓCIO'),
+    ('6', 'TEC. INT. - TÉCNICO EM CONTROLE AMBIENTAL '),
+    ('7', 'TEC. INT. - TÉCNICO EM ELETROTÉCNICA'),
+    ('8', 'TEC. INT. - TÉCNICO EM EVENTOS'),
+    ('9', 'TEC. INT. - TÉCNICO EM INFORMÁTICA PARA INTERNET'),
+    ('10', 'TEC. INT. - TÉCNICO EM MECATRÔNICA'),
+    ('11', 'TEC. SUB. - TÉCNICO EM AGRIMENSURA'),
+    ('12', 'TEC. SUB. - TÉCNICO EM AUTOMAÇÃO INDUSTRIAL'),
+    ('13', 'TEC. SUB. - TÉCNICO EM EDIFICAÇÕES'),
+    ('14', 'TEC. SUB. - TÉCNICO EM ELETROTÉCNICA'),
+    ('15', 'TEC. SUB. - TÉCNICO EM INFORMÁTICA'),
+    ('16', 'TEC. SUB. - TÉCNICO EM SECRETARIADO'),
+    ('17', 'TEC. SUB. - TÉCNICO EM SEGURANÇA DO TRABALHO'),
+    ('18', 'GRADUAÇÃO - ENGENHARIA CIVIL'),
+    ('19', 'GRADUAÇÃO - ENGENHARIA ELÉTRICA'),
+    ('20', 'GRADUAÇÃO - EDUCAÇÃO FÍSICA'),
+    ('21', 'GRADUAÇÃO - FÍSICA'),
+    ('22', 'GRADUAÇÃO - LETRAS - LÍNGUA PORTUGUESA'),
+    ('23', 'GRADUAÇÃO - MATEMÁTICA'),
+    ('24', 'GRADUAÇÃO - AGRONEGÓCIO'),
+    ('25', 'GRADUAÇÃO - CONSTRUÇÃO DE EDIFÍCIOS'),
+    ('26', 'GRADUAÇÃO - GESTÃO DE TURISMO'),
+    ('27', 'GRADUAÇÃO - GESTÃO PÚBLICA'),
+    ('28', 'GRADUAÇÃO - SISTEMAS ELÉTRICOS'),
+    ('29', 'GRADUAÇÃO - SISTEMAS PARA INTERNET')
+)
+
 
 class Questionario(models.Model):
     hashId = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
     nome = models.CharField('nome', max_length=100)
     cpf = models.CharField('CPF', max_length=11, validators=[validate_cpf])
     email = models.EmailField('e-mail')
+    fone = models.CharField('telefone',max_length=20, blank=True)
 
+    endereco = models.CharField('endereço', max_length=100, default=None)
+    num_casa = models.CharField('número da casa', max_length=4, default=0)
+    cep = models.CharField('cep', max_length=9, default=None)
     bairro = models.CharField('bairro', max_length=100)
     cidade = models.CharField('cidade', max_length=100)
+    estado = models.CharField('estado', max_length=2, default='TO')
     sexo = models.CharField('sexo', max_length=1, choices=SEXO_CHOICES, default=None)
+
+    curso = models.CharField('curso', choices=CURSO_CHOICE, max_length=50, blank=True)
+    sem_mod_ano = models.CharField('Semestre/Módulo/Ano', max_length=10, default=None)
+    matricula = models.CharField('matrícula', max_length=15, default=None)
+    campus = models.CharField('campus', max_length=30, default='PALMAS')
 
     criado_em = models.DateTimeField('criado em', auto_now_add=True)
 

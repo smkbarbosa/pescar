@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import RadioSelect, Textarea, MultipleChoiceField, SelectMultiple, CheckboxSelectMultiple
+from django.forms import RadioSelect, Textarea, MultipleChoiceField, SelectMultiple, CheckboxSelectMultiple, Select
+
 from material import *
 
 from sare.questionarios.models import Questionario
@@ -547,9 +548,14 @@ class QuestionarioForm(forms.ModelForm):
     layout = Layout(
         Fieldset("Dados Pessoais"),
         Row(Span4('nome'), Span4('email'),
-            Span4('sexo')),
-        Row(Span4('cpf'), Span4('cidade'),
-            Span4('bairro')),
+            Span4('cpf')),
+        Row(Span4('sexo'), Span3('cep'),
+            Span5('endereco')),
+        Row(Span3('num_casa'), Span3('bairro'), Span3('cidade'), Span3('estado')),
+
+        Fieldset('Dados acadêmicos'),
+        Field('curso'),
+        Row(Span4('sem_mod_ano'), Span4('matricula'), Span4('campus')),
 
         Fieldset("Dimensão: Econômica"),
 
@@ -682,6 +688,7 @@ class QuestionarioForm(forms.ModelForm):
         exclude = ['hashId', 'criado_em', ]
         # fields = '__all__'
         widgets = {
+            'curso': Select,
             'sexo': RadioSelect,
             'renda_per_capita': RadioSelect,
             'relacao_financeira': RadioSelect,
@@ -718,6 +725,7 @@ class QuestionarioForm(forms.ModelForm):
             'violencia_trafico_humano': RadioSelect,
             'violencia_psicologica_moral': RadioSelect,
             'violencia_fisica': RadioSelect,
+            'violencia_sexual': RadioSelect,
             'preconceito_cultural': RadioSelect,
             'preconceito_estetico': RadioSelect,
             'preconceito_economico': RadioSelect,
