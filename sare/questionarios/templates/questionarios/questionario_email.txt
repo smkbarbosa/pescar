@@ -9,7 +9,7 @@ e-mail: {{ quest.email }}
 Cidade: {{ quest.cidade }}
 
 
-Para visualizar o comprovante no site, utilize o código {{ quest.id }}
+Para visualizar o comprovante no site, copie e cole o seguinte endereço no seu navegador http://pescar.ifto.edu.br/questionario/{{ quest.hashId }}
 
 Atenciosamente,
 

@@ -41,20 +41,27 @@ def create(request):
 
     quest = form.save()
 
+
+
     _send_mail('Questionário Socioeconômico preenchido com sucesso',
                'pescar.gt.ss@gmail.com',
                quest.email,
                'questionarios/questionario_email.txt',
-               {'quest': quest})
+               'questionarios/detalhes-email.html',
+               {'quest': quest}
+               )
 
     return HttpResponseRedirect(r('questionarios:detalhe', str(quest.hashId)))
 
 
-def _send_mail(subject, from_, to, template_name, context):
+def _send_mail(subject, from_, to, template_name, html_message, context):
     body = render_to_string(template_name, context)
+    msg_html = render_to_string(template_name, context)
 
     mail.send_mail(subject,
                    body,
                    from_,
-                   [to])
+                   [to],
+                   html_message=msg_html,
+                   )
 
