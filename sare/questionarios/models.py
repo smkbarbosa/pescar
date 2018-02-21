@@ -211,7 +211,7 @@ class Questionario(models.Model):
     # Dimensão economica
     dependentes_RBD = models.IntegerField('Dependentes da Renda Bruta Domiciliar', )
     origem_renda = models.IntegerField('Quantidade de pessoas que possuem renda',)
-    renda_bruta_domiciliar = models.DecimalField(max_digits=8, decimal_places=2)
+    renda_bruta_domiciliar = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
     responsavel_domicilio = models.CharField(max_length=100)
 
     # Finanças
@@ -222,28 +222,29 @@ class Questionario(models.Model):
 
     # Despesas
 
-    despesas_saude_tratamento = models.DecimalField('Tratamento de Saúde', max_digits=8, decimal_places=2)
-    despesas_saude_medicamento = models.DecimalField('Medicamentos', max_digits=8, decimal_places=2)
-    despesas_saude_cuidador = models.DecimalField('Cuidador de idoso/criança', max_digits=8, decimal_places=2)
-    despesas_saude_plano = models.DecimalField('Plano de saúde', max_digits=8, decimal_places=2)
+    despesas_saude_tratamento = models.DecimalField('Tratamento de Saúde', max_digits=8, decimal_places=2, default=0.0)
+    despesas_saude_medicamento = models.DecimalField('Medicamentos', max_digits=8, decimal_places=2, default=0.0)
+    despesas_saude_cuidador = models.DecimalField('Cuidador de idoso/criança', max_digits=8, decimal_places=2, default=0.0)
+    despesas_saude_plano = models.DecimalField('Plano de saúde', max_digits=8, decimal_places=2, default=0.0)
 
-    despesas_transporte = models.DecimalField('Transporte', max_digits=8, decimal_places=2)
+    despesas_transporte = models.DecimalField('Transporte', max_digits=8, decimal_places=2, default=0.0)
 
-    despesas_moradia = models.DecimalField('Moradia', max_digits=8, decimal_places=2)
+    despesas_moradia = models.DecimalField('Moradia', max_digits=8, decimal_places=2, default=0.0)
 
-    despesas_educacao_superior = models.DecimalField('Graduação', max_digits=8, decimal_places=2)
-    despesas_educacao_basico = models.DecimalField('Ensino Fundamental', max_digits=8, decimal_places=2)
-    despesas_educacao_cursinho = models.DecimalField('Cursinhos', max_digits=8, decimal_places=2)
-    despesas_educacao_capacitacao = models.DecimalField('Cursos de Capacitação', max_digits=8, decimal_places=2)
-    despesas_educacao_material = models.DecimalField('Material escolar', max_digits=8, decimal_places=2)
+    despesas_educacao_superior = models.DecimalField('Graduação', max_digits=8, decimal_places=2, default=0.0)
+    despesas_educacao_basico = models.DecimalField('Ensino Fundamental', max_digits=8, decimal_places=2, default=0.0)
+    despesas_educacao_cursinho = models.DecimalField('Cursinhos', max_digits=8, decimal_places=2, default=0.0)
+    despesas_educacao_capacitacao = models.DecimalField('Cursos de Capacitação', max_digits=8, decimal_places=2,
+                                                        default=0.0)
+    despesas_educacao_material = models.DecimalField('Material escolar', max_digits=8, decimal_places=2, default=0.0)
 
-    despesas_bens_fcarro = models.DecimalField('Parcela Carro', max_digits=8, decimal_places=2)
-    despesas_bens_fmoto = models.DecimalField('Parcela Moto', max_digits=8, decimal_places=2)
-    despesas_bens_terreno = models.DecimalField('Parcela Terreno', max_digits=8, decimal_places=2)
+    despesas_bens_fcarro = models.DecimalField('Parcela Carro', max_digits=8, decimal_places=2, default=0.0)
+    despesas_bens_fmoto = models.DecimalField('Parcela Moto', max_digits=8, decimal_places=2, default=0.0)
+    despesas_bens_terreno = models.DecimalField('Parcela Terreno', max_digits=8, decimal_places=2, default=0.0)
 
-    despesas_domesticas_eletrica = models.DecimalField('Energia elétrica', max_digits=8, decimal_places=2)
-    despesas_domesticas_agua = models.DecimalField('Água e esgoto', max_digits=8, decimal_places=2)
-    despesas_domesticas_alimentacao = models.DecimalField('Alimentação', max_digits=8, decimal_places=2)
+    despesas_domesticas_eletrica = models.DecimalField('Energia elétrica', max_digits=8, decimal_places=2, default=0.0)
+    despesas_domesticas_agua = models.DecimalField('Água e esgoto', max_digits=8, decimal_places=2, default=0.0)
+    despesas_domesticas_alimentacao = models.DecimalField('Alimentação', max_digits=8, decimal_places=2, default=0.0)
 
     # Dimensao Social
     condicao_responsavel_casa = models.CharField(choices=CONDICAO_RESPONSAVEL_CASA_CHOICES, max_length=1, default=None)

@@ -2,6 +2,28 @@
 {% include 'material/includes/material_js.html' %}
 {% load static %}
 {% load material_form %}
+{% load l10n %}
+
+{% localize off %}
+    {{ despesas_saude_tratamento }}
+    {{ despesas_saude_medicamento }}
+    {{ despesas_saude_cuidador }}
+    {{ despesas_saude_plano }}
+    {{ despesas_transporte }}
+    {{ despesas_moradia }}
+    {{ despesas_educacao_superior }}
+    {{ despesas_educacao_basico }}
+    {{ despesas_educacao_cursinho }}
+    {{ despesas_educacao_capacitacao }}
+    {{ despesas_educacao_material }}
+    {{ despesas_bens_fcarro }}
+    {{ despesas_bens_fmoto }}
+    {{ despesas_bens_terreno }}
+    {{ despesas_domesticas_eletrica }}
+    {{ despesas_domesticas_agua }}
+    {{ despesas_domesticas_alimentacao }}
+
+{% endlocalize %}
 
 
 <html>
@@ -88,6 +110,5 @@
     </div>
 </div>
 <script src="{% static 'material/js/jquery.js' %}"></script>
-
 
 </html>
