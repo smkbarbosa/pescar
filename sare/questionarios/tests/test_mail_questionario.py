@@ -10,12 +10,13 @@ class QuestionarioNewPostValid(TestCase):
     def setUp(self):
         self.obj = mommy.make(Questionario,nome='Samuel Barbosa', cpf='12345678901', email='samuka1@gmail.com',
                               cidade='Palmas', bairro='Plano Diretor norte', _fill_optional=True)
-        # self.obj = mommy.prepare_recipe('sare.questionarios.quest', _fill_optional=True, _save_related=True)
+
         form_fields = ['hashId', 'criado_em','nome', 'cpf', 'email','fone',
                        'endereco','num_casa', 'cep', 'bairro',
                        'cidade', 'estado',
                        'sexo',
                        'curso', 'sem_mod_ano', 'matricula', 'campus',
+
                        'dependentes_RBD', 'origem_renda',
                        'renda_bruta_domiciliar',
                        'responsavel_domicilio', 'renda_per_capita', 'relacao_financeira',
