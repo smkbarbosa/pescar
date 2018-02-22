@@ -35,20 +35,20 @@
                     </div>
                 </div>
             </div>
-{#            <div class="card-action right-align">#}
-{#                <a class="btn white-text green" href="/questionario/">#}
-{#                    {% trans "Novo questionário" %}#}
-{#                    <i class="mdi-av-repeat left"></i>#}
-{#                </a>#}
-{#            </div>#}
+            <div class="card-action right-align">
+                <a class="btn white-text green" href="javascript:window.print()">
+                    {% trans "Imprimir comprovante" %}
+                    <i class="mdi-av-repeat left"></i>
+                </a>
+            </div>
         </div>
     </div>
 </div>
 
-    <script>
-        (function(){
-            window.print();
-        })();
-    </script>
+{#    <script>#}
+{#        (function(){#}
+{#            window.print();#}
+{#        })();#}
+{#    </script>#}
 
 {% endblock %}
