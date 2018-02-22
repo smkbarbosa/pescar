@@ -4,6 +4,7 @@ from sare.questionarios.forms import QuestionarioForm
 
 
 # from sare.questionarios.models import Questionario
+from sare.questionarios.validators import cpf_is_digits, cpf_has_correct_length, cpf_is_valid, format_cpf
 
 
 class QuestionarioPessoalTest(TestCase):
@@ -50,32 +51,59 @@ class QuestionarioPessoalTest(TestCase):
                     ]
         self.assertSequenceEqual(expected, list(form.fields))
 
-    def test_cpf_is_digit(self):
-        """CPF deve ter apenas digitos"""
-        form = self.make_validated_form(cpf='ABCD5678901')
-        self.assertFormErrorCode(form, 'cpf', 'digits')
+    # def test_cpf_is_digit(self):
+    #     """CPF deve ter apenas digitos"""
+    #     form = self.make_validated_form(cpf='ABCD5678901')
+    #     self.assertFormErrorCode(form, 'cpf', 'digits')
+    #
+    # def test_cpf_tem_11_digitos(self):
+    #     """CPF Deve ter 11 digitos"""
+    #     form = self.make_validated_form(cpf='1234')
+    #     self.assertFormErrorCode(form, 'cpf', 'length')
+    #
+    # def assertFormErrorCode(self, form, field, code):
+    #     errors = form.errors.as_data()
+    #     errors_list = errors[field]
+    #
+    #     exception = errors_list[0]
+    #
+    #     self.assertEqual(code, exception.code)
 
-    def test_cpf_tem_11_digitos(self):
-        """CPF Deve ter 11 digitos"""
-        form = self.make_validated_form(cpf='1234')
-        self.assertFormErrorCode(form, 'cpf', 'length')
+    def test_cpf_is_digits(self):
+        """CPF must only accpet digits"""
+        self.assertTrue(cpf_is_digits('12345678900'))
 
-    def assertFormErrorCode(self, form, field, code):
-        errors = form.errors.as_data()
-        errors_list = errors[field]
+    def test_cpf_is_not_digits(self):
+        """CPF must only accpet digits"""
+        self.assertFalse(cpf_is_digits('123456789AA'))
 
-        exception = errors_list[0]
+    def test_cpf_has_correct_digits(self):
+        """CPF must have 11 digits."""
+        self.assertTrue(cpf_has_correct_length("11144477711"))
 
-        self.assertEqual(code, exception.code)
+    def test_cpf_has_not_correct_digits(self):
+        """CPF must have 11 digits."""
+        self.assertFalse(cpf_has_correct_length("111444777"))
 
-    # def assertFormErrorMessage(self, form, field, msg):
-    #     errors = form.errors
-    #     errors_list = errors['cpf']
-    #     self.assertListEqual([msg], errors_list)
+    def test_cpf_is_valid(self):
+        """CPF must have a valid final digits"""
+        self.assertTrue(cpf_is_valid('11144477735'))
+
+    def test_cpf_is_not_valid(self):
+        self.assertFalse(cpf_is_valid('11144477711'))
+
+    def test_format_cpf(self):
+        expected = '123.456.789-11'
+        self.assertEqual(format_cpf('12345678911'), expected)
+
+    def assertFormErrorMessage(self, form, field, msg):
+        errors = form.errors
+        errors_list = errors['cpf']
+        self.assertListEqual([msg], errors_list)
 
     def make_validated_form(self, **kwargs):
         valid = dict(nome="samuel barbosa", email="samuka1@gmail.com",
-                    cidade='Palmas', cpf="12345678901")
+                    cidade='Palmas', cpf="61658108965")
 
         data = dict(valid, **kwargs)
 

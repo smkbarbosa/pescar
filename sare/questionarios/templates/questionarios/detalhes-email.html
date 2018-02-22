@@ -1,4 +1,4 @@
-{% extends "base-detalhes.html" %}
+{% extends "base-email.html" %}
 {% load i18n material_form %}
 
 {% block content %}
@@ -11,6 +11,9 @@
                     SARE</strong></span>
                 <div class="row">
                     <div class="col s12">
+                        <div class="center">
+                            <img src="http://pescar.ifto.edu.br/img/logo-sare.png">
+                        </div>
 
                         <p>Comprovante de preenchimento de questionário sócioeconômico-cultural</p>
                         <p>Campus: <b>{{ quest.campus }}</b>                        </p>
@@ -29,26 +32,13 @@
                         <p>Você deve imprimir este comprovante e anexar junto aos documentos solicitados no edital xx/2018.</p>
 
                         <div>
-                            <p>Para acessar este comprovante, utilize o código: <strong>{{ quest.hashId }}</strong></p>
+                            <p>Para acessar este comprovante, <strong> <a href="http://pescar.ifto.edu.br/questionario/{{ quest.hashId }}">clique aqui </a></strong></p>
                         </div>
 
                     </div>
                 </div>
             </div>
-{#            <div class="card-action right-align">#}
-{#                <a class="btn white-text green" href="/questionario/">#}
-{#                    {% trans "Novo questionário" %}#}
-{#                    <i class="mdi-av-repeat left"></i>#}
-{#                </a>#}
-{#            </div>#}
         </div>
     </div>
 </div>
-
-    <script>
-        (function(){
-            window.print();
-        })();
-    </script>
-
 {% endblock %}
