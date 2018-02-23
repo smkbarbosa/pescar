@@ -2,7 +2,8 @@ import uuid
 
 from django.db import models
 
-from sare.questionarios.validators import cpf_is_digits
+from sare.questionarios.validators import cpf_is_digits, format_cpf, cpf_is_valid
+
 
 SEXO_CHOICES = (
     ('M', 'Masculino'),
@@ -189,7 +190,7 @@ CURSO_CHOICE = (
 class Questionario(models.Model):
     hashId = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
     nome = models.CharField('nome', max_length=100)
-    cpf = models.CharField('CPF', max_length=11, validators=[cpf_is_digits])
+    cpf = models.CharField('CPF', max_length=14, validators=[cpf_is_digits, format_cpf, cpf_is_valid])
     email = models.EmailField('e-mail')
     fone = models.CharField('telefone',max_length=20, blank=True)
 
