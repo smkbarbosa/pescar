@@ -1,6 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import RadioSelect, Textarea, Select
+from django.forms.utils import ErrorList
+from django.utils.text import get_text_list, capfirst
 
 from material import *
 
@@ -758,4 +760,4 @@ class QuestionarioForm(forms.ModelForm):
         if not self.cleaned_data.get('email') and not self.cleaned_data.get('cpf'):
             raise ValidationError('Informe seu e-mail ou cpf.')
 
-        return  self.cleaned_data
+        return self.cleaned_data

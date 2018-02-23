@@ -16,7 +16,7 @@ class QuestionarioModelTest(TestCase):
         #         cidade='Palmas',
         #         email='samuka1@gmail.com'
         # )
-        self.obj = mommy.make(Questionario, nome='Samuel Barbosa',  _fill_optional=True )
+        self.obj = mommy.make(Questionario, nome='Samuel Barbosa', cpf='65673063008', _fill_optional=True )
         self.obj.save()
 
 
