@@ -412,7 +412,7 @@ class QuestionarioFormOld(forms.Form):
             Fieldset("Dados Pessoais"),
             Row(Span4('nome'),Span4('email'),
                  Span4('sexo')),
-            Row(Span4('cpf'), Span4('cidade'),
+            Row(Span2('cpf'), Span2('fone'), Span4('cidade'),
                   Span4('bairro')),
 
             Fieldset("Dimensão: Econômica"),
@@ -550,7 +550,7 @@ class QuestionarioForm(forms.ModelForm):
     layout = Layout(
         Fieldset("Dados Pessoais"),
         Row(Span4('nome'), Span4('email'),
-            Span4('cpf')),
+            Span2('cpf'), Span2('fone')),
         Row(Span4('sexo'), Span3('cep'),
             Span5('endereco')),
         Row(Span3('num_casa'), Span3('bairro'), Span3('cidade'), Span3('estado')),
@@ -761,3 +761,24 @@ class QuestionarioForm(forms.ModelForm):
             raise ValidationError('Informe seu e-mail ou cpf.')
 
         return self.cleaned_data
+
+    # def calc_renda_per_capita(self):
+    #     rb = self.renda_bruta_domiciliar
+    #     pd = self.dependentes_RBD
+    #     per_capita = rb/pd
+    #
+    #
+    #     intervalos = [
+    #         (1431.01, float('inf'), 1),
+    #         (954.01,1431,00, 2),
+    #         (477.01, 954.00, 3),
+    #         (238.50, 477.00, 4),
+    #         (0, 238.49, 5)
+    #     ]S
+    #
+    #     for start, stop, valor in intervalos:
+    #         if per_capita in range(start, stop):
+    #             return valor
+    #         self.renda_per_capita = valor
+    #
+    #     return self.renda_per_capita
