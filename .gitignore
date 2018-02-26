@@ -107,4 +107,8 @@ ENV/
 
 .pytest_cache/*
 
-staticfiles/
+staticfiles/*
+
+# Credentials
+.travis/*.key
+.travis/*.key.pub
