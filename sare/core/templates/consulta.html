@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Masthead -->
+
+
+    <div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="search-wrapper card focused center waves-green s4">
+                <form action="{% url 'questionarios:consulta' %}" name="consulta" method="POST">
+                    {% csrf_token %}
+                    <input id="cpf" name='{{ form.cpf }}' placeholder="Digite seu CPF " class="form-control">
+                    <input id="matricula" name='matricula' placeholder="Digite sua matrícula " class="form-control">
+                    <button type="submit" class="btn btn-success form-control">Buscar</button>
+                </form>
+
+        </div>
+    </div>
+
+
+
+{#        <div class="col s12 m4">#}
+{#          <div class="icon-block">#}
+{#            <h2 class="center green-text"><i class="material-icons">assignment#}
+{#</i></h2>#}
+{#            <h5 class="center">Relatórios personalizados</h5>#}
+{##}
+{#            <p class="light">Relatórios baseados nas vulnerabilidades dos estudantes!</p>#}
+{#          </div>#}
+{#        </div>#}
+{##}
+{#        <div class="col s12 m4">#}
+{#          <div class="icon-block">#}
+{#            <h2 class="center green-text"><i class="material-icons">people#}
+{#</i></h2>#}
+{#            <h5 class="center">Atendimento a Estudantes</h5>#}
+{##}
+{#            <p class="light">Plataforma de atendimento a estudantes e familiares.</p>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+
+    </div>
+    <br><br>
+  </div>
+
+    <!-- Footer -->
+    <footer class="page-footer green">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Pescar</h5>
+          <p class="grey-text text-lighten-4">
+              O Projeto PESCAR visa realizar um estudo a partir da realidade sócioeconômica de cada estudante do IFTO.
+              Há uma equipe multiprofissional responsável pelo desenvolvimento do projeto, e, nessa primeira etapa,
+              afim de validar as ações de pesquisa e mapeamento de vulnerabilidades, o projeto é desenvolvido por
+              Samuel Barbosa, como Trabalho de Conclusão de Curso do curso Sistemas para Internet, do Campus Palmas
+              (IFTO).
+          </p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Links Úteis</h5>
+          <ul>
+            <li><a class="white-text" href="http://smkbarbosa.eti.br">Desenvolvedor</a></li>
+            <li><a class="white-text" href="http://portal.ifto.edu.br/palmas">Campus Palmas do IFTO</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Entre em contato</h5>
+          <ul>
+            <li><a class="white-text" href="mailto:contato@smkbarbosa.eti.br">Informar problema</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+{% endblock content %}
