@@ -9,7 +9,7 @@ python:
  # postgresql: "9.6"
 
 install:
-  - cp contrib/env-sample .env
+  - python contrib/env-sample.py
   - pip install -q -r requirements.txt
 
 # before_script:

@@ -107,4 +107,4 @@ ENV/
 
 .pytest_cache/*
 
-staticfiles/*
+staticfiles/
