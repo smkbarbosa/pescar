@@ -782,3 +782,21 @@ class QuestionarioForm(forms.ModelForm):
     #         self.renda_per_capita = valor
     #
     #     return self.renda_per_capita
+
+
+class BuscaForm(forms.ModelForm):
+    layout = Layout(
+        Row(Column('cpf'),
+            (Column('matricula'))))
+
+    class Meta:
+        model = Questionario
+        fields = ['cpf', 'matricula']
+
+    def clean(self):
+        self.cleaned = super().clean()
+
+        if not self.cleaned.get('cpf') and not self.cleaned.get('matricula'):
+            raise ValidationError('Informe seu cpf e matrícula.')
+
+        return self.cleaned_data

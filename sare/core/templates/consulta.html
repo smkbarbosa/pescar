@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load material_form %}
 
 {% block content %}
     <!-- Masthead -->
@@ -8,12 +9,19 @@
     <div class="section">
         <div class="row">
             <div class="search-wrapper card focused center waves-green s4">
+
                 <form action="{% url 'questionarios:consulta' %}" name="consulta" method="POST">
                     {% csrf_token %}
-                    <input id="cpf" name='{{ form.cpf }}' placeholder="Digite seu CPF " class="form-control">
-                    <input id="matricula" name='matricula' placeholder="Digite sua matrícula " class="form-control">
-                    <button type="submit" class="btn btn-success form-control">Buscar</button>
+
+                    {% form form=form layout=form.layout %}
+{#                    <input id="cpf" name='{{ form.cpf }}' placeholder="Digite seu CPF " class="form-control"> #}
+{#                    <input id="matricula" name='matricula' placeholder="Digite sua matrícula " class="form-control">#}
+                    {% endform %}
+                <div class="right-align">
+                    <button type="submit" class="btn btn-success form-control red">Buscar</button>
+                </div>
                 </form>
+
 
         </div>
     </div>

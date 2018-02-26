@@ -1,10 +1,10 @@
-from django.core import mail
 from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string, get_template
 
-from sare.questionarios.forms import QuestionarioForm
+from sare.core.views import busca
+from sare.questionarios.forms import QuestionarioForm, BuscaForm
 from sare.questionarios.models import Questionario
 
 
@@ -29,6 +29,27 @@ def detalhe(request, hashid):
                   {'quest': questionario})
 
 
+def consulta(request):
+
+    # form = BuscaForm(request.POST)
+    if request.method == 'POST':
+        # import ipdb
+        #
+        # ipdb.set_trace()
+        # if not form.is_valid():
+        #     return render(request, r('busca'),
+        #                   {'form': form})
+
+        cpf = request.POST['cpf']
+        matricula = request.POST['matricula']
+
+        c = Questionario.objects.filter(cpf=cpf, matricula=matricula).get()
+
+        return HttpResponseRedirect(r('questionarios:detalhe', c.hashId))
+    else:
+        return Http404
+
+
 def create(request):
     # Recebe os dados do formulário
     form = QuestionarioForm(request.POST)
@@ -41,8 +62,6 @@ def create(request):
                       {'form': form})
 
     quest = form.save()
-
-
 
     _send_mail('Questionário Socioeconômico preenchido com sucesso',
                'pescar.gt.ss@gmail.com',
@@ -70,6 +89,4 @@ def _send_mail(subject, from_, to, template_name, context):
     msg = EmailMultiAlternatives(subject, body, from_, [to])
     msg.attach_alternative(html_content, "text/html")
     msg.send()
-
-
 

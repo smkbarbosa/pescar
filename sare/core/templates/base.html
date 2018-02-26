@@ -42,12 +42,16 @@
     <nav class="white lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="{% url 'home' %}" class="brand-logo"><img
             src="{% static 'img/logo-sare.png' %}"></a>
-      <ul class="right hide-on-med-and-down green">
-        <li><a href="/admin">Login</a></li>
+      <ul class="right hide-on-med-and-down red">
+          <li><a href="{% url 'busca' %}">Consultar comprovante</a></li>
+          <li>|</li>
+          <li><a href="/admin">Login</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
-        <li><a href="#">Navbar Link</a></li>
+          <li><a href="{% url 'busca' %}consulta.html">Consultar comprovante</a></li>
+          <li>|</li>
+          <li><a href="/admin">Login</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
