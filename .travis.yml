@@ -1,21 +1,19 @@
 language: python
-
 python:
-  - 3.6
-
-# services: postgresql
-
-# addons:
- # postgresql: "9.6"
-
+- 3.6
 install:
-  - cp contrib/env-sample .env
-  - pip install -q -r requirements.txt
-
-# before_script:
-#  - psql -c "CREATE DATABASE pescar;" -U postgres
-#  - python manage.py migrate --noinput
-#  - python manage.py collectstatic
-
+- cp contrib/env-sample .env
+- pip install -q -r requirements.txt
 script:
-  - python manage.py test
+- python manage.py test
+before_install:
+- openssl aes-256-cbc -K $encrypted_c1b915d11032_key -iv $encrypted_c1b915d11032_iv
+  -in deploy.key.enc -out deploy.key -d
+after_success:
+  - eval "$(ssh-agent -s)" #start the ssh agent
+  - chmod 600 .travis/deploy.key # this key should have push access
+  - ssh-add .travis/deploy.key
+  - ssh-keyscan dokku@pescar.ifto.edu.br >> ~/.ssh/known_hosts
+  - git remote add deploy https://github.com/smkbarbosa/pescar.git
+  - git config --global push.default simple
+  - git push deploy master
