@@ -202,7 +202,7 @@ class Questionario(models.Model):
     estado = models.CharField('estado', max_length=2, default='TO')
     sexo = models.CharField('sexo', max_length=1, choices=SEXO_CHOICES, default=None)
 
-    curso = models.CharField('curso', choices=CURSO_CHOICE, max_length=50, blank=True)
+    curso = models.CharField('curso', choices=CURSO_CHOICE, max_length=50, default=None)
     sem_mod_ano = models.CharField('Semestre/Módulo/Ano', max_length=10, default=None)
     matricula = models.CharField('matrícula', max_length=15, default=None)
     campus = models.CharField('campus', max_length=30, default='PALMAS')
