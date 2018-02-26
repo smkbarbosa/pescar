@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, resolve_url as r
@@ -43,11 +44,10 @@ def consulta(request):
         cpf = request.POST['cpf']
         matricula = request.POST['matricula']
 
-        c = Questionario.objects.filter(cpf=cpf, matricula=matricula).get()
-
+        c = Questionario.objects.filter(cpf=cpf, matricula=matricula)[0]
         return HttpResponseRedirect(r('questionarios:detalhe', c.hashId))
     else:
-        return Http404
+        raise ValidationError('Cpf ou matrícula não encontrados')
 
 
 def create(request):
