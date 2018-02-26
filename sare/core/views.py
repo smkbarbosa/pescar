@@ -8,9 +8,6 @@ def home(request):
 
 
 def busca(request):
-    form = BuscaForm(request.POST)
+    form = BuscaForm()
 
-    if not form.is_valid():
-        return render(request, 'consulta.html',
-                      {'form': form})
     return render(request, 'consulta.html', {'form':form})
