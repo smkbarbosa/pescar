@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load material_form %}
+{#{% load material_form %}#}
 
 {% block content %}
     <!-- Masthead -->
@@ -13,10 +13,10 @@
                 <form action="{% url 'questionarios:consulta' %}" name="consulta" method="POST">
                     {% csrf_token %}
 
-                    {% form form=form layout=form.layout %}
+                    {{ form.as_p }}
 {#                    <input id="cpf" name='{{ form.cpf }}' placeholder="Digite seu CPF " class="form-control"> #}
 {#                    <input id="matricula" name='matricula' placeholder="Digite sua matrícula " class="form-control">#}
-                    {% endform %}
+
                 <div class="right-align">
                     <button type="submit" class="btn btn-success form-control red">Buscar</button>
                 </div>

@@ -49,11 +49,11 @@
       </ul>
 
       <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
-          <li><a href="{% url 'busca' %}consulta.html">Consultar comprovante</a></li>
+          <li><a href="{% url 'busca' %}">Consultar comprovante</a></li>
           <li>|</li>
           <li><a href="/admin">Login</a></li>
       </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse red"><i class="material-icons">menu</i></a>
     </div>
   </nav>
     {% block content %}
@@ -63,6 +63,21 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script>// Initialize collapse button
+    $(".button-collapse").sideNav();
+    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+    //$('.collapsible').collapsible();
+    $('.button-collapse').sideNav({
+        menuWidth: 300, // Default is 300
+        edge: 'right', // Choose the horizontal origin
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true, // Choose whether you can drag to open on touch screens,
+        onOpen: function(el) {}
+    }
+  );
+    </script>
+
 
 
   </body>

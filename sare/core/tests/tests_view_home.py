@@ -17,7 +17,3 @@ class HomeTest(TestCase):
     def test_questionario_link(self):
         expected = 'href="{}'.format(r('questionarios:new'))
         self.assertContains(self.response, expected)
-
-    def test_recupera_comprovante(self):
-        """Deve ter opção para recuperar comprovante na página inicial"""
-        self.assertTemplateUsed(self.response, 'consulta.html')

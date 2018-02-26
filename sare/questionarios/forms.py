@@ -785,6 +785,9 @@ class QuestionarioForm(forms.ModelForm):
 
 
 class BuscaForm(forms.ModelForm):
+    cpf = forms.CharField(label='CPF', max_length=14)
+    matricula = forms.CharField(label='Matrícula', max_length=16)
+
     layout = Layout(
         Row(Column('cpf'),
             (Column('matricula'))))
