@@ -64,7 +64,7 @@ def create(request):
     quest = form.save()
 
     _send_mail('Questionário Socioeconômico preenchido com sucesso',
-               'pescar.gt.ss@gmail.com',
+               'clae.palmas@ifto.edu.br',
                quest.email,
                'questionarios/questionario_email.txt',
                {'quest': quest}
