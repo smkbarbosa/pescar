@@ -52,7 +52,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.utils.log.AdminEmailHandler',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,7 +131,7 @@ RAVEN_CONFIG = {
     # If you are using git, you can also automatically configure the
     # release based on the git info.
     # 'release': raven.fetch_git_sha(os.path.join(BASE_DIR)),
-    'release': os.environ['SOURCE_VERSION']
+    # 'release': raven.fetch_git_sha(os.path.abspath(BASE_DIR))
 }
 
 # Static files (CSS, JavaScript, Images)
