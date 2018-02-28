@@ -131,7 +131,8 @@ RAVEN_CONFIG = {
     'dsn': config('SENTRY'),
     # If you are using git, you can also automatically configure the
     # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.join(BASE_DIR)),
+    # 'release': raven.fetch_git_sha(os.path.join(BASE_DIR)),
+    'release': os.environ['SOURCE_VERSION']
 }
 
 # Static files (CSS, JavaScript, Images)
@@ -143,10 +144,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
-
-
 # Configura Email
-SERVER_EMAIL = config('SERVER_EMAIL')
 EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
@@ -154,6 +152,4 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-# ADMINS
-ADMINS = config('ADMINS')
 
