@@ -11,11 +11,18 @@
             <div class="search-wrapper card focused center waves-green s4">
 
                 <form action="{% url 'questionarios:consulta' %}" name="consulta" method="POST">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert-info">
+                                <p>{{ message }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                     {% csrf_token %}
 
-{#                    {% form layout=form.layout %}#}
+{#                    {% form form=form  %}#}
                         {{ form.as_p }}
-{#                    <input id="cpf" name='{{ form.cpf }}' placeholder="Digite seu CPF " class="form-control"> #}
+{#                    <input id="cpf" name='{{ form.cpf }}' placeholder="Digite seu CPF " class="form-control">#}
 {#                    <input id="matricula" name='matricula' placeholder="Digite sua matrícula " class="form-control">#}
 {#                    {% endform %}#}
                 <div class="right-align">

@@ -32,11 +32,12 @@ def detalhe(request, hashid):
 
 def consulta(request):
 
-    # form = BuscaForm(request.POST)
+
     if request.method == 'POST':
         # import ipdb
         #
         # ipdb.set_trace()
+        # form = BuscaForm(request.POST)
         # if not form.is_valid():
         #     return render(request, r('busca'),
         #                   {'form': form})
@@ -47,7 +48,8 @@ def consulta(request):
         c = Questionario.objects.filter(cpf=cpf, matricula=matricula)[0]
         return HttpResponseRedirect(r('questionarios:detalhe', c.hashId))
     else:
-        raise ValidationError('Cpf ou matrícula não encontrados')
+        return render(request, r('busca'))
+
 
 
 def create(request):

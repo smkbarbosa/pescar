@@ -762,6 +762,7 @@ class QuestionarioForm(forms.ModelForm):
 
         return self.cleaned_data
 
+
     # def calc_renda_per_capita(self):
     #     rb = self.renda_bruta_domiciliar
     #     pd = self.dependentes_RBD
@@ -785,8 +786,8 @@ class QuestionarioForm(forms.ModelForm):
 
 
 class BuscaForm(forms.ModelForm):
-    cpf = forms.CharField(label='CPF', max_length=14)
-    matricula = forms.CharField(label='Matrícula', max_length=16)
+    # cpf = forms.CharField(label='CPF', max_length=14)
+    # matricula = forms.CharField(label='Matrícula', max_length=16)
 
     layout = Layout(
         Row(Column('cpf'),
@@ -798,8 +799,14 @@ class BuscaForm(forms.ModelForm):
 
     def clean(self):
         self.cleaned = super().clean()
+        # c = Questionario.objects.filter(cpf=self.cpf, matricula=self.matricula)
 
         if not self.cleaned.get('cpf') and not self.cleaned.get('matricula'):
             raise ValidationError('Informe seu cpf e matrícula.')
 
+        # if c == None:
+        #     raise ValidationError('Nenhum comprovante encontrado para os dados informados')
+
         return self.cleaned_data
+
+

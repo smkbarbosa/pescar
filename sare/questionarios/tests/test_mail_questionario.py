@@ -10,7 +10,7 @@ from sare.questionarios.models import Questionario
 
 class QuestionarioNewPostValid(TestCase):
     def setUp(self):
-        self.obj = mommy.make(Questionario,nome='Samuel Barbosa', cpf='58500336102', email='samuka1@gmail.com',
+        self.obj = mommy.prepare(Questionario,nome='Samuel Barbosa', cpf='58500336102', email='samuka1@gmail.com',
                               cidade='Palmas', bairro='Plano Diretor norte', _fill_optional=True)
 
         form_fields = ['hashId', 'criado_em','nome', 'cpf', 'email','fone',
@@ -57,25 +57,26 @@ class QuestionarioNewPostValid(TestCase):
         self.client.post(r('questionarios:new'), self.data)
         self.email = mail.outbox[0]
 
-    @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
+    # @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
     def test_email_questionario_assunto(self):
         expect = 'Questionário Socioeconômico preenchido com sucesso'
 
         self.assertEqual(expect, self.email.subject)
 
-    @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
+    # @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
     def test_email_questionario_remetente(self):
-        expect = 'pescar.gt.ss@gmail.com'
+        # expect = 'pescar.gt.ss@gmail.com'
+        expect = 'clae.palmas@ifto.edu.br'
 
         self.assertEqual(expect, self.email.from_email)
 
-    @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
+    # @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
     def test_email_questionario_para(self):
         expect = ['samuka1@gmail.com']
 
         self.assertEqual(expect, self.email.to)
 
-    @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
+    # @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
     def test_questionario_corpo_email(self):
         contents = [
             'Samuel Barbosa',

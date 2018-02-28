@@ -9,5 +9,4 @@ def home(request):
 
 def busca(request):
     form = BuscaForm()
-
     return render(request, 'consulta.html', {'form':form})

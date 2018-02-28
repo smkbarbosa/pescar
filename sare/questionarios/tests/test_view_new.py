@@ -48,7 +48,7 @@ class QuestionarioNovoPost(TestCase):
     def setUp(self):
         # self.obj = mommy.prepare_recipe('sare.questionarios.quest', _fill_optional=True, _save_related=True)
 
-        self.obj = mommy.make(Questionario, nome='Samuel Barbosa', cpf='31882451309', email='samuka1@gmail.com',
+        self.obj = mommy.prepare(Questionario, nome='Samuel Barbosa', cpf='31882451309', email='samuka1@gmail.com',
                                   cidade='Palmas', bairro='Plano Diretor norte', origem_renda='2',
                                   fale_mais_familia='OK Teste', _fill_optional=True)
 
@@ -90,27 +90,24 @@ class QuestionarioNovoPost(TestCase):
                        'fale_mais_familia'
                        ]
 
-        with self.assertRaises(IntegrityError):
-            data = {field: getattr(self.obj, field) for field in form_fields}
-
+        data = {field: getattr(self.obj, field) for field in form_fields}
 
 
         self.resp = self.client.post(r('questionarios:new'), data)
-
         self.uuid = Questionario.objects.first().hashId
         self.email = mail.outbox[0]
 
-    @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
+    # @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
     def test_post(self):
         """POST valid deve redirecionar to /questionario/00000000-0000-0000-0000-000000000000/"""
         self.assertRedirects(self.resp, r('questionarios:detalhe', self.uuid))
 
-    @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
+    # @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
     def test_envia_email_questionario(self):
         self.assertEqual(1, len(mail.outbox))
 
     #
-    @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
+    # @skipIf(AssertionError, "desabilitado ate resolver como passar o teste com unique_together")
     def test_salva_questionario(self):
         self.assertTrue(Questionario.objects.exists())
 
