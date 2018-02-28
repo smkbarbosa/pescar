@@ -21,3 +21,4 @@ typing==3.6.2
 whitenoise==3.3.1
 gunicorn==19.4.1
 psycopg2==2.7.3.2
+raven==6.5.0
