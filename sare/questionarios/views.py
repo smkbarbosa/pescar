@@ -33,7 +33,7 @@ def detalhe(request, hashid):
 def consulta(request):
 
 
-    if request.method == 'POST':
+    # if request.method == 'POST':
         # import ipdb
         #
         # ipdb.set_trace()
@@ -42,13 +42,15 @@ def consulta(request):
         #     return render(request, r('busca'),
         #                   {'form': form})
 
-        cpf = request.POST['cpf']
-        matricula = request.POST['matricula']
+    cpf = request.POST['cpf']
+    matricula = request.POST['matricula']
 
-        c = Questionario.objects.filter(cpf=cpf, matricula=matricula)[0]
-        return HttpResponseRedirect(r('questionarios:detalhe', c.hashId))
-    else:
-        return render(request, r('busca'))
+    c = Questionario.objects.filter(cpf=cpf, matricula=matricula).first()
+    if c == None:
+        raise Http404
+    return HttpResponseRedirect(r('questionarios:detalhe', c.hashId))
+
+
 
 
 
