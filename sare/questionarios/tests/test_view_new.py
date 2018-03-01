@@ -48,7 +48,7 @@ class QuestionarioNovoPost(TestCase):
     def setUp(self):
         # self.obj = mommy.prepare_recipe('sare.questionarios.quest', _fill_optional=True, _save_related=True)
 
-        self.obj = mommy.prepare(Questionario, nome='Samuel Barbosa', cpf='31882451309', email='samuka1@gmail.com',
+        self.obj = mommy.prepare(Questionario, nome='Samuel Barbosa', cpf='318.824.513-09', email='samuka1@gmail.com',
                                   cidade='Palmas', bairro='Plano Diretor norte', origem_renda='2',
                                   fale_mais_familia='OK Teste', _fill_optional=True)
 
