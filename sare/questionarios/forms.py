@@ -742,6 +742,9 @@ class QuestionarioForm(forms.ModelForm):
             # 'problemas_bairro': CheckboxSelectMultiple,
             'fale_mais_familia': Textarea(attrs={'cols': 80, 'rows': 40}),
         }
+        help_texts = {
+            'cpf': 'Somente números',
+        }
 
     # def clean_problemas_bairro(self):
     #     if len(self.cleaned_data['problemas_bairro']) > 13:
