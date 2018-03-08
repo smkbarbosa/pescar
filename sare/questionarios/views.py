@@ -1,21 +1,19 @@
-import datetime
-from django.core.exceptions import ValidationError
 from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string, get_template
 
 from sare.core.views import busca
-from sare.questionarios.forms import QuestionarioForm, BuscaForm
-from sare.questionarios.models import QuestionarioOld
+from sare.questionarios.forms import QuestionarioForm
+from sare.questionarios.models import Questionario
 
 
 def new(request):
     if request.method == 'POST':
-        #     return HttpResponseRedirect(r(busca))
-        # return HttpResponseRedirect(r(busca))
-        return create(request)
-    return empty_form(request)
+        return HttpResponseRedirect(r(busca))
+    return HttpResponseRedirect(r(busca))
+    #     return create(request)
+    # return empty_form(request)
 
 
 def empty_form(request):
@@ -25,8 +23,8 @@ def empty_form(request):
 
 def detalhe(request, hashid):
     try:
-        questionario = QuestionarioOld.objects.get(hashId=hashid)
-    except QuestionarioOld.DoesNotExist:
+        questionario = Questionario.objects.get(hashId=hashid)
+    except Questionario.DoesNotExist:
         raise Http404
 
     return render(request, 'questionarios/detalhes.html',
@@ -48,7 +46,7 @@ def consulta(request):
     cpf = request.POST['cpf']
     matricula = request.POST['matricula']
 
-    c = QuestionarioOld.objects.filter(cpf=cpf, matricula=matricula).first()
+    c = Questionario.objects.filter(cpf=cpf, matricula=matricula).first()
     if c is None:
         raise Http404
     return HttpResponseRedirect(r('questionarios:detalhe', c.hashId))

@@ -1,14 +1,10 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import RadioSelect, Textarea, Select
-from django.forms.utils import ErrorList
-from django.utils.text import get_text_list, capfirst
-
 from material import *
 
 from sare.questionarios.models import Questionario
 from sare.questionarios.validators import validate_cpf
-
 
 # Choices Global
 
