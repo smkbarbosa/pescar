@@ -12,10 +12,10 @@ from sare.questionarios.models import Questionario
 
 def new(request):
     if request.method == 'POST':
-        return HttpResponseRedirect(r(busca))
-    return HttpResponseRedirect(r(busca))
-    #         return create(request)
-    # return empty_form(request)
+        #     return HttpResponseRedirect(r(busca))
+        # return HttpResponseRedirect(r(busca))
+        return create(request)
+    return empty_form(request)
 
 
 def empty_form(request):
