@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'test_without_migrations',
     'django_extensions',
     'sare.core',
-    'sare.questionarios.apps.QuestionariosConfig',
+    'sare.questionarios',
 ]
 
 MIDDLEWARE = [

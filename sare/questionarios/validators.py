@@ -8,6 +8,7 @@ def validate_cpf(value):
     if len(value) != 11:
         raise ValidationError('CPF deve ter 11 números.', 'length')
 
+
 def cpf_is_digits(value):
     """
     This function receives the Brazilian CPF and returns True if it contains only digits or False if not.
@@ -39,7 +40,10 @@ def cpf_is_valid(value):
     :return: True or False
     """
 
-    value = [int(digit) for digit in value]
+    cpf = value.replace(".", "")
+    cpf = cpf.replace("-", "")
+
+    value = [int(digit) for digit in cpf]
     intermediate = value[:9]
     list_values_to_calc = [10, 9, 8, 7, 6, 5, 4, 3, 2]
 
