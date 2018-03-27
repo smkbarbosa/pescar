@@ -405,4 +405,4 @@ class Questionario(BaseMapa):
         unique_together = ('cpf',)
 
     def __str__(self):
-        return self.nome, self.get_curso_display()
+        return self.nome
