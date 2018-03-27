@@ -401,6 +401,7 @@ class Questionario(BaseMapa):
         verbose_name_plural = 'questionários'
         verbose_name = 'questionário'
         ordering = ('-criado_em', )
+        unique_together = ('cpf',)
 
     def __str__(self):
         return self.nome
