@@ -1,4 +1,5 @@
 import uuid
+from collections import OrderedDict
 
 from django.db import models
 
@@ -154,7 +155,7 @@ DESCARTE_LIXO_CHOICE = (
     ('4', 'Queimado')
 )
 
-CURSO_CHOICE = (
+CURSO_CHOICE = OrderedDict((
     ('1', 'PROEJA - ATENDIMENTO'),
     ('2', 'PROEJA - MANUTENÇÃO E OPERAÇÃO DE MICROCOMPUTADORESs'),
     ('3', 'TEC. INT. - TÉCNICO EM ADMINISTRAÇÃO'),
@@ -185,7 +186,7 @@ CURSO_CHOICE = (
     ('27', 'GRADUAÇÃO - GESTÃO PÚBLICA'),
     ('28', 'GRADUAÇÃO - SISTEMAS ELÉTRICOS'),
     ('29', 'GRADUAÇÃO - SISTEMAS PARA INTERNET')
-)
+))
 
 
 # class QuestionarioOld(models.Model):
@@ -390,7 +391,7 @@ class Questionario(BaseMapa):
     estado = models.CharField('estado', max_length=2, default='TO')
     sexo = models.CharField('sexo', max_length=1, choices=SEXO_CHOICES, default=None)
 
-    curso = models.CharField('curso', choices=CURSO_CHOICE, max_length=50, default=None)
+    curso = models.CharField('curso', choices=CURSO_CHOICE.items(), max_length=50, default=None)
     sem_mod_ano = models.CharField('Semestre/Módulo/Ano', max_length=10, default=None)
     matricula = models.CharField('matrícula', max_length=15, default=None)
     campus = models.CharField('campus', max_length=30, default='PALMAS')
@@ -404,4 +405,4 @@ class Questionario(BaseMapa):
         unique_together = ('cpf',)
 
     def __str__(self):
-        return self.nome
+        return self.nome, self.get_curso_display()

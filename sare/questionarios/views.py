@@ -101,8 +101,6 @@ def _send_mail(subject, from_, to, template_name, context):
 @login_required(login_url='/admin/login/?next=/pytesexport/xls/')
 def export_users_xls(request):
 
-
-
     response = HttpResponse(content_type='applications/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="inscricoes.xls"'
 
@@ -114,14 +112,17 @@ def export_users_xls(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['Nome', 'Cpf', 'Curso']
+    columns = ['NOME', 'CPF', 'CURSO']
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
 
     font_style = xlwt.XFStyle()
 
-    rows = Questionario.objects.all().values_list('nome', 'cpf', 'curso')
+    # Nessa linha, o curso é gerado com o numero ao inves do nome, pra resolver a treta, usamos list comprehensions
+    # rows = Questionario.objects.all().values_list('nome', 'cpf', 'curso')
+    rows = [(q.nome, q.cpf, q.get_curso_display()) for q in Questionario.objects.all()]
+
     for row in rows:
         row_num += 1
         for col_num in range(len(row)):

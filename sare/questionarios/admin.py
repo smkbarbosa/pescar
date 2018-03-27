@@ -7,7 +7,7 @@ from sare.questionarios.models import Questionario
 class QuestionarioModelAdmin(admin.ModelAdmin):
     list_display = ('nome', 'email', 'cpf', 'curso', 'criado_em', 'preenchido_hoje')
     date_hierarchy = 'criado_em'
-    search_fields = ('nome', 'email', 'cpf', 'curso','criado_em')
+    search_fields = ('nome', 'email', 'cpf', 'curso', 'criado_em')
     list_filter = ('criado_em', 'curso')
 
     def preenchido_hoje(self, obj):
