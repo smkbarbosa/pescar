@@ -24,16 +24,16 @@ def empty_form(request):
                   {'form': QuestionarioForm()})
 
 
-# def detalhe(request, hashid):
-#     try:
-#         questionario = Questionario.objects.get(hashId=hashid)
-#     except Questionario.DoesNotExist:
-#         raise Http404
-#
-#     return render(request, 'questionarios/detalhes.html',
-#                   {'quest': questionario})
+def detalhe(request, hashid):
+    try:
+        questionario = Questionario.objects.get(hashId=hashid)
+    except Questionario.DoesNotExist:
+        raise Http404
 
-detalhe = DetailView.as_view(model=Questionario, template_name='questionarios/detalhes.html', slug_field='hashId')
+    return render(request, 'questionarios/detalhes.html',
+                  {'quest': questionario})
+
+# detalhe = DetailView.as_view(model=Questionario, template_name='questionarios/detalhes.html', slug_field='hashId')
 
 
 def consulta(request):

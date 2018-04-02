@@ -26,15 +26,15 @@ class ConsultaComprovante(TestCase):
                                 'questionarios/detalhes.html')
 
     def test_context(self):
-        quest = self.resp.context['questionario']
+        quest = self.resp.context['quest']
         self.assertIsInstance(quest, Questionario)
 
-    # def test_html(self):
-    #     contents = (self.obj.cpf, self.obj.matricula)
-    #
-    #     with self.subTest():
-    #         for expected in contents:
-    #             self.assertContains(self.resp, expected)
+    def test_html(self):
+        contents = (self.obj.cpf, self.obj.matricula)
+
+        with self.subTest():
+            for expected in contents:
+                self.assertContains(self.resp, expected)
 
 
 class ComprovanteNaoEncontrado(TestCase):

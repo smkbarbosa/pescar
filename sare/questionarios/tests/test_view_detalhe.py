@@ -25,7 +25,7 @@ class QuestionarioDetalhe(TestCase):
                                 'questionarios/detalhes.html')
 
     def test_context(self):
-        quest = self.resp.context['questionario']
+        quest = self.resp.context['quest']
         self.assertIsInstance(quest, Questionario)
 
     # def test_html(self):

@@ -23,24 +23,24 @@ class QuestionarioNewPostValid(TestCase):
         self.client.post(r('questionarios:new'), self.data)
         self.email = mail.outbox[0]
 
-    @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
+    # @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
     def test_email_questionario_assunto(self):
         expect = 'Questionário Socioeconômico preenchido com sucesso'
         self.assertEqual(expect, self.email.subject)
 
-    @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
+    # @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
     def test_email_questionario_remetente(self):
         # expect = 'pescar.gt.ss@gmail.com'
         expect = 'clae.palmas@ifto.edu.br'
         self.assertEqual(expect, self.email.from_email)
 
-    @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
+    # @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
     def test_email_questionario_para(self):
         expect = ['samuka1@gmail.com']
 
         self.assertEqual(expect, self.email.to)
 
-    @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
+    # @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
     def test_questionario_corpo_email(self):
         contents = [
             'Samuel Barbosa',
