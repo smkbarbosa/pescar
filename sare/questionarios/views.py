@@ -203,7 +203,7 @@ def export_users_xls(request):
              q.get_saude_doenca_grave_display(), q.get_saude_doenca_cronica_display(),
              q.get_saude_medicamento_diario_display(), q.get_pne_parcial_visao_audicao_display(),
              q.get_pne_def_fisica_display(), q.get_pne_total_visao_audicao_display(),
-             q.get_pne_def_mental_leve_display(), q.get_pne_def_mental_grave_display,
+             q.get_pne_def_mental_leve_display(), q.get_pne_def_mental_grave_display(),
              q.get_psico_dificuldade_concentrar_display(), q.get_psico_conflito_familiar_display(),
              q.get_psico_depressao_display(), q.get_cor_raca_display(), q.get_violencia_verbal_display(),
              q.get_violencia_urbana_display(), q.get_violencia_patrimonial_display(),
