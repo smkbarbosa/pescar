@@ -6,7 +6,7 @@ from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string, get_template
 from django.views.generic import DetailView
 
-from sare.core.views import busca
+# from sare.core.views import busca
 from sare.questionarios.forms import QuestionarioForm
 from sare.questionarios.models import Questionario
 

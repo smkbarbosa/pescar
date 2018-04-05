@@ -8,7 +8,19 @@ class QuestionarioModelAdmin(admin.ModelAdmin):
     list_display = ('nome', 'email', 'cpf', 'curso', 'criado_em', 'preenchido_hoje')
     date_hierarchy = 'criado_em'
     search_fields = ('nome', 'email', 'cpf', 'curso', 'criado_em')
-    list_filter = ('criado_em', 'curso')
+    # list_filter = ('criado_em', 'curso')
+
+    def nome(self, obj):
+        return obj.aluno.nome
+
+    def email(self, obj):
+        return obj.aluno.email
+
+    def cpf(self, obj):
+        return obj.aluno.cpf
+
+    def curso(self, obj):
+        return obj.aluno.get_curso_display()
 
     def preenchido_hoje(self, obj):
         return obj.criado_em.date() == now().date()

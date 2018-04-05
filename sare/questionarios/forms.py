@@ -1,9 +1,11 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import RadioSelect, Textarea, Select
+from django.forms import RadioSelect, Textarea, Select, inlineformset_factory
 from material import *
 
-from sare.questionarios.models import Questionario
+from sare.core.models import Aluno
+from sare.questionarios.models import Questionario, DimensaoEconomica, DimensaoSocial, DimensaoCultural, \
+    DimensaoAmbiental
 from sare.questionarios.validators import validate_cpf
 
 # Choices Global
@@ -738,9 +740,6 @@ class QuestionarioForm(forms.ModelForm):
             # 'problemas_bairro': CheckboxSelectMultiple,
             'fale_mais_familia': Textarea(attrs={'cols': 80, 'rows': 40}),
         }
-        help_texts = {
-            'cpf': 'Somente números',
-        }
 
     # def clean_problemas_bairro(self):
     #     if len(self.cleaned_data['problemas_bairro']) > 13:
@@ -793,7 +792,7 @@ class BuscaForm(forms.ModelForm):
             (Column('matricula'))))
 
     class Meta:
-        model = Questionario
+        model = Aluno
         fields = ['cpf', 'matricula']
 
     def clean(self):
