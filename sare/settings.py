@@ -36,6 +36,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 INSTALLED_APPS = [
     'material.theme.red',
     'material',
+    'logentry_admin',
     # 'material.frontend',
     'django.contrib.admin',
     'django.contrib.auth',
