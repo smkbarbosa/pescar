@@ -4,9 +4,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string, get_template
-from django.views.generic import DetailView
 
-from sare.core.views import busca
 from sare.questionarios.forms import QuestionarioForm
 from sare.questionarios.models import Questionario
 
@@ -37,7 +35,6 @@ def detalhe(request, hashid):
 
 
 def consulta(request):
-
 
     # if request.method == 'POST':
         # import ipdb
@@ -98,7 +95,7 @@ def _send_mail(subject, from_, to, template_name, context):
     msg.send()
 
 
-@login_required(login_url='/admin/login/?next=/pytesexport/xls/')
+@login_required(login_url='/admin/login/?next=/export/xls/')
 def export_users_xls(request):
 
     response = HttpResponse(content_type='applications/ms-excel')
