@@ -39,15 +39,15 @@ class QuestionarioPessoalTest(TestCase):
                     'preconceito_estetico', 'preconceito_economico', 'preconceito_religioso',
                     'preconceito_mental',
                     'preconceito_racial', 'preconceito_genero', 'preconceito_orientacao_sexual',
-                    # 'servicos_indisponiveis_bairro',
+                    'servicos_indisponiveis_bairro',
                     'forma_descarte_lixo', 'percepcao_seguranca_bairro',
-                    # 'problemas_bairro',
+                    'problemas_bairro','aluno',
                     'fale_mais_familia',
-                    'nome', 'cpf', 'email', 'fone',
-                    'endereco', 'num_casa', 'cep', 'bairro',
-                    'cidade', 'estado',
-                    'sexo',
-                    'curso', 'sem_mod_ano', 'matricula', 'campus'
+                    # 'nome', 'cpf', 'email', 'fone',
+                    # 'endereco', 'num_casa', 'cep', 'bairro',
+                    # 'cidade', 'estado',
+                    # 'sexo',
+                    # 'curso', 'sem_mod_ano', 'matricula', 'campus'
                     ]
         self.assertSequenceEqual(expected, list(form.fields))
 

@@ -1,4 +1,6 @@
 from django.db import models
+from viewflow.models import Process
+
 from sare.questionarios.choices import *
 from sare.questionarios.validators import cpf_is_digits, cpf_is_valid
 

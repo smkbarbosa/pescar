@@ -188,26 +188,9 @@ from django.db import models
 #
 #     def __str__(self):
 #         return self.nome
+from viewflow.models import Process
+
 from sare.questionarios.choices import *
-
-
-class Questionario(models.Model):
-    hashId = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
-    aluno = models.ForeignKey('core.Aluno', null=True)
-    dimensao_economica = models.ForeignKey('DimensaoEconomica', null=True)
-    dimensao_social = models.ForeignKey('DimensaoSocial', null=True)
-    dimensao_cultural = models.ForeignKey('DimensaoCultural', null=True)
-    dimensao_ambiental = models.ForeignKey('DimensaoAmbiental', null=True)
-    criado_em = models.DateTimeField('criado em', auto_now_add=True)
-
-    class Meta:
-        verbose_name_plural = 'questionários'
-        verbose_name = 'questionário'
-        ordering = ('-criado_em', )
-
-
-    def __str__(self):
-        return self.aluno.nome
 
 
 class DimensaoEconomica(models.Model):
@@ -374,7 +357,22 @@ class DimensaoAmbiental(models.Model):
     forma_descarte_lixo = models.CharField(choices=DESCARTE_LIXO_CHOICE, max_length=1, default=None)
     percepcao_seguranca_bairro = models.CharField(choices=PERCEPCAO_CHOICES, max_length=1, default=None)
     problemas_bairro = models.CharField(choices=PROBLEMAS_BAIRRO_CHOICES, max_length=20, default=None, null=True)
-    fale_mais_familia = models.CharField('Fale mais sobre sua família', max_length=500)
+
 
     class Meta:
         verbose_name = 'dimensão ambiental'
+
+
+class Questionario(DimensaoEconomica, DimensaoSocial, DimensaoCultural, DimensaoAmbiental):
+    hashId = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
+    aluno = models.ForeignKey('core.Aluno', null=True)
+    fale_mais_familia = models.CharField('Fale mais sobre sua família', max_length=500)
+    criado_em = models.DateTimeField('criado em', auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'questionários'
+        verbose_name = 'questionário'
+        ordering = ('-criado_em',)
+
+    def __str__(self):
+        return self.aluno.nome
