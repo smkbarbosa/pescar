@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.timezone import now
 
-from sare.questionarios.models import Questionario
+from sare.questionarios.models import QuestionarioOld
 
 
 class QuestionarioModelAdmin(admin.ModelAdmin):
@@ -24,5 +24,5 @@ class QuestionarioModelAdmin(admin.ModelAdmin):
         )
 
 
-admin.site.register(Questionario, QuestionarioModelAdmin)
+admin.site.register(QuestionarioOld, QuestionarioModelAdmin)
 

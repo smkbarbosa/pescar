@@ -7,7 +7,7 @@ from django.test import TestCase
 from model_mommy import mommy
 
 from sare.questionarios.forms import QuestionarioForm
-from sare.questionarios.models import Questionario
+from sare.questionarios.models import QuestionarioOld
 
 
 class QuestionarioNovoGet(TestCase):
@@ -48,7 +48,7 @@ class QuestionarioNovoPost(TestCase):
     def setUp(self):
         # self.obj = mommy.prepare_recipe('sare.questionarios.quest', _fill_optional=True, _save_related=True)
 
-        self.obj = mommy.prepare(Questionario, nome='Samuel Barbosa', cpf='85472840519', email='samuka1@gmail.com',
+        self.obj = mommy.prepare(QuestionarioOld, nome='Samuel Barbosa', cpf='85472840519', email='samuka1@gmail.com',
                                  cidade='Palmas', bairro='Plano Diretor norte', origem_renda='2',
                                  fale_mais_familia='OK Teste', _fill_optional=True)
 
@@ -57,7 +57,7 @@ class QuestionarioNovoPost(TestCase):
         data = {field: getattr(self.obj, field) for field in form_fields}
 
         self.resp = self.client.post(r('questionarios:new'), data)
-        self.uuid = Questionario.objects.first().hashId
+        self.uuid = QuestionarioOld.objects.first().hashId
         self.email = mail.outbox[0]
 
     # @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
@@ -71,7 +71,7 @@ class QuestionarioNovoPost(TestCase):
 
     # @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
     def test_salva_questionario(self):
-        self.assertTrue(Questionario.objects.exists())
+        self.assertTrue(QuestionarioOld.objects.exists())
 
 
 class QuestionarioNovoPostInvalid(TestCase):
@@ -102,4 +102,4 @@ class QuestionarioNovoPostInvalid(TestCase):
 
     # @skipIf('ERROR', 'Pulando enquanto o redirecionamento for para consultar')
     def test_nao_salva_questionario(self):
-        self.assertFalse(Questionario.objects.exists())
+        self.assertFalse(QuestionarioOld.objects.exists())

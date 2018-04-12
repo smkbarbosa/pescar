@@ -6,12 +6,12 @@ from django.test import TestCase
 from django.shortcuts import resolve_url as r
 from model_mommy import mommy
 
-from sare.questionarios.models import Questionario
+from sare.questionarios.models import QuestionarioOld
 
 
 class QuestionarioNewPostValid(TestCase):
     def setUp(self):
-        self.obj = mommy.prepare(Questionario, nome='Samuel Barbosa', cpf='85472840519', email='samuka1@gmail.com',
+        self.obj = mommy.prepare(QuestionarioOld, nome='Samuel Barbosa', cpf='85472840519', email='samuka1@gmail.com',
                                  cidade='Palmas', bairro='Plano Diretor norte', origem_renda='2',
                                  fale_mais_familia='OK Teste', _fill_optional=True)
 
