@@ -44,15 +44,21 @@ class QuestionarioModelTest(TestCase):
         #         email='samuka1@gmail.com'
         # )
         self.aluno = mommy.make(Aluno, nome='Samuel Barbosa', cpf='65673063008', _fill_optional=True)
-        self.economica = mommy.make(DimensaoEconomica, _fill_optional=True)
-        self.social = mommy.make(DimensaoSocial, _fill_optional=True)
-        self.cultural = mommy.make(DimensaoCultural, _fill_optional=True)
-        self.ambiental = mommy.make(DimensaoAmbiental, _fill_optional=True)
-        self.obj = mommy.prepare(Questionario, aluno=self.aluno, economica=self.economica, cultural=self.cultural,
-                                 ambiental=self.ambiental, social=self.social, _fill_optional=True)
+        self.economica = mommy.prepare(DimensaoEconomica, _fill_optional=True)
+        self.social = mommy.prepare(DimensaoSocial, _fill_optional=True)
+        self.cultural = mommy.prepare(DimensaoCultural, _fill_optional=True)
+        self.ambiental = mommy.prepare(DimensaoAmbiental, _fill_optional=True)
+        self.obj = mommy.prepare(Questionario, aluno=self.aluno, _fill_optional=True)
         self.obj.aluno = self.aluno
         self.obj.save()
-
+        self.economica.questionario = self.obj
+        self.economica.save()
+        self.social.questionario = self.obj
+        self.social.save()
+        self.cultural.questionario = self.obj
+        self.cultural.save()
+        self.ambiental.questionario = self.obj
+        self.ambiental.save()
 
 #     # @skipIf(AssertionError, "Salvar desabilitado na view")
     def test_create(self):

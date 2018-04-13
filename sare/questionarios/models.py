@@ -200,6 +200,7 @@ class QuestionarioOld(models.Model):
 
 class DimensaoEconomica(models.Model):
     # Dimensão economica
+    questionario = models.ForeignKey('questionarios.Questionario')
     dependentes_RBD = models.IntegerField('Dependentes da Renda Bruta Domiciliar', )
     origem_renda = models.IntegerField('Quantidade de pessoas que possuem renda', )
     renda_bruta_domiciliar = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
@@ -239,10 +240,12 @@ class DimensaoEconomica(models.Model):
     despesas_domesticas_alimentacao = models.DecimalField('Alimentação', max_digits=8, decimal_places=2, default=0.0)
 
     class Meta:
-        verbose_name = 'dimensao econômica'
+        verbose_name = 'dimensão econômica'
+        verbose_name_plural = 'dimensão econômica'
 
 
 class DimensaoSocial(models.Model):
+    questionario = models.ForeignKey('questionarios.Questionario')
     # Dimensao Social
     condicao_responsavel_casa = models.CharField(choices=CONDICAO_RESPONSAVEL_CASA_CHOICES, max_length=1, default=None)
 
@@ -296,8 +299,12 @@ class DimensaoSocial(models.Model):
     psico_conflito_familiar = models.CharField(PSI[1], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
     psico_depressao = models.CharField(PSI[2], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
+    class Meta:
+        verbose_name_plural = 'Dimensão Social'
+
 
 class DimensaoCultural(models.Model):
+    questionario = models.ForeignKey('questionarios.Questionario')
     ## Cultural
 
     cor_raca = models.CharField('Como você considera sua cor/raça?', choices=COR_RACA_CHOICES, max_length=1,
@@ -353,8 +360,12 @@ class DimensaoCultural(models.Model):
     preconceito_genero = models.CharField(PREC[6], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
     preconceito_orientacao_sexual = models.CharField(PREC[7], choices=VOCE_FAMILIA_CHOICES, max_length=1, default=None)
 
+    class Meta:
+        verbose_name_plural = 'Dimensão Cultural'
+
 
 class DimensaoAmbiental(models.Model):
+    questionario = models.ForeignKey('questionarios.Questionario')
 
     # servicos_indisponiveis_bairro = models.CharField(choices=SERVICOS_INDISPONIVEIS_CHOICES, max_length=20, default=None, null=True)
 
@@ -364,14 +375,17 @@ class DimensaoAmbiental(models.Model):
 
     # problemas_bairro = models.CharField(choices=PROBLEMAS_BAIRRO_CHOICES, max_length=20, default=None, null=True)
 
+    class Meta:
+        verbose_name_plural = 'Dimensão Ambiental'
+
 
 class Questionario(models.Model):
     hashId = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
     aluno = models.ForeignKey('core.Aluno')
-    economica = models.ForeignKey('questionarios.DimensaoEconomica')
-    cultural = models.ForeignKey('questionarios.DimensaoCultural')
-    social = models.ForeignKey('questionarios.DimensaoSocial')
-    ambiental = models.ForeignKey('questionarios.DimensaoAmbiental')
+    # economica = models.ForeignKey('questionarios.DimensaoEconomica', related_name='dimensao_economica', null=True)
+    # cultural = models.ForeignKey('questionarios.DimensaoCultural', related_name='dimensao_cultural', null=True)
+    # social = models.ForeignKey('questionarios.DimensaoSocial', related_name='dimensao_social', null=True)
+    # ambiental = models.ForeignKey('questionarios.DimensaoAmbiental', related_name='dimensao_ambiental', null=True)
     fale_mais_familia = models.CharField('Fale mais sobre sua família', max_length=500)
     criado_em = models.DateTimeField('criado em', auto_now_add=True)
 
