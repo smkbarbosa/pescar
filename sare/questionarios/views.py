@@ -5,16 +5,17 @@ from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string, get_template
 
+from sare.core.views import busca
 from sare.questionarios.forms import QuestionarioForm
-from sare.questionarios.models import Questionario
+from sare.questionarios.models import QuestionarioOld
 
 
 def new(request):
     if request.method == 'POST':
-    #     return HttpResponseRedirect(r(busca))
-    # return HttpResponseRedirect(r(busca))
-        return create(request)
-    return empty_form(request)
+        return HttpResponseRedirect(r(busca))
+    return HttpResponseRedirect(r(busca))
+        # return create(request)
+    # return empty_form(request)
 
 
 def empty_form(request):
@@ -24,8 +25,8 @@ def empty_form(request):
 
 def detalhe(request, hashid):
     try:
-        questionario = Questionario.objects.get(hashId=hashid)
-    except Questionario.DoesNotExist:
+        questionario = QuestionarioOld.objects.get(hashId=hashid)
+    except QuestionarioOld.DoesNotExist:
         raise Http404
 
     return render(request, 'questionarios/detalhes.html',
@@ -48,7 +49,7 @@ def consulta(request):
     cpf = request.POST['cpf']
     matricula = request.POST['matricula']
 
-    c = Questionario.objects.filter(cpf=cpf, matricula=matricula).first()
+    c = QuestionarioOld.objects.filter(cpf=cpf, matricula=matricula).first()
     if c is None:
         raise Http404
     return HttpResponseRedirect(r('questionarios:detalhe', c.hashId))
@@ -213,7 +214,7 @@ def export_users_xls(request):
              q.get_preconceito_religioso_display(), q.get_preconceito_mental_display(),
              q.get_preconceito_racial_display(), q.get_preconceito_genero_display(),
              q.get_preconceito_orientacao_sexual_display(), q.get_forma_descarte_lixo_display(),
-             q.get_percepcao_seguranca_bairro_display(), q.fale_mais_familia) for q in Questionario.objects.all()]
+             q.get_percepcao_seguranca_bairro_display(), q.fale_mais_familia) for q in QuestionarioOld.objects.all()]
 
     for row in rows:
         row_num += 1

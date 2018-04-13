@@ -1,9 +1,9 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import RadioSelect, Textarea, Select
+from django.forms import RadioSelect, Textarea, Select, CheckboxSelectMultiple
 from material import *
 
-from sare.questionarios.models import Questionario
+from sare.questionarios.models import QuestionarioOld
 from sare.questionarios.validators import validate_cpf
 
 # Choices Global
@@ -670,7 +670,7 @@ class QuestionarioForm(forms.ModelForm):
         Fieldset("Dimensão: Cultural"),
 
         Fieldset("Sobre seu bairro"),
-        #Row(#Column('servicos_indisponiveis_bairro'),
+        # Row(Column('servicos_indisponiveis_bairro')),
         Row('forma_descarte_lixo'),
         Fieldset(" "),
         Row('percepcao_seguranca_bairro'),
@@ -682,7 +682,7 @@ class QuestionarioForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Questionario
+        model = QuestionarioOld
         exclude = ['hashId', 'criado_em', ]
         # fields = '__all__'
         widgets = {
@@ -793,7 +793,7 @@ class BuscaForm(forms.ModelForm):
             (Column('matricula'))))
 
     class Meta:
-        model = Questionario
+        model = QuestionarioOld
         fields = ['cpf', 'matricula']
 
     def clean(self):
