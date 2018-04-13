@@ -2,7 +2,7 @@ from django.shortcuts import resolve_url as r
 from django.test import TestCase
 from model_mommy import mommy
 
-from sare.questionarios.models import Questionario
+from sare.questionarios.models import QuestionarioOld
 
 
 class QuestionarioDetalhe(TestCase):
@@ -13,7 +13,7 @@ class QuestionarioDetalhe(TestCase):
         #     email='samuka1@gmail.com',
         #     cidade='Palmas'
         # )
-        self.obj = mommy.make(Questionario, nome='Samuel Barbosa', cpf='12345678901',
+        self.obj = mommy.make(QuestionarioOld, nome='Samuel Barbosa', cpf='12345678901',
                               email='samuka1@gmail.com', _fill_optional=True)
         self.resp = self.client.get(r('questionarios:detalhe', self.obj.hashId))
 
@@ -26,7 +26,7 @@ class QuestionarioDetalhe(TestCase):
 
     def test_context(self):
         quest = self.resp.context['quest']
-        self.assertIsInstance(quest, Questionario)
+        self.assertIsInstance(quest, QuestionarioOld)
 
     # def test_html(self):
     #     contents = (self.obj.nome, self.obj.cpf,
