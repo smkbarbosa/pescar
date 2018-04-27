@@ -31,12 +31,12 @@ class QuestionarioModelAdmin(admin.ModelAdmin):
     list_display = ('nome', 'email', 'cpf', 'curso', 'criado_em', 'preenchido_hoje')
     inlines = [EconomicaAdmin, SocialAdmin, CulturalAdmin, AmbientalAdmin]
     date_hierarchy = 'criado_em'
-    search_fields = ('nome', 'email', 'cpf', 'curso', 'criado_em')
+    search_fields = ('aluno__nome', 'aluno__email', 'aluno__cpf', 'aluno__curso', 'criado_em')
     list_filter = ('criado_em', )
 
 
     def nome(self, obj):
-        return obj.aluno
+        return obj.aluno.nome
 
     def email(self, obj):
         return obj.aluno.email
