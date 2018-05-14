@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import xlwt
 from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives

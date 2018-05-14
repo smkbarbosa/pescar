@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.core.exceptions import ValidationError
 
 
@@ -64,4 +66,4 @@ def format_cpf(value):
     :param value is a string with the number of Brazilian CPF like 12345678911
     :return: Return a sting with teh number in the normal format like 123.456.789-11
     """
-    return f'{value[:3]}.{value[3:6]}.{value[6:9]}-{value[9:]}'
+    return '{value[:3]}.{value[3:6]}.{value[6:9]}-{value[9:]}'
