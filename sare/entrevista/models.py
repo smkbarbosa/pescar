@@ -7,7 +7,10 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 #Dados dos alunos
-from sare.models import Aluno
+from sare.core.models import Aluno
+
+#Reversion auditoria nos logs
+import reversion
 
 # Create your models here.
 
@@ -61,29 +64,33 @@ class Entrevista(models.Model):
 
     # Situações Problemas (SP)
 
-    sp_1 = models.IntegerField('Dependente financeiro e sofre algum tipo de violência do responsável pelo seu sustento',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_2 = models.IntegerField('Veio de outra localidade com objetivo de estudar no IFTO',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_3 = models.IntegerField('Utiliza transporte intermunicipal o u rural para acessar o Campus',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_4 = models.IntegerField('Ser estudante em tempo integral',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_5 = models.IntegerField('Residir distante do Campus',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_6 = models.IntegerField('Necessita fazer refeições diárias no Campus',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_7 = models.IntegerField('Possui filhos entre 0 e 12 anos que estudam em instituições privadas',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_8 = models.IntegerField('Necessidade de pagar cuidador (idoso/criança) por não possuir nenhum responsável durante o período que está estudando no Campus',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_9 = models.IntegerField('Morar com o(s) filho(s) no mesmo ambiente familiar',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_10 = models.IntegerField('Desenvolver ou praticar qualquer modadilidade esportiva no Campus com acompanhamento do Professor',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_11 = models.IntegerField('Frequentar curso que esija material de uso pessoal e que seja específico do curso',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_12 = models.IntegerField('Ter carga horária disponível que não afete o desenvolvimento escolar',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_13 = models.IntegerField('Estudante vai ao Campus mais de 3 dias na semana para cursar disciplinas',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_14 = models.IntegerField('Aluno sai do trabalho e vai direto para o Campus',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
-    sp_15 = models.IntegerField('Situação de doença crônica ou grave impacto na renda familiar',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)]) 
-    sp_16 = models.IntegerField('Não tem com quem deixar o(s) filho(s) para estudar',default=1. validators=[MaxValueValidator(5),MinValueValidator(1)])
+    sp_1 = models.PositiveIntegerField('Dependente financeiro e sofre algum tipo de violência do responsável pelo seu sustento',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_2 = models.PositiveIntegerField('Veio de outra localidade com objetivo de estudar no IFTO',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_3 = models.PositiveIntegerField('Utiliza transporte intermunicipal o u rural para acessar o Campus',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_4 = models.PositiveIntegerField('Ser estudante em tempo integral',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_5 = models.PositiveIntegerField('Residir distante do Campus',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_6 = models.PositiveIntegerField('Necessita fazer refeições diárias no Campus',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_7 = models.PositiveIntegerField('Possui filhos entre 0 e 12 anos que estudam em instituições privadas',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_8 = models.PositiveIntegerField('Necessidade de pagar cuidador (idoso/criança) por não possuir nenhum responsável durante o período que está estudando no Campus',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_9 = models.PositiveIntegerField('Morar com o(s) filho(s) no mesmo ambiente familiar',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_10 = models.PositiveIntegerField('Desenvolver ou praticar qualquer modadilidade esportiva no Campus com acompanhamento do Professor',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_11 = models.PositiveIntegerField('Frequentar curso que esija material de uso pessoal e que seja específico do curso',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_12 = models.PositiveIntegerField('Ter carga horária disponível que não afete o desenvolvimento escolar',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_13 = models.PositiveIntegerField('Estudante vai ao Campus mais de 3 dias na semana para cursar disciplinas',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_14 = models.PositiveIntegerField('Aluno sai do trabalho e vai direto para o Campus',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    sp_15 = models.PositiveIntegerField('Situação de doença crônica ou grave impacto na renda familiar',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)]) 
+    sp_16 = models.PositiveIntegerField('Não tem com quem deixar o(s) filho(s) para estudar',default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     
     # Finalização da Entrevista (FN)
 
-    fn_1 = models.IntegerField('Condição de renda oriunda da informalidade', default=1, validator=[MaxValueValidator(5), MinValueValidator(1)])
-    fn_2 = models.IntegerField('Adulto ou chefe de família com baixa escolaridade', default=1, validator=[MaxValueValidator(5), MinValueValidator(1)])
-    fn_3 = models.IntegerField('Dependência de renda de idoso', default=1, validator=[MaxValueValidator(5), MinValueValidator(1)])
-    fn_4 = models.IntegerField('Domicílio em precário estado de construção apresentando sinais de fragilidades na estrutura', default=1, validator=[MaxValueValidator(5), MinValueValidator(1)])
-    fn_5 = models.IntegerField('Aluno com problemas graves indentificadas durante a entrevista', default=1, validator=[MaxValueValidator(5), MinValueValidator(1)])
-    fn_6 = models.IntegerField('Condição de renda oriunda da informalidade', default=1, validator=[MaxValueValidator(5), MinValueValidator(1)])
+    fn_1 = models.PositiveIntegerField('Condição de renda oriunda da informalidade', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    fn_2 = models.PositiveIntegerField('Adulto ou chefe de família com baixa escolaridade', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    fn_3 = models.PositiveIntegerField('Dependência de renda de idoso', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    fn_4 = models.PositiveIntegerField('Domicílio em precário estado de construção apresentando sinais de fragilidades na estrutura', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    fn_5 = models.PositiveIntegerField('Aluno com problemas graves indentificadas durante a entrevista', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    fn_6 = models.PositiveIntegerField('Condição de renda oriunda da informalidade', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     fn_7 = models.TextField('Justifique', max_length=800, blank=True, null=True)
+
+
+    def __unicode__(self):
+        return self.aluno.nome

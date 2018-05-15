@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'logentry_admin',
     # 'material.frontend',
     'reversion',
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'sare.core',
     'sare.questionarios',
+    'sare.entrevista'
 ]
 
 MIDDLEWARE = [
@@ -126,6 +129,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+USE_THOUSAND_SEPARATOR = True
 
 # RAVEN_CONFIG = {
 #     'dsn': config('SENTRY'),
