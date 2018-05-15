@@ -1,2 +1,25 @@
 {% extends 'admin/change_form.html' %}
 
+
+
+{% block javascript %}
+<script>
+    $("#select2-id_aluno-container").change(function () {
+        var nome = $(this).val();
+
+        $.ajax({
+            url: '{% url "entrevista:aluno-autocomplete" %}',
+            data: {
+                'nome': nome,
+                'cpf': cpf,
+            },
+            dataType: 'json',
+            success: function (data) {
+                alert('Its ok');
+                console.log("ok");
+            }
+        });
+
+    });
+</script>
+{% endblock javascript %}

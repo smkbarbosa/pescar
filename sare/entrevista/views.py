@@ -5,6 +5,8 @@ from django.shortcuts import render
 from dal import autocomplete
 from sare.core.models import Aluno
 from django.urls import reverse
+from django.utils.html import format_html
+
 
 from django.db.models import Q
 # Create your views here.
@@ -18,18 +20,7 @@ class AlunoAutoComplete(autocomplete.Select2QuerySetView):
         if self.q:
             qs = qs.filter(Q(nome__icontains=self.q)|Q(cpf__icontains=self.q))
         return qs
-    def get_results(self, context):
-        return [
-            {
-                'id': self.get_result_value(result),
-                'text': self.get_result_label(result),
-                'nome':self.get_name(result),
-                'cpf': self.get_cpf(result),
-            }
-            for result in context['object_list']
-        ]
-    def get_name(self, result):
-        return result.nome
 
-    def get_cpf(self, result):
-        return result.cpf
+    def get_result_label(self, item):
+        return format_html('<small>Nome</small>:{} <small>CPF</small>:{}', item.nome, item.cpf)
+
