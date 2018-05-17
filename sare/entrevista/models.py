@@ -21,7 +21,7 @@ class Entrevista(models.Model):
     # Classificacao renda percapita (PER)
 
     per_renda_bruta = models.DecimalField('Renda Bruta Familiar', max_digits=8, decimal_places=2, default=0.0)
-    per_dependentes = models.DecimalField('Despesa de Renda', max_digits=8, decimal_places=2, default=0.0)
+    per_dependentes = models.DecimalField('Dependentes da Renda', max_digits=8, decimal_places=2, default=0.0)
     # Variaveis dedutives
     per_imposto_renda = models.DecimalField('Imposto de Renda', max_digits=8, decimal_places=2, default=0.0)
     per_previdencia = models.DecimalField('Previdência', max_digits=8, decimal_places=2, default=0.0)
@@ -89,7 +89,7 @@ class Entrevista(models.Model):
     fn_4 = models.PositiveIntegerField('Domicílio em precário estado de construção apresentando sinais de fragilidades na estrutura', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     fn_5 = models.PositiveIntegerField('Aluno com problemas graves indentificadas durante a entrevista', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     fn_6 = models.PositiveIntegerField('Condição de renda oriunda da informalidade', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
-    fn_7 = models.TextField('Justifique', max_length=800, blank=True, null=True)
+    fn_7 = models.TextField('Justifique', max_length=800, null=True)
 
 
     def __unicode__(self):
