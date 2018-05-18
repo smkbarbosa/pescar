@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'material.theme.red',
     'material',
     'logentry_admin',
+    'dal',
+    'dal_select2',
     # 'material.frontend',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'sare.core',
     'sare.questionarios',
+    'sare.entrevista',
 ]
 
 MIDDLEWARE = [
