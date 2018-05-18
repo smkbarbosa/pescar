@@ -8,5 +8,7 @@ urlpatterns = [
     url(r'^consultar$', busca, name='busca'),
     url(r'^questionario/', include('sare.questionarios.urls',
                                    namespace='questionarios')),
+    url(r'^entrevista/', include('sare.entrevista.urls',
+                                   namespace='entrevista')),
     url(r'^admin/', admin.site.urls),
 ]
