@@ -93,9 +93,9 @@ class QuestionarioPessoalTest(TestCase):
     def test_cpf_is_not_valid(self):
         self.assertFalse(cpf_is_valid('11144477711'))
 
-    #def test_format_cpf(self):
-     #   expected = '123.456.789-11'
-      #  self.assertEqual(format_cpf('12345678911'), expected)
+    def test_format_cpf(self):
+        expected = '123.456.789-11'
+        self.assertEqual(format_cpf('12345678911'), expected)
 
     def assertFormErrorMessage(self, form, field, msg):
         errors = form.errors

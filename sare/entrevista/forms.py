@@ -13,7 +13,7 @@ class EntrevistaForm(forms.ModelForm):
         (4,4),
         (5,5)
     )
-    aluno = forms.ModelChoiceField(queryset=Aluno.objects.all(), widget=autocomplete.ModelSelect2(url='entrevista:aluno-autocomplete', attrs={'data-html':True,}))
+    aluno = forms.ModelChoiceField(queryset=Aluno.objects.all(), widget=autocomplete.ModelSelect2(url='entrevista:aluno-autocomplete', attrs={'data-html':True}))
     #   Situações Problemas (SP)
 
     sp_1 = forms.ChoiceField(label='Dependente financeiro e sofre algum tipo de violência do responsável pelo seu sustento', widget=forms.RadioSelect(attrs={'class':'inline', }), choices=number_choices)

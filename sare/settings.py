@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'sare.core',
     'sare.questionarios',
-    'sare.entrevista',
+    'sare.entrevista'
 ]
 
 MIDDLEWARE = [
