@@ -12,6 +12,13 @@ from sare.entrevista.forms import EntrevistaForm
 class EntrevistaAdmin(admin.ModelAdmin):
     form = EntrevistaForm
     model = Entrevista
+    list_display = ('aluno', 'entrevistador')
+
+    def entrevistador(self, obj):
+        return obj.get_user_modification()
+
+    entrevistador.allow_tags = True
+    entrevistador.short_description = 'Entrevistador'
 
     fieldsets = [
         ('Informações do entrevistado', {'fields':[
