@@ -1,0 +1,18 @@
+SISTEMA DE ACOMPANHAMENTO DA REALIDADE DO ESTUDANTE - SARE
+
+Confirmamos o recebimento questionário socioeconômico de:
+
+
+Nome: {{ quest.nome }}
+CPF: {{ quest.cpf }}
+e-mail: {{ quest.email }}
+Cidade: {{ quest.cidade }}
+
+
+Para visualizar o comprovante no site, copie e cole o seguinte endereço no seu navegador http://pescar.ifto.edu.br/questionario/{{ quest.hashId }}
+
+Atenciosamente,
+
+
+------
+Equipe Pescar

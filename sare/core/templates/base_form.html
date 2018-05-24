@@ -1,0 +1,46 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Questionário SócioEconômico-cultural{% endblock %}</title>
+
+    {% block head %}
+        {% include 'material/includes/material_css.html' %}
+        <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+
+    {% endblock %}
+    {% block extrahead %}
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+    <div class="row valign change-form">
+        <div class="{% block formclass %}col s12 m8 offset-m2 l8 offset-l2{% endblock %}">
+            <div class="card">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-2">{% block formtitle %}Form{% endblock %}</span>
+                        {% csrf_token %}
+                        {% block formbody %}{% endblock %}
+                    </div>
+                    <div class="card-action">
+                        {% block actions %}
+                            <div class="right-align">
+                                {% block formbuttons %}<button class="btn btn-primary" type="submit">Submit</button>{% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% block result %}
+    {% endblock %}
+{% endblock %}
+<script src="{% static 'material/js/jquery.js' %}"></script>
+{% include 'material/includes/material_js.html' %}
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "base_form.html" %}
+{% load i18n material_form %}
+
+{% block extrahead %}
+{{ wizard.form.media }}
+{% endblock %}
+
+{% block content %}
+<div class="row valign">
+    <div class="{% block formclass %}col s12 m8 offset-m2 l8 offset-l2{% endblock %}">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title grey-text text-darken-2">{% trans "Complete!" %}</span>
+                <div class="row">
+                    <div class="col s12">
+                        {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert-info">
+                                <p>{{ message }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+{#                        <pre>{{ form_data }}</pre>#}
+                    </div>
+                </div>
+            </div>
+            <div class="card-action right-align">
+                <a class="btn white-text" href="/questionario/">
+                    {% trans "Novo questionário" %}
+                    <i class="mdi-av-repeat left"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{#{% load material_form %}#}
+
+{% block content %}
+    <!-- Masthead -->
+
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <br><br>
+                <h1 class="header center green-text">Sistema de Acompanhamento da Realidade Estudantil</h1>
+
+                <div class="row center">
+                    <a href="{% url 'questionarios:new' %}" id="access-form" class="btn-large waves-effect
+                    waves-light
+                    green">Acessar formulário sócioeconômico-cultural</a>
+
+{#                    <div class="row center">#}
+{#                    <a href="{% url 'busca' %}" id="access-form" class="btn-large waves-effect#}
+{#                    waves-light#}
+{#                    green">Consultar comprovante</a>#}
+
+
+                </div>
+                <br><br>
+
+            </div>
+        </div>
+
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+{#        <div class="col s12 m4">#}
+{#          <div class="icon-block">#}
+{#            <h2 class="center green-text"><i class="material-icons">computer</i></h2>#}
+{#            <h5 class="center">Plataforma WEB</h5>#}
+{##}
+{#            <p class="light">Sistema web para integrar equipes interprofissionais.</p>#}
+{#          </div>#}
+{#        </div>#}
+
+          <div class="col s12 m12 card">
+              <div class="icon-block">
+                  <h2 class="center green-text"><i class="material-icons">info</i></h2>
+                  <h3 class="center">Informações importantes</h3>
+
+                  <p class="card-body">Algumas informações sobre a utilização deste sistema:</p>
+                  <p>
+                  <ul class="list-group-item-light">
+                      <li>* Este é um sistema em fase de desenvolvimento. Ainda não há dados integrados aos demais
+                          sistemas do IFTO. </li>
+                      <li>* Os dados colhidos neste questionário sócioeconômico-cultural estarão sob a responsabilidade
+                          do setor de Serviço Social do Campus Palmas. </li>
+
+                  </ul>
+                  </p>
+              </div>
+          </div>
+
+{#        <div class="col s12 m4">#}
+{#          <div class="icon-block">#}
+{#            <h2 class="center green-text"><i class="material-icons">assignment#}
+{#</i></h2>#}
+{#            <h5 class="center">Relatórios personalizados</h5>#}
+{##}
+{#            <p class="light">Relatórios baseados nas vulnerabilidades dos estudantes!</p>#}
+{#          </div>#}
+{#        </div>#}
+{##}
+{#        <div class="col s12 m4">#}
+{#          <div class="icon-block">#}
+{#            <h2 class="center green-text"><i class="material-icons">people#}
+{#</i></h2>#}
+{#            <h5 class="center">Atendimento a Estudantes</h5>#}
+{##}
+{#            <p class="light">Plataforma de atendimento a estudantes e familiares.</p>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+
+    </div>
+    <br><br>
+  </div>
+
+    <!-- Footer -->
+    <footer class="page-footer green">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Pescar</h5>
+          <p class="grey-text text-lighten-4">
+              O Projeto PESCAR visa realizar um estudo a partir da realidade sócioeconômica de cada estudante do IFTO.
+              Há uma equipe multiprofissional responsável pelo desenvolvimento do projeto, e, nessa primeira etapa,
+              afim de validar as ações de pesquisa e mapeamento de vulnerabilidades, o projeto é desenvolvido por
+              Samuel Barbosa, como Trabalho de Conclusão de Curso do curso Sistemas para Internet, do Campus Palmas
+              (IFTO).
+          </p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Links Úteis</h5>
+          <ul>
+            <li><a class="white-text" href="http://smkbarbosa.eti.br">Desenvolvedor</a></li>
+            <li><a class="white-text" href="http://portal.ifto.edu.br/palmas">Campus Palmas do IFTO</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Entre em contato</h5>
+          <ul>
+            <li><a class="white-text" href="mailto:clae.palmas@ifto.edu.br">Informar problema</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+{% endblock content %}

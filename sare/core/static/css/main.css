@@ -1,0 +1,25 @@
+label{
+    font-size: 0.8rem;
+}
+
+.section h5 {
+    font-size: 1.2rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 3px solid black;
+}
+
+html, body {
+    background: #eee;
+    height: 100%;
+}
+
+select {
+    display: inline-grid;
+}
+
+@media only screen and (min-width : 601px) {
+    #id_card_type_container {
+        margin-top: 40px;
+        margin-left: 50px;
+    }
+}
