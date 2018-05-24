@@ -28,7 +28,8 @@ class EntrevistaForm(forms.ModelForm):
     sp_8 = forms.ChoiceField(label='Necessidade de pagar cuidador (idoso/criança) por não possuir nenhum responsável durante o período que está estudando no Campus', widget=forms.RadioSelect(attrs={'class':'inline', }), choices=number_choices)
     sp_9 = forms.ChoiceField(label='Morar com o(s) filho(s) no mesmo ambiente familiar', widget=forms.RadioSelect(attrs={'class':'inline', }), choices=number_choices)
     sp_10 = forms.ChoiceField(label='Desenvolver ou praticar qualquer modadilidade esportiva no Campus com acompanhamento do Professor', widget=forms.RadioSelect(attrs={'class':'inline', }), choices=number_choices)
-    sp_11 = forms.ChoiceField(label='Frequentar curso que esija material de uso pessoal e que seja específico do curso', widget=forms.RadioSelect(attrs={'class':'inline', }), choices=number_choices)
+    sp_11 = forms.ChoiceField(label='Frequentar curso que exija material de uso pessoal e que seja específico do '
+                                    'curso', widget=forms.RadioSelect(attrs={'class':'inline', }), choices=number_choices)
     sp_12 = forms.ChoiceField(label='Ter carga horária disponível que não afete o desenvolvimento escolar',widget=forms.RadioSelect(attrs={'class':'inline', }), choices=number_choices)
     sp_13 = forms.ChoiceField(label='Estudante vai ao Campus mais de 3 dias na semana para cursar disciplinas', widget=forms.RadioSelect(attrs={'class':'inline', }), choices=number_choices)
     sp_14 = forms.ChoiceField(label='Aluno sai do trabalho e vai direto para o Campus', widget=forms.RadioSelect(attrs={'class':'inline', }), choices=number_choices)

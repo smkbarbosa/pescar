@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.admin.models import LogEntry
 from django.db import models
 
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -94,3 +95,14 @@ class Entrevista(models.Model):
 
     def __unicode__(self):
         return self.aluno.nome
+
+    def __str__(self):
+        return self.aluno.nome
+
+    class Meta:
+        verbose_name_plural = 'Entrevistas'
+        verbose_name = 'Entrevista'
+
+    def get_user_modification(self):
+        log = LogEntry.objects.filter(object_id=self.pk).first()
+        return log.user.username
