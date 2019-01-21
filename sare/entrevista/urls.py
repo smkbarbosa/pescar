@@ -3,6 +3,7 @@ from django.conf.urls import url
 
 from sare.entrevista.views import AlunoAutoComplete, get_aluno_information
 
+app_name = 'entrevistas'
 
 urlpatterns = [
     url(r'^aluno-autocomplete/$', AlunoAutoComplete.as_view(), name='aluno-autocomplete'),

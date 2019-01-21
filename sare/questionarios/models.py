@@ -200,7 +200,8 @@ class QuestionarioOld(models.Model):
 
 class DimensaoEconomica(models.Model):
     # Dimensão economica
-    questionario = models.ForeignKey('questionarios.Questionario')
+    questionario = models.ForeignKey('questionarios.Questionario',
+                                     on_delete=models.CASCADE)
     dependentes_RBD = models.IntegerField('Dependentes da Renda Bruta Domiciliar', )
     origem_renda = models.IntegerField('Quantidade de pessoas que possuem renda', )
     renda_bruta_domiciliar = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
@@ -245,7 +246,7 @@ class DimensaoEconomica(models.Model):
 
 
 class DimensaoSocial(models.Model):
-    questionario = models.ForeignKey('questionarios.Questionario')
+    questionario = models.ForeignKey('questionarios.Questionario', on_delete=models.CASCADE)
     # Dimensao Social
     condicao_responsavel_casa = models.CharField(choices=CONDICAO_RESPONSAVEL_CASA_CHOICES, max_length=1, default=None)
 
@@ -304,7 +305,7 @@ class DimensaoSocial(models.Model):
 
 
 class DimensaoCultural(models.Model):
-    questionario = models.ForeignKey('questionarios.Questionario')
+    questionario = models.ForeignKey('questionarios.Questionario', on_delete=models.CASCADE)
     ## Cultural
 
     cor_raca = models.CharField('Como você considera sua cor/raça?', choices=COR_RACA_CHOICES, max_length=1,
@@ -365,7 +366,7 @@ class DimensaoCultural(models.Model):
 
 
 class DimensaoAmbiental(models.Model):
-    questionario = models.ForeignKey('questionarios.Questionario')
+    questionario = models.ForeignKey('questionarios.Questionario', on_delete=models.CASCADE)
 
     # servicos_indisponiveis_bairro = models.CharField(choices=SERVICOS_INDISPONIVEIS_CHOICES, max_length=20, default=None, null=True)
 
@@ -381,7 +382,7 @@ class DimensaoAmbiental(models.Model):
 
 class Questionario(models.Model):
     hashId = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
-    aluno = models.ForeignKey('core.Aluno')
+    aluno = models.ForeignKey('core.Aluno', on_delete=models.CASCADE)
     # economica = models.ForeignKey('questionarios.DimensaoEconomica', related_name='dimensao_economica', null=True)
     # cultural = models.ForeignKey('questionarios.DimensaoCultural', related_name='dimensao_cultural', null=True)
     # social = models.ForeignKey('questionarios.DimensaoSocial', related_name='dimensao_social', null=True)

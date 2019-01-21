@@ -17,7 +17,7 @@ import reversion
 
 @reversion.register
 class Entrevista(models.Model):
-    aluno = models.ForeignKey(Aluno)
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
 
     # Classificacao renda percapita (PER)
 

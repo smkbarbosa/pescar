@@ -3,6 +3,7 @@ from django.conf.urls import url
 from sare.questionarios import views
 from sare.questionarios.views import detalhe, new, consulta
 
+app_name = 'questionarios'
 
 urlpatterns = [
     url(r'^$', new, name='new'),

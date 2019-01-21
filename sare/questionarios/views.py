@@ -4,18 +4,19 @@ from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string, get_template
+from django.views.generic import DetailView
 
 from sare.core.views import busca
 from sare.questionarios.forms import QuestionarioForm
-from sare.questionarios.models import QuestionarioOld
+from sare.questionarios.models import QuestionarioOld, Questionario
 
 
 def new(request):
     if request.method == 'POST':
-        return HttpResponseRedirect(r(busca))
-    return HttpResponseRedirect(r(busca))
-        # return create(request)
-    # return empty_form(request)
+        #return HttpResponseRedirect(r(busca))
+    #return HttpResponseRedirect(r(busca))
+        return create(request)
+    return empty_form(request)
 
 
 def empty_form(request):
@@ -23,16 +24,16 @@ def empty_form(request):
                   {'form': QuestionarioForm()})
 
 
-def detalhe(request, hashid):
-    try:
-        questionario = QuestionarioOld.objects.get(hashId=hashid)
-    except QuestionarioOld.DoesNotExist:
-        raise Http404
+# def detalhe(request, hashid):
+#     try:
+#         questionario = QuestionarioOld.objects.get(hashId=hashid)
+#     except QuestionarioOld.DoesNotExist:
+#         raise Http404
+#
+#     return render(request, 'questionarios/detalhes.html',
+#                   {'quest': questionario})
 
-    return render(request, 'questionarios/detalhes.html',
-                  {'quest': questionario})
-
-# detalhe = DetailView.as_view(model=Questionario, template_name='questionarios/detalhes.html', slug_field='hashId')
+detalhe = DetailView.as_view(model=Questionario, template_name='questionarios/detalhes.html', slug_field='hashId')
 
 
 def consulta(request):
