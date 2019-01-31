@@ -1,10 +1,11 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import RadioSelect, Textarea, Select, CheckboxSelectMultiple
+from django.forms import RadioSelect, Textarea, Select
 from material import *
 
-from sare.questionarios.models import QuestionarioOld
+from sare.questionarios.models import QuestionarioOld, Questionario
 from sare.questionarios.validators import validate_cpf
+
 
 # Choices Global
 

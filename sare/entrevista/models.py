@@ -14,10 +14,12 @@ from sare.core.models import Aluno
 import reversion
 
 # Create your models here.
+from sare.questionarios.models import QuestionarioOld
+
 
 @reversion.register
 class Entrevista(models.Model):
-    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
+    aluno = models.ForeignKey(QuestionarioOld, on_delete=models.CASCADE)
 
     # Classificacao renda percapita (PER)
 

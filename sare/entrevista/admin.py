@@ -21,9 +21,9 @@ class EntrevistaAdmin(admin.ModelAdmin):
     entrevistador.short_description = 'Entrevistador'
 
     fieldsets = [
-        ('Informações do entrevistado', {'fields':[
+        ('Informações do entrevistado', {'fields': [
             'aluno',
-        ]}),
+            ]}),
         ('Classificação de renda percapita', {'fields':[
             'per_renda_bruta',
             'per_dependentes',
