@@ -19,7 +19,8 @@ from sare.questionarios.models import QuestionarioOld
 
 @reversion.register
 class Entrevista(models.Model):
-    aluno = models.ForeignKey(QuestionarioOld, on_delete=models.CASCADE)
+    aluno = models.ForeignKey(QuestionarioOld, on_delete=models.CASCADE,
+                              unique=True)
 
     # Classificacao renda percapita (PER)
 
@@ -93,7 +94,6 @@ class Entrevista(models.Model):
     fn_5 = models.PositiveIntegerField('Aluno com problemas graves indentificadas durante a entrevista', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     fn_6 = models.PositiveIntegerField('Condição de renda oriunda da informalidade', default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     fn_7 = models.TextField('Justifique', max_length=800, null=True)
-
 
     def __unicode__(self):
         return self.aluno.nome
