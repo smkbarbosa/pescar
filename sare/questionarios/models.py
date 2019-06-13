@@ -196,6 +196,9 @@ class QuestionarioOld(models.Model):
 
     def __str__(self):
         return self.nome
+    
+    def get_object(self):
+        return get_object_or_404(QuestionarioOld, pk=request.session['questionarioold_hashid'])
 
 
 class DimensaoEconomica(models.Model):

@@ -19,8 +19,7 @@ from sare.questionarios.models import QuestionarioOld
 
 @reversion.register
 class Entrevista(models.Model):
-    aluno = models.ForeignKey(QuestionarioOld, on_delete=models.CASCADE,
-                              unique=True)
+    aluno = models.ForeignKey(QuestionarioOld, on_delete=models.CASCADE,)
 
     # Classificacao renda percapita (PER)
 
